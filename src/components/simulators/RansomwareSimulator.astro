@@ -1,0 +1,84 @@
+---
+
+---
+
+<div
+    class="ransomware-container bg-red-900/90 text-white p-6 font-serif border-8 border-red-600 shadow-2xl hidden flex-col max-w-2xl mx-auto relative"
+    id="ransomware-screen"
+>
+    <div class="animate-pulse absolute top-4 right-4 text-4xl">🔒</div>
+
+    <h2
+        class="text-3xl font-black uppercase mb-4 text-center border-b-2 border-white pb-4"
+    >
+        ATTENZIONE! I TUOI FILE SONO CRITTOGRAFATI!
+    </h2>
+
+    <div
+        class="bg-black/50 p-4 mb-6 font-mono text-sm leading-relaxed border border-red-500"
+    >
+        <p class="mb-2">
+            Tutti i tuoi documenti, foto, database e altri file importanti sono
+            stati crittografati con una chiave unica generata per questo
+            computer.
+        </p>
+        <p class="mb-2">
+            La chiave privata di decrittazione è memorizzata sui nostri server
+            segreti e nessuno può decrittare i tuoi file fino a quando non paghi
+            e ottieni la chiave privata.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 mb-6 text-center">
+        <div class="bg-white text-red-900 p-4 font-bold">
+            <p class="text-xs uppercase">Tempo Rimasto</p>
+            <p class="text-3xl font-mono" id="countdown">72:00:00</p>
+        </div>
+        <div class="bg-white text-red-900 p-4 font-bold">
+            <p class="text-xs uppercase">Importo da Pagare</p>
+            <p class="text-3xl font-mono">$300 USD</p>
+            <p class="text-xs">in Bitcoin</p>
+        </div>
+    </div>
+
+    <div class="flex gap-4 justify-center">
+        <button
+            id="pay-fake-btn"
+            class="bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 uppercase shadow-lg transform hover:scale-105 transition-all"
+        >
+            Invia Pagamento (FAKE)
+        </button>
+        <button
+            id="restore-backup-btn"
+            class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 uppercase shadow-lg transform hover:scale-105 transition-all flex items-center gap-2"
+        >
+            🛡️ Ripristina da Backup
+        </button>
+    </div>
+</div>
+
+<script>
+    const screen = document.getElementById("ransomware-screen");
+    const restoreBtn = document.getElementById("restore-backup-btn");
+    const payBtn = document.getElementById("pay-fake-btn");
+
+    // Funzione per attivare (chiamabile dall'esterno)
+    window.triggerRansomware = () => {
+        screen?.classList.remove("hidden");
+        screen?.classList.add("flex");
+    };
+
+    restoreBtn?.addEventListener("click", () => {
+        screen?.classList.remove("flex");
+        screen?.classList.add("hidden");
+        alert(
+            "BRAVO! Questa è l'unica soluzione reale. Avere un backup offline ti salva la vita (e il portafoglio).",
+        );
+    });
+
+    payBtn?.addEventListener("click", () => {
+        alert(
+            "ERRORE! Mai pagare il riscatto. Non hai garanzie che ti ridiano i file e finanzi i criminali.",
+        );
+    });
+</script>

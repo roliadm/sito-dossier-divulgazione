@@ -1,0 +1,97 @@
+---
+
+---
+
+<div
+    class="bsod-container bg-[#0000AA] text-white p-8 font-mono hidden flex-col items-center justify-center min-h-[400px] select-none cursor-not-allowed relative overflow-hidden"
+    id="bsod-screen"
+>
+    <div class="max-w-3xl w-full z-10">
+        <p class="mb-8 text-xl">:(</p>
+        <p class="mb-8 text-lg">
+            Il tuo PC ha riscontrato un problema e deve essere riavviato.
+            Raccoglieremo alcune informazioni sull'errore, poi potrai riavviare.
+        </p>
+        <p class="mb-12 text-lg">0% completato</p>
+
+        <div class="flex gap-4 items-start">
+            <div class="bg-white p-2">
+                <!-- QR Code placeholder -->
+                <div
+                    class="w-24 h-24 bg-white flex items-center justify-center text-[#0000AA] font-bold text-xs text-center border-4 border-[#0000AA]"
+                >
+                    QR CODE<br />FAKE
+                </div>
+            </div>
+            <div class="text-sm">
+                <p class="mb-1">
+                    Per ulteriori informazioni su questo problema e sulle
+                    possibili correzioni, visita
+                    https://www.windows.com/stopcode
+                </p>
+                <p class="mb-1">
+                    Se contatti il supporto tecnico, fornisci queste
+                    informazioni:
+                </p>
+                <p>Codice di interruzione: CRITICAL_PROCESS_DIED</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glitch Overlay -->
+    <div
+        class="absolute inset-0 bg-white opacity-0 pointer-events-none mix-blend-overlay"
+        id="bsod-glitch"
+    >
+    </div>
+
+    <!-- Interactive Fix Button (Hidden initially) -->
+    <button
+        id="fix-bsod-btn"
+        class="absolute bottom-4 right-4 bg-white text-[#0000AA] px-4 py-2 font-bold uppercase hover:bg-gray-200 transition-colors z-20 text-sm"
+    >
+        [ Tenta Hard Reset ]
+    </button>
+</div>
+
+<script>
+    const screen = document.getElementById("bsod-screen");
+    const glitch = document.getElementById("bsod-glitch");
+    const fixBtn = document.getElementById("fix-bsod-btn");
+
+    let isGlitching = false;
+
+    // Funzione per attivare il BSOD (chiamabile dall'esterno)
+    window.triggerBSOD = () => {
+        screen?.classList.remove("hidden");
+        screen?.classList.add("flex");
+        // Start glitch effect
+        if (!isGlitching) {
+            isGlitching = true;
+            glitchLoop();
+        }
+    };
+
+    function glitchLoop() {
+        if (!isGlitching || !glitch) return;
+
+        if (Math.random() > 0.95) {
+            glitch.style.opacity = (Math.random() * 0.5).toString();
+            glitch.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px)`;
+            setTimeout(() => {
+                glitch.style.opacity = "0";
+                glitch.style.transform = "translate(0,0)";
+            }, 50);
+        }
+        requestAnimationFrame(glitchLoop);
+    }
+
+    fixBtn?.addEventListener("click", () => {
+        isGlitching = false;
+        screen?.classList.remove("flex");
+        screen?.classList.add("hidden");
+        alert(
+            "Sistema ripristinato. Hai appena imparato che il panico non aiuta.",
+        );
+    });
+</script>

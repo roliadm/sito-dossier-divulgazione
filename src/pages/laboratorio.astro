@@ -1,0 +1,103 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import BSODSimulator from "../components/simulators/BSODSimulator.astro";
+import RansomwareSimulator from "../components/simulators/RansomwareSimulator.astro";
+---
+
+<Layout title="Laboratorio Simulazioni">
+    <div class="min-h-screen">
+        <Navigation />
+
+        <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
+            <header class="mb-16">
+                <span
+                    class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block"
+                    >/// Area Addestramento</span
+                >
+                <h1
+                    class="font-sans font-black text-5xl md:text-7xl uppercase leading-none mb-6"
+                >
+                    Laboratorio<br /><span class="text-accent"
+                        >Simulazioni</span>
+                </h1>
+                <p
+                    class="font-serif text-xl border-l-4 border-accent pl-6 max-w-2xl text-gray-600"
+                >
+                    Non aspettare che succeda per la prima volta.<br />
+                    Qui puoi "rompere" tutto in sicurezza per capire come aggiustarlo.
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Card Simulazione BSOD -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:translate-y-[-4px] transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-blue-700 text-white font-mono flex items-center justify-center text-xs font-bold mb-6"
+                    >
+                        :(
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Blue Screen of Death
+                    </h3>
+                    <p class="font-serif text-gray-600 mb-6">
+                        Il terrore di ogni utente Windows. Schermo blu, scritte
+                        bianche incomprensibili. Cosa è successo veramente?
+                    </p>
+                    <button
+                        onclick="window.triggerBSOD()"
+                        class="w-full bg-ink text-white font-mono font-bold uppercase py-3 hover:bg-accent hover:text-ink transition-colors"
+                    >
+                        Simula Crash Sistema
+                    </button>
+                    <!-- Container Simulatore (Injected via Astro Component) -->
+                    <div class="mt-8">
+                        <BSODSimulator />
+                    </div>
+                </div>
+
+                <!-- Card Simulazione Ransomware -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:translate-y-[-4px] transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-red-600 text-white font-mono flex items-center justify-center text-2xl mb-6"
+                    >
+                        🔒
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Attacco Ransomware
+                    </h3>
+                    <p class="font-serif text-gray-600 mb-6">
+                        I tuoi file sono criptati. Un timer scorre. Ti chiedono
+                        Bitcoin. E ora? Impariamo a gestire il panico.
+                    </p>
+                    <button
+                        onclick="window.triggerRansomware()"
+                        class="w-full bg-ink text-white font-mono font-bold uppercase py-3 hover:bg-alert transition-colors"
+                    >
+                        Infetta il Sistema
+                    </button>
+                    <!-- Container Simulatore -->
+                    <div class="mt-8 z-50 relative">
+                        <RansomwareSimulator />
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mt-16 bg-gray-100 p-8 border-2 border-dashed border-gray-400 text-center"
+            >
+                <span
+                    class="font-mono text-sm text-gray-500 uppercase tracking-widest block mb-2"
+                    >Prossimamente nel Laboratorio</span
+                >
+                <p class="font-bold text-gray-400 text-lg">
+                    Phishing Email Trainer // Wi-Fi Hacker Experience
+                </p>
+            </div>
+        </main>
+    </div>
+</Layout>

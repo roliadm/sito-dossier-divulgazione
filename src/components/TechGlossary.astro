@@ -1,0 +1,33 @@
+---
+interface Props {
+    term: string;
+    definition: string;
+}
+
+const { term, definition } = Astro.props;
+---
+
+<span
+    class="group relative inline-block cursor-help border-b-2 border-dashed border-accent decoration-none"
+>
+    <span
+        class="font-bold text-ink group-hover:bg-accent group-hover:text-white transition-colors px-0.5 rounded-xs"
+    >
+        {term}
+    </span>
+
+    <!-- Tooltip -->
+    <span
+        class="invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 bg-ink text-white p-4 text-xs font-mono shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] z-50 border border-white"
+    >
+        <span class="block font-bold mb-1 text-accent uppercase"
+            >/// Traduzione Umana:</span
+        >
+        {definition}
+
+        <!-- Arrow -->
+        <span
+            class="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-ink"
+        ></span>
+    </span>
+</span>
