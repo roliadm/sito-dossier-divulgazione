@@ -1,0 +1,85 @@
+---
+const navItems = [
+  { name: 'Protocollo 01: Home', href: '/' },
+  { name: 'Indice Articoli', href: '/articoli' },
+  { name: 'Telex News', href: '/news' },
+  { name: 'Risorse Esterne', href: '/risorse' },
+  { name: 'Identità', href: '/chi-sono' },
+  { name: 'Canale SOS', href: '/contatti' },
+];
+---
+
+<!-- Desktop Sidebar -->
+<nav class="fixed left-0 top-0 h-full w-64 border-r-4 border-ink bg-paper z-40 flex-col justify-between py-8 hidden lg:flex">
+    <div class="px-6">
+        <a href="/" class="block font-sans font-black text-3xl leading-[0.85] uppercase tracking-tighter hover:text-accent transition-colors">
+            Rocco<br/>Andrea<br/>Ligorio<span class="text-accent">.</span>
+        </a>
+        <div class="mt-4 flex items-center gap-2">
+            <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+            <p class="font-mono text-xs font-bold uppercase tracking-widest">System Online</p>
+        </div>
+    </div>
+
+    <ul class="flex flex-col gap-3 px-4">
+        {navItems.map(item => (
+            <li>
+                <a href={item.href} class="group block px-4 py-3 font-mono text-sm font-bold border-2 border-transparent hover:border-ink hover:bg-white hover:shadow-neo-sm transition-all uppercase tracking-wide flex justify-between items-center text-gray-600 hover:text-ink">
+                    <span>{item.name}</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </a>
+            </li>
+        ))}
+    </ul>
+
+    <div class="px-6">
+        <div class="w-full h-4 border-t-2 border-ink border-dashed mb-4"></div>
+        <p class="font-serif text-xs italic leading-tight text-gray-500">
+            Divulgazione informatica dal mondo reale.<br/>
+            <span class="font-bold not-italic mt-2 block text-ink">Est. 2025</span>
+        </p>
+    </div>
+</nav>
+
+<!-- Mobile Header -->
+<div class="lg:hidden fixed top-0 left-0 w-full bg-paper border-b-4 border-ink z-40 px-4 py-3 flex justify-between items-center shadow-neo-sm">
+    <a href="/" class="font-sans font-black text-xl leading-none uppercase tracking-tighter">
+        Rocco A. Ligorio<span class="text-accent">.</span>
+    </a>
+    <button id="mobile-menu-btn" class="font-mono text-sm font-bold bg-white border-2 border-ink px-3 py-1 shadow-neo-sm active:translate-y-[2px] active:shadow-none transition-all">
+        MENU
+    </button>
+</div>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-paper z-50 flex flex-col p-8 hidden">
+    <div class="flex justify-end mb-8">
+        <button id="close-menu-btn" class="font-mono text-xl font-bold">✕ CHIUDI</button>
+    </div>
+    <ul class="flex flex-col gap-6 text-center">
+        {navItems.map(item => (
+            <li>
+                <a href={item.href} class="font-sans font-bold text-3xl uppercase hover:text-accent hover:underline decoration-4">
+                    {item.name}
+                </a>
+            </li>
+        ))}
+    </ul>
+    <div class="mt-auto text-center font-mono text-xs opacity-50">
+        FINE PROTOCOLLO
+    </div>
+</div>
+
+<script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    function toggleMenu() {
+        menu?.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    menuBtn?.addEventListener('click', toggleMenu);
+    closeBtn?.addEventListener('click', toggleMenu);
+</script>

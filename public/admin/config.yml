@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: "it"
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "articoli"
+    label: "Fascicoli (Articoli)"
+    folder: "src/content/articoli"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titolo", name: "title", widget: "string"}
+      - {label: "Descrizione Breve", name: "description", widget: "text", hint: "Appare nella home e sotto il titolo"}
+      - {label: "Data Pubblicazione", name: "date", widget: "datetime"}
+      - {label: "Categoria", name: "category", widget: "select", options: ["Windows", "Hardware", "Sicurezza", "Storie Vere", "Guide", "Opinioni"]}
+      - {label: "Livello Fuffa (Bullshit Meter)", name: "bsLevel", widget: "number", default: 0, min: 0, max: 100, value_type: "int", hint: "0 = Verità Assoluta, 100 = Marketing Puro. Sopra 80 diventa rosso."}
+      - {label: "Autore", name: "author", widget: "string", default: "Rocco Andrea Ligorio"}
+      - {label: "Stato Bozza", name: "draft", widget: "boolean", default: false}
+      - {label: "Immagine (Opzionale)", name: "image", widget: "image", required: false}
+      - {label: "Corpo Articolo", name: "body", widget: "markdown"}

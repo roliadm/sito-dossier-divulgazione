@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import NewsTicker from '../components/NewsTicker.astro';
+import TerminalSOS from '../components/TerminalSOS.astro';
+import BullshitDetector from '../components/BullshitDetector.astro';
+
+// Placeholder data - in a real scenario, fetchSimple from collections
+const latestArticle = {
+    title: "Perché il computer è lento?",
+    slug: "computer-lento",
+    desc: "Non è un virus. È che non lo spegni da tre settimane.",
+    date: "10 Ott 2025"
+};
+---
+
+<Layout title="Protocollo Principale">
+    <div class="flex min-h-screen">
+        <Navigation />
+        
+        <main class="flex-1 lg:ml-64 relative z-10">
+            <NewsTicker items={["Windows 12 è un mito", "Attenzione al phishing via SMS", "Hai fatto il backup oggi?"]} />
+            
+            <div class="p-6 md:p-12 lg:p-20 max-w-7xl mx-auto">
+                <!-- Hero Header -->
+                <header class="mb-24 relative">
+                    <h1 class="font-sans font-black text-6xl md:text-8xl lg:text-9xl leading-[0.8] tracking-tighter uppercase mb-8">
+                        Divulgazione<br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-ink to-gray-500">Informatica</span><br/>
+                        Umana<span class="text-accent">.</span>
+                    </h1>
+                    <div class="max-w-xl text-lg md:text-xl font-serif text-gray-700 leading-relaxed border-l-4 border-accent pl-6">
+                        <p>
+                            La tecnologia spiegata senza termini incomprensibili. 
+                            Niente hype. Niente marketing. Solo la cruda verità su come sopravvivere al mondo digitale.
+                        </p>
+                    </div>
+
+                    <!-- Stamp Decoration -->
+                    <div class="absolute top-0 right-0 hidden md:block opacity-80 rotate-12 pointer-events-none mix-blend-multiply">
+                        <div class="border-4 border-red-700 text-red-700 font-mono font-bold text-sm p-2 uppercase tracking-widest text-center shadow-sm rounded-sm">
+                            <span class="block text-4xl mb-1">100%</span>
+                            NO AI CONTENT
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Featured Section: Protocollo Recente -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-start">
+                    <div>
+                        <span class="font-mono text-xs font-bold uppercase tracking-widest text-accent mb-4 block">/// Ultimo Protocollo</span>
+                        <article class="group relative border-4 border-ink bg-white shadow-neo p-8 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(17,17,17,1)] transition-all cursor-pointer">
+                            <h2 class="font-sans font-black text-4xl md:text-5xl uppercase leading-none mb-4 group-hover:underline decoration-4 decoration-accent">
+                                {latestArticle.title}
+                            </h2>
+                            <p class="font-serif text-lg text-gray-600 mb-6">
+                                {latestArticle.desc}
+                            </p>
+                            <div class="flex justify-between items-end">
+                                <span class="font-mono text-xs bg-ink text-white px-2 py-1">{latestArticle.date}</span>
+                                <span class="font-mono font-bold group-hover:translate-x-2 transition-transform">LEGGI IL FASCICOLO →</span>
+                            </div>
+                            <a href={`/articoli/${latestArticle.slug}`} class="absolute inset-0 z-10"></a>
+                        </article>
+                    </div>
+
+                    <!-- Side Widget Area -->
+                    <div class="space-y-12">
+                         <!-- Bullshit Detector Example -->
+                        <div>
+                            <span class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 block">/// Stato del Settore</span>
+                            <BullshitDetector level={92} label="AI Marketing Hype" />
+                        </div>
+                        
+                        <!-- Mini News -->
+                        <div class="border-t-4 border-ink pt-6">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="font-sans font-bold text-2xl uppercase">Dispacci Esterni</h3>
+                                <a href="/news" class="font-mono text-xs underline decoration-accent hover:text-accent">Vedi Tutti</a>
+                            </div>
+                            <ul class="space-y-4 font-mono text-sm">
+                                <li class="flex gap-4 items-start">
+                                    <span class="text-gray-400">10:42</span>
+                                    <a href="#" class="hover:text-accent hover:underline">Nuova vulnerabilità zero-day in iOS.</a>
+                                </li>
+                                <li class="flex gap-4 items-start">
+                                    <span class="text-gray-400">09:15</span>
+                                    <a href="#" class="hover:text-accent hover:underline">Il cloud di Azure ha subito un'interruzione.</a>
+                                </li>
+                                <li class="flex gap-4 items-start">
+                                    <span class="text-gray-400">Ieri</span>
+                                    <a href="#" class="hover:text-accent hover:underline">Elon Musk annuncia l'ennesima cosa.</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer-ish area -->
+                <div class="border-t-4 border-ink pt-12 mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+                    <div>
+                        <h4 class="font-mono font-bold uppercase mb-4">Rocco Andrea Ligorio</h4>
+                        <p class="font-serif text-gray-600">
+                            Consulente, formatore e divulgatore.<br/>
+                            Smonto la tecnologia pezzo per pezzo.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-mono font-bold uppercase mb-4">Mappa Sito</h4>
+                        <ul class="space-y-2 font-mono text-gray-600">
+                            <li><a href="/articoli" class="hover:underline">Tutti gli Articoli</a></li>
+                            <li><a href="/news" class="hover:underline">News Feed</a></li>
+                            <li><a href="/contatti" class="hover:underline">Canale SOS</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                         <h4 class="font-mono font-bold uppercase mb-4">Legal</h4>
+                         <p class="font-mono text-gray-500 text-xs">
+                             © 2025 Rickettsia Studio.<br/>
+                             Nessun cookie tracciante.<br/>
+                             Solo HTML artigianale.
+                         </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <TerminalSOS />
+</Layout>

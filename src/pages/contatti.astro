@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+---
+
+<Layout title="Canale SOS">
+  <div class="flex min-h-screen">
+    <Navigation />
+    
+    <main class="flex-1 lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10 w-full">
+         <header class="mb-16">
+            <h1 class="font-sans font-black text-6xl md:text-8xl uppercase leading-none mb-4">Canale<br/>Ufficiale<br/>SoS<span class="text-accent">.</span></h1>
+            <p class="font-serif text-xl md:text-2xl text-gray-600 border-l-4 border-ink pl-6 max-w-2xl mt-8">
+                Non uso chatbot. Rispondo personalmente.<br/>
+                Usa questo modulo per richieste di aiuto, suggerimenti o per segnalare errori nella matrice.
+            </p>
+         </header>
+
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl">
+             <!-- Contact Form -->
+             <div class="bg-paper border-4 border-ink p-8 shadow-neo-lg relative">
+                 <div class="absolute -top-4 -left-4 bg-ink text-white font-mono text-sm px-4 py-1 uppercase tracking-widest font-bold">Modulo Trasmissione</div>
+                 
+                 <form name="contatto" method="POST" data-netlify="true" action="/successo" class="space-y-6 mt-4">
+                     <div>
+                         <label for="nome" class="block font-mono font-bold uppercase text-xs mb-2">Identificativo (Nome)</label>
+                         <input type="text" name="nome" id="nome" required class="w-full bg-white border-2 border-ink p-3 font-serif focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all" />
+                     </div>
+                     
+                     <div>
+                         <label for="email" class="block font-mono font-bold uppercase text-xs mb-2">Punto di Contatto (Email)</label>
+                         <input type="email" name="email" id="email" required class="w-full bg-white border-2 border-ink p-3 font-serif focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all" />
+                     </div>
+                     
+                     <div>
+                         <label for="messaggio" class="block font-mono font-bold uppercase text-xs mb-2">Messaggio in Chiaro</label>
+                         <textarea name="messaggio" id="messaggio" rows="5" required class="w-full bg-white border-2 border-ink p-3 font-serif focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"></textarea>
+                     </div>
+
+                     <button type="submit" class="w-full bg-ink text-white font-sans font-black uppercase text-xl py-4 hover:bg-accent hover:shadow-[4px_4px_0px_0px_white,8px_8px_0px_0px_#111] transition-all transform hover:-translate-y-1">
+                         Invia Trasmissione
+                     </button>
+                 </form>
+             </div>
+
+             <!-- Alternative Contact Info -->
+             <div class="space-y-12">
+                 <div>
+                     <h3 class="font-mono font-bold uppercase text-sm mb-4 text-gray-500">/// Contatto Diretto</h3>
+                     <p class="font-serif text-lg">
+                        Se il modulo non funziona o preferisci i metodi tradizionali:<br/>
+                        <a href="mailto:info@roccoandrealigorio.it" class="font-sans font-bold text-2xl underline decoration-accent decoration-4 hover:bg-black hover:text-white transition-all px-1">info@roccoandrealigorio.it</a>
+                     </p>
+                 </div>
+
+                 <div>
+                     <h3 class="font-mono font-bold uppercase text-sm mb-4 text-gray-500">/// Policy di Risposta</h3>
+                     <ul class="list-disc list-inside font-serif text-gray-600 space-y-2">
+                         <li>Leggo tutto.</li>
+                         <li>Rispondo appena ho finito di sistemare i server.</li>
+                         <li>Non faccio assistenza tecnica gratuita per stampanti possedute dal demonio (ma posso scriverci un articolo).</li>
+                     </ul>
+                 </div>
+             </div>
+         </div>
+    </main>
+  </div>
+</Layout>

@@ -1,0 +1,41 @@
+---
+export interface Props {
+    items?: string[];
+}
+const { items = ["Benvenuto nel sistema", "Nessuna nuova minaccia rilevata", "Il cloud è solo il computer di qualcun altro"] } = Astro.props;
+---
+<div class="bg-black text-[#00ff00] font-mono text-xs md:text-sm py-2 overflow-hidden border-b-4 border-ink relative select-none">
+    <!-- Fade edges -->
+    <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black to-transparent z-10"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-black to-transparent z-10"></div>
+    
+    <div class="ticker-wrapper w-max flex">
+        <div class="ticker-content flex animate-scroll">
+            {items.map((item) => (
+                <span class="mx-6 flex items-center gap-2">
+                    <span class="text-[8px] opacity-50">Unknown Source //</span>
+                    <span class="font-bold uppercase">{item}</span>
+                    <span class="text-white fill-current">+++</span>
+                </span>
+            ))}
+             {/* Duplicate for seamless loop */}
+             {items.map((item) => (
+                <span class="mx-6 flex items-center gap-2">
+                    <span class="text-[8px] opacity-50">Unknown Source //</span>
+                    <span class="font-bold uppercase">{item}</span>
+                    <span class="text-white fill-current">+++</span>
+                </span>
+            ))}
+        </div>
+    </div>
+</div>
+
+<style>
+    .animate-scroll {
+        animation: scroll 40s linear infinite;
+    }
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+</style>

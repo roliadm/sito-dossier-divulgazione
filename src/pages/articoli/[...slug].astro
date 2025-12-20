@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import BullshitDetector from '../../components/BullshitDetector.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('articoli');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+<Layout title={post.data.title} description={post.data.description}>
+  <div class="flex min-h-screen items-stretch">
+    <!-- Navigation -->
+    <Navigation />
+    
+    <main class="flex-1 lg:ml-64 w-full relative z-0">
+         <article class="max-w-5xl mx-auto p-6 md:p-12 lg:p-20">
+            <!-- Header Fascicolo -->
+            <header class="border-b-4 border-ink pb-8 mb-12 relative">
+                 <div class="flex justify-between items-center mb-6">
+                     <span class="font-mono bg-ink text-white px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider">
+                        / {post.data.category} /
+                     </span>
+                     <span class="font-mono text-sm uppercase font-bold text-gray-500">
+                        {post.data.date.toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' })}
+                     </span>
+                 </div>
+                 
+                 <h1 class="font-sans font-black text-5xl md:text-6xl lg:text-7xl leading-[0.9] uppercase hyphens-auto mb-8 text-ink">
+                    {post.data.title}
+                 </h1>
+                 
+                 <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <p class="font-serif text-xl md:text-2xl leading-relaxed text-gray-700 font-bold border-l-4 border-accent pl-6 flex-1">
+                        {post.data.description}
+                    </p>
+                    {post.data.bsLevel > 0 && <div class="md:w-64 max-w-full"><BullshitDetector level={post.data.bsLevel} label="Livello Fuffa" /></div>}
+                 </div>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12">
+                <!-- Content -->
+                <div class="prose prose-xl prose-stone font-serif prose-headings:font-sans prose-headings:font-black prose-headings:uppercase prose-p:text-gray-800 prose-a:text-accent hover:prose-a:text-black prose-strong:text-black prose-strong:bg-yellow-200 prose-strong:px-1 max-w-none">
+                    <Content />
+
+                    <hr class="border-2 border-ink my-12 opacity-10" />
+
+                    <div class="bg-white border-2 border-ink p-8 shadow-neo relative overflow-hidden">
+                        <div class="relative z-10">
+                            <p class="font-mono font-bold uppercase text-xs text-gray-400 mb-2">Editoriale a cura di</p>
+                            <h3 class="font-sans font-black text-2xl uppercase mb-2">Rocco Andrea Ligorio</h3>
+                            <p class="font-serif italic text-gray-600 mb-4">
+                                Divulgazione informatica dal mondo reale. Scrivo di tecnologia quando smette di funzionare e inizia a rompere le scatole.
+                            </p>
+                            <a href="/chi-sono" class="font-mono text-xs font-bold bg-ink text-white px-4 py-2 hover:bg-accent transition-colors">LEGGI IL FASCICOLO AUTORE →</a>
+                        </div>
+                        <div class="absolute -right-10 -bottom-10 opacity-5 rotate-12 pointer-events-none">
+                            <span class="font-sans font-black text-9xl">RL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </article>
+    </main>
+  </div>
+</Layout>

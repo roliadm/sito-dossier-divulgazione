@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f4f4f0;
+  --color-ink: #111111;
+  --color-accent: #2563eb; /* Blue-600 approx */
+  --color-alert: #dc2626;  /* Red-600 */
+  --color-highlight: #facc15; /* Yellow-400 */
+  
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-serif: 'Libre Baskerville', serif;
+  --font-mono: 'Fira Code', monospace;
+
+  --shadow-neo: 4px 4px 0px 0px #111111;
+  --shadow-neo-sm: 2px 2px 0px 0px #111111;
+  --shadow-neo-lg: 8px 8px 0px 0px #111111;
+}
+
+@layer utilities {
+  .text-shadow-neo {
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+  }
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  body {
+    @apply font-serif antialiased min-h-screen flex flex-col;
+    /* Basic rough texture via repeated gradient or SVG if needed, keeping it simple for now */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold tracking-tight text-ink;
+  }
+
+  a {
+    @apply underline decoration-2 decoration-accent/30 hover:decoration-accent hover:text-accent transition-colors duration-200;
+  }
+
+  code {
+    @apply font-mono text-sm bg-neutral-200 px-1 py-0.5 rounded-xs border border-ink/20;
+  }
+}
