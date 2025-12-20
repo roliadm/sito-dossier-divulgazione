@@ -46,26 +46,10 @@ const latestArticle = {
                 </header>
 
                 <!-- Featured Section: Protocollo Recente -->
+                <!-- Featured Section: Protocollo Recente -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-start">
-                    <div>
-                        <span class="font-mono text-xs font-bold uppercase tracking-widest text-accent mb-4 block">/// Ultimo Protocollo</span>
-                        <article class="group relative border-4 border-ink bg-white shadow-neo p-8 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(17,17,17,1)] transition-all cursor-pointer">
-                            <h2 class="font-sans font-black text-4xl md:text-5xl uppercase leading-none mb-4 group-hover:underline decoration-4 decoration-accent">
-                                {latestArticle.title}
-                            </h2>
-                            <p class="font-serif text-lg text-gray-600 mb-6">
-                                {latestArticle.desc}
-                            </p>
-                            <div class="flex justify-between items-end">
-                                <span class="font-mono text-xs bg-ink text-white px-2 py-1">{latestArticle.date}</span>
-                                <span class="font-mono font-bold group-hover:translate-x-2 transition-transform">LEGGI IL FASCICOLO →</span>
-                            </div>
-                            <a href={`/articoli/${latestArticle.slug}`} class="absolute inset-0 z-10"></a>
-                        </article>
-                    </div>
-
-                    <!-- Side Widget Area -->
-                    <div class="space-y-12">
+                    <!-- Side Widget Area (Now Left) -->
+                    <div class="space-y-12 order-2 lg:order-1">
                          <!-- Bullshit Detector Example -->
                         <div>
                             <span class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 block">/// Stato del Settore</span>
@@ -93,6 +77,26 @@ const latestArticle = {
                                 </li>
                             </ul>
                         </div>
+                    </div>
+
+                    <!-- Main Article (Now Right) -->
+                    <div class="order-1 lg:order-2 text-right">
+                        <div class="flex justify-center mb-4">
+                            <span class="font-mono text-xs font-bold uppercase tracking-widest text-accent bg-ink text-white px-2 py-1">/// Ultimo Protocollo ///</span>
+                        </div>
+                        <article class="group relative border-4 border-ink bg-white shadow-neo p-8 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(17,17,17,1)] transition-all cursor-pointer text-right">
+                            <h2 class="font-sans font-black text-4xl md:text-5xl uppercase leading-none mb-4 group-hover:underline decoration-4 decoration-accent">
+                                {latestArticle.title}
+                            </h2>
+                            <p class="font-serif text-lg text-gray-600 mb-6 ml-auto max-w-md">
+                                {latestArticle.desc}
+                            </p>
+                            <div class="flex justify-between items-end flex-row-reverse">
+                                <span class="font-mono text-xs bg-ink text-white px-2 py-1">{latestArticle.date}</span>
+                                <span class="font-mono font-bold group-hover:-translate-x-2 transition-transform">← LEGGI IL FASCICOLO</span>
+                            </div>
+                            <a href={`/articoli/${latestArticle.slug}`} class="absolute inset-0 z-10"></a>
+                        </article>
                     </div>
                 </div>
 
