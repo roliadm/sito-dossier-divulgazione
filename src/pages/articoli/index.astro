@@ -1,50 +1,71 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navigation from '../../components/Navigation.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import { getCollection } from "astro:content";
 
-const posts = (await getCollection('articoli', ({ data }) => {
-	return import.meta.env.PROD ? data.draft !== true : true;
-})).sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+const posts = (
+    await getCollection("articoli", ({ data }) => {
+        return import.meta.env.PROD ? data.draft !== true : true;
+    })
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
+
 <Layout title="Archivio Protocolli">
-    <div class="flex min-h-screen">
-       <Navigation />
-       <main class="flex-1 lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10 w-full">
-           <header class="mb-24">
-                <h1 class="font-sans font-black text-6xl md:text-8xl uppercase leading-none mb-8 tracking-tighter">Archivio<br/>Protocolli<span class="text-accent">.</span></h1>
+    <div class="min-h-screen">
+        <Navigation />
+        <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
+            <header class="mb-24">
+                <h1
+                    class="font-sans font-black text-6xl md:text-8xl uppercase leading-none mb-8 tracking-tighter"
+                >
+                    Archivio<br />Protocolli<span class="text-accent">.</span>
+                </h1>
                 <div class="w-24 h-4 bg-ink"></div>
-           </header>
-           
-           <div class="grid gap-16 max-w-5xl">
-               {posts.length === 0 && (
-                   <div class="p-8 border-2 border-dashed border-ink bg-yellow-50 font-serif text-xl">
-                       Nessun fascicolo trovato in archivio. Il sistema è pulito.
-                   </div>
-               )}
-               {posts.map(post => (
-                    <article class="group grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 items-baseline border-b-4 border-gray-200 pb-12 hover:border-ink transition-colors">
-                        <div class="font-mono text-sm font-bold uppercase text-gray-400 group-hover:text-ink pt-1 transition-colors">
-                             {post.data.date.toLocaleDateString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit' })}
-                             <br/>
-                             <span class="text-accent block mt-1">/ {post.data.category}</span>
+            </header>
+
+            <div class="grid gap-16 max-w-5xl">
+                {
+                    posts.length === 0 && (
+                        <div class="p-8 border-2 border-dashed border-ink bg-yellow-50 font-serif text-xl">
+                            Nessun fascicolo trovato in archivio. Il sistema è
+                            pulito.
                         </div>
-                        <div>
-                             <h2 class="font-sans font-black text-3xl md:text-5xl uppercase mb-6 leading-[0.9] group-hover:text-accent transition-colors">
-                                 <a href={`/articoli/${post.slug}`}>{post.data.title}</a>
-                             </h2>
-                             <p class="font-serif text-xl text-gray-600 max-w-2xl leading-relaxed mb-6">
-                                {post.data.description}
-                             </p>
-                             <a href={`/articoli/${post.slug}`} class="inline-block font-mono text-xs font-bold uppercase tracking-widest border-b-2 border-transparent hover:border-ink transition-all">
-                                 Leggi Fascicolo →
-                             </a>
-                        </div>
-                    </article>
-               ))}
-           </div>
-       </main>
+                    )
+                }
+                {
+                    posts.map((post) => (
+                        <article class="group grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 items-baseline border-b-4 border-gray-200 pb-12 hover:border-ink transition-colors">
+                            <div class="font-mono text-sm font-bold uppercase text-gray-400 group-hover:text-ink pt-1 transition-colors">
+                                {post.data.date.toLocaleDateString("it-IT", {
+                                    year: "numeric",
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                })}
+                                <br />
+                                <span class="text-accent block mt-1">
+                                    / {post.data.category}
+                                </span>
+                            </div>
+                            <div>
+                                <h2 class="font-sans font-black text-3xl md:text-5xl uppercase mb-6 leading-[0.9] group-hover:text-accent transition-colors">
+                                    <a href={`/articoli/${post.slug}`}>
+                                        {post.data.title}
+                                    </a>
+                                </h2>
+                                <p class="font-serif text-xl text-gray-600 max-w-2xl leading-relaxed mb-6">
+                                    {post.data.description}
+                                </p>
+                                <a
+                                    href={`/articoli/${post.slug}`}
+                                    class="inline-block font-mono text-xs font-bold uppercase tracking-widest border-b-2 border-transparent hover:border-ink transition-all"
+                                >
+                                    Leggi Fascicolo →
+                                </a>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </main>
     </div>
 </Layout>

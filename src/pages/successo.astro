@@ -1,27 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Trasmissione Ricevuta">
-  <div class="flex min-h-screen">
+  <div class="min-h-screen">
     <Navigation />
-    
-    <main class="flex-1 lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10 w-full flex flex-col justify-center items-center text-center">
-         <div class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mb-8 animate-bounce shadow-neo">
-             <span class="text-4xl text-white">✓</span>
-         </div>
-         
-         <h1 class="font-sans font-black text-5xl md:text-7xl uppercase leading-none mb-8">Trasmissione<br/>Completata.</h1>
-         
-         <p class="font-serif text-xl md:text-2xl text-gray-600 max-w-2xl mb-12">
-            Il tuo messaggio è stato inserito nel buffer di lettura. <br/>
-            Riceverai una risposta appena un operatore umano sarà disponibile.
-         </p>
 
-         <a href="/" class="font-mono font-bold uppercase text-sm border-b-2 border-ink hover:bg-ink hover:text-white transition-all px-4 py-2">
-             Torna al Quartier Generale
-         </a>
+    <main
+      class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10 flex flex-col justify-center items-center text-center"
+    >
+      <div
+        class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mb-8 animate-bounce shadow-neo"
+      >
+        <span class="text-4xl text-white">✓</span>
+      </div>
+
+      <h1
+        class="font-sans font-black text-5xl md:text-7xl uppercase leading-none mb-8"
+      >
+        Trasmissione<br />Completata.
+      </h1>
+
+      <p class="font-serif text-xl md:text-2xl text-gray-600 max-w-2xl mb-12">
+        Il tuo messaggio è stato inserito nel buffer di lettura. <br />
+        Riceverai una risposta appena un operatore umano sarà disponibile.
+      </p>
+
+      <a
+        href="/"
+        class="font-mono font-bold uppercase text-sm border-b-2 border-ink hover:bg-ink hover:text-white transition-all px-4 py-2"
+      >
+        Torna al Quartier Generale
+      </a>
     </main>
   </div>
 </Layout>

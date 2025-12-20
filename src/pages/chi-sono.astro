@@ -1,66 +1,120 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Identità Autore">
-  <div class="flex min-h-screen">
-    <Navigation />
-    
-    <main class="flex-1 lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10 w-full">
-         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center max-w-6xl">
-             <div>
-                <span class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 block">/// Profilo Operatore</span>
-                <h1 class="font-sans font-black text-6xl md:text-8xl uppercase leading-none mb-8">Rocco<br/>Andrea<br/>Ligorio<span class="text-accent">.</span></h1>
-                
-                <div class="prose prose-xl prose-stone font-serif">
-                    <p class="font-bold text-2xl leading-relaxed text-ink">
-                        Non sono un guru. Sono solo uno che ha passato troppe notti a sistemare computer che non volevano saperne di funzionare.
-                    </p>
-                    <p>
-                        Ho creato questo spazio per un motivo semplice: sono stanco di vedere persone truffate da termini tecnici incomprensibili e prodotti costosi che non servono a nulla.
-                    </p>
-                    <p>
-                        La tecnologia deve essere uno strumento, non una religione. Se hai bisogno di un manuale di 500 pagine per accendere la luce, c'è qualcosa che non va nel design, non in te.
-                    </p>
+    <div class="min-h-screen">
+        <Navigation />
+
+        <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center max-w-6xl"
+            >
+                <div>
+                    <span
+                        class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 block"
+                        >/// Profilo Operatore</span
+                    >
+                    <h1
+                        class="font-sans font-black text-6xl md:text-8xl uppercase leading-none mb-8"
+                    >
+                        Rocco<br />Andrea<br />Ligorio<span class="text-accent"
+                            >.</span>
+                    </h1>
+
+                    <div class="prose prose-xl prose-stone font-serif">
+                        <p class="font-bold text-2xl leading-relaxed text-ink">
+                            Non sono un guru. Sono solo uno che ha passato
+                            troppe notti a sistemare computer che non volevano
+                            saperne di funzionare.
+                        </p>
+                        <p>
+                            Ho creato questo spazio per un motivo semplice: sono
+                            stanco di vedere persone truffate da termini tecnici
+                            incomprensibili e prodotti costosi che non servono a
+                            nulla.
+                        </p>
+                        <p>
+                            La tecnologia deve essere uno strumento, non una
+                            religione. Se hai bisogno di un manuale di 500
+                            pagine per accendere la luce, c'è qualcosa che non
+                            va nel design, non in te.
+                        </p>
+                    </div>
+
+                    <div
+                        class="mt-12 border-t-2 border-ink pt-8 grid grid-cols-2 gap-8 font-mono text-sm"
+                    >
+                        <div>
+                            <span
+                                class="block text-gray-500 uppercase text-xs mb-1"
+                                >Ruolo</span
+                            >
+                            <span class="font-bold uppercase"
+                                >Consulente IT / Divulgatore</span
+                            >
+                        </div>
+                        <div>
+                            <span
+                                class="block text-gray-500 uppercase text-xs mb-1"
+                                >Specializzazione</span
+                            >
+                            <span class="font-bold uppercase"
+                                >Problem Solving / Semplificazione</span
+                            >
+                        </div>
+                        <div>
+                            <span
+                                class="block text-gray-500 uppercase text-xs mb-1"
+                                >Località</span
+                            >
+                            <span class="font-bold uppercase">Italia</span>
+                        </div>
+                        <div>
+                            <span
+                                class="block text-gray-500 uppercase text-xs mb-1"
+                                >Stato</span
+                            >
+                            <span class="font-bold uppercase text-green-600"
+                                >Disponibile</span
+                            >
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-12 border-t-2 border-ink pt-8 grid grid-cols-2 gap-8 font-mono text-sm">
-                    <div>
-                        <span class="block text-gray-500 uppercase text-xs mb-1">Ruolo</span>
-                        <span class="font-bold uppercase">Consulente IT / Divulgatore</span>
+                <div class="relative">
+                    <!-- Image Placeholder with Style -->
+                    <div
+                        class="aspect-[3/4] bg-gray-200 border-4 border-ink shadow-neo-lg relative overflow-hidden group"
+                    >
+                        <div
+                            class="absolute inset-0 bg-ink/10 mix-blend-multiply z-10 transition-opacity group-hover:opacity-0"
+                        >
+                        </div>
+                        <!-- Placeholder for author image -->
+                        <img
+                            src="https://via.placeholder.com/800x1000/e5e5e5/111111?text=FOTO+AUTORE"
+                            class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
+                            alt="Rocco Andrea Ligorio"
+                        />
+
+                        <div
+                            class="absolute bottom-4 left-4 z-20 bg-white px-4 py-2 border-2 border-ink transform -rotate-2"
+                        >
+                            <span class="font-mono font-bold text-xs uppercase"
+                                >File ID: RAL-001</span
+                            >
+                        </div>
                     </div>
-                    <div>
-                        <span class="block text-gray-500 uppercase text-xs mb-1">Specializzazione</span>
-                        <span class="font-bold uppercase">Problem Solving / Semplificazione</span>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 uppercase text-xs mb-1">Località</span>
-                        <span class="font-bold uppercase">Italia</span>
-                    </div>
-                    <div>
-                        <span class="block text-gray-500 uppercase text-xs mb-1">Stato</span>
-                        <span class="font-bold uppercase text-green-600">Disponibile</span>
+
+                    <!-- Background Graphic -->
+                    <div
+                        class="absolute -z-10 top-12 -right-12 w-full h-full border-4 border-gray-300"
+                    >
                     </div>
                 </div>
-             </div>
-
-             <div class="relative">
-                 <!-- Image Placeholder with Style -->
-                 <div class="aspect-[3/4] bg-gray-200 border-4 border-ink shadow-neo-lg relative overflow-hidden group">
-                     <div class="absolute inset-0 bg-ink/10 mix-blend-multiply z-10 transition-opacity group-hover:opacity-0"></div>
-                     <!-- Placeholder for author image -->
-                     <img src="https://via.placeholder.com/800x1000/e5e5e5/111111?text=FOTO+AUTORE" class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500" alt="Rocco Andrea Ligorio" />
-                     
-                     <div class="absolute bottom-4 left-4 z-20 bg-white px-4 py-2 border-2 border-ink transform -rotate-2">
-                         <span class="font-mono font-bold text-xs uppercase">File ID: RAL-001</span>
-                     </div>
-                 </div>
-                 
-                 <!-- Background Graphic -->
-                 <div class="absolute -z-10 top-12 -right-12 w-full h-full border-4 border-gray-300"></div>
-             </div>
-         </div>
-    </main>
-  </div>
+            </div>
+        </main>
+    </div>
 </Layout>
