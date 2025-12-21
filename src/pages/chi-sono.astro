@@ -1,23 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Navigation from "../components/Navigation.astro";
+import HeaderTechOdyssey from "../components/HeaderTechOdyssey.astro";
 ---
 
 <Layout title="Identità Autore">
-    <div class="min-h-screen">
-        <Navigation />
+    <div class="min-h-screen flex flex-col items-center">
+        <HeaderTechOdyssey />
 
-        <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
+        <main
+            class="relative z-10 w-full max-w-7xl mx-auto p-6 md:p-12 items-center flex flex-col"
+        >
             <div
                 class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center max-w-6xl"
             >
                 <div>
                     <span
-                        class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-4 block"
+                        class="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 block text-center lg:text-left"
                         >/// Profilo Operatore</span
                     >
                     <h1
-                        class="font-sans font-black text-4xl md:text-6xl lg:text-8xl uppercase leading-none mb-8"
+                        class="font-sans font-black text-4xl md:text-6xl lg:text-7xl uppercase leading-none mb-8 text-chrome text-center lg:text-left"
                     >
                         Rocco<br />Andrea<br />Ligorio<span class="text-accent"
                             >.</span
