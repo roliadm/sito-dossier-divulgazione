@@ -1,24 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f4f4f0;
-  --color-ink: #111111;
-  --color-accent: #2563eb; /* Blue-600 approx */
-  --color-alert: #dc2626;  /* Red-600 */
-  --color-highlight: #facc15; /* Yellow-400 */
-  
+  /* Ceramic & Chrome Palette */
+  --color-paper: #f4f4f5;
+  /* Zinc-100 Matte White */
+  --color-ink: #18181b;
+  /* Zinc-900 Dark Metal */
+  --color-accent: #2563eb;
+  /* Royal Blue Chrome */
+  --color-alert: #ef4444;
+  /* Red-500 */
+  --color-highlight: #e4e4e7;
+  /* Zinc-200 Silver */
+
   --font-sans: 'Space Grotesk', sans-serif;
   --font-serif: 'Libre Baskerville', serif;
   --font-mono: 'Fira Code', monospace;
 
-  --shadow-neo: 4px 4px 0px 0px #111111;
-  --shadow-neo-sm: 2px 2px 0px 0px #111111;
-  --shadow-neo-lg: 8px 8px 0px 0px #111111;
+  /* Ceramic Soft Shadows - Replacing Hard Edge Neo Shadows */
+  --shadow-neo: 12px 12px 24px #d1d1d6, -12px -12px 24px #ffffff;
+  --shadow-neo-sm: 5px 5px 10px #d1d1d6, -5px -5px 10px #ffffff;
+  --shadow-neo-lg: 20px 20px 40px #d1d1d6, -20px -20px 40px #ffffff;
+
+  --shadow-inner: inset 5px 5px 10px #d1d1d6, inset -5px -5px 10px #ffffff;
 }
 
 @layer utilities {
-  .text-shadow-neo {
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+  .text-chrome {
+    background: linear-gradient(135deg, #374151 0%, #111827 50%, #6b7280 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+  }
+
+  .card-ceramic {
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: var(--shadow-neo);
+    border: 1px solid rgba(255, 255, 255, 0.4);
   }
 }
 
@@ -29,19 +48,23 @@
   }
 
   body {
-    @apply font-serif antialiased min-h-screen flex flex-col;
-    /* Basic rough texture via repeated gradient or SVG if needed, keeping it simple for now */
+    @apply font-sans antialiased min-h-screen flex flex-col;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-sans font-bold tracking-tight text-ink;
   }
 
   a {
-    @apply underline decoration-2 decoration-accent/30 hover:decoration-accent hover:text-accent transition-colors duration-200;
+    @apply no-underline text-accent hover:text-ink transition-all duration-300;
   }
 
   code {
-    @apply font-mono text-sm bg-neutral-200 px-1 py-0.5 rounded-xs border border-ink/20;
+    @apply font-mono text-sm bg-white px-2 py-1 rounded-md shadow-inner text-ink/80;
   }
 }

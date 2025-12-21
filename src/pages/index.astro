@@ -101,42 +101,48 @@ const latestArticle = {
                         </div>
 
                         <!-- Mini News -->
-                        <div class="border-t-4 border-ink pt-6">
+                        <div class="pt-6 border-t border-gray-200">
                             <div class="flex justify-between items-center mb-6">
                                 <h3
-                                    class="font-sans font-bold text-2xl uppercase"
+                                    class="font-sans font-bold text-2xl uppercase text-chrome"
                                 >
                                     Dispacci Esterni
                                 </h3>
                                 <a
                                     href="/news"
-                                    class="font-mono text-xs underline decoration-accent hover:text-accent"
+                                    class="font-mono text-xs text-accent hover:text-ink transition-colors"
                                     >Vedi Tutti</a
                                 >
                             </div>
                             <ul class="space-y-4 font-mono text-sm">
                                 <li class="flex gap-4 items-start">
-                                    <span class="text-gray-400">10:42</span>
+                                    <span class="text-gray-400 font-bold"
+                                        >10:42</span
+                                    >
                                     <a
                                         href="#"
-                                        class="hover:text-accent hover:underline"
+                                        class="hover:text-accent transition-colors block"
                                         >Nuova vulnerabilità zero-day in iOS.</a
                                     >
                                 </li>
                                 <li class="flex gap-4 items-start">
-                                    <span class="text-gray-400">09:15</span>
+                                    <span class="text-gray-400 font-bold"
+                                        >09:15</span
+                                    >
                                     <a
                                         href="#"
-                                        class="hover:text-accent hover:underline"
+                                        class="hover:text-accent transition-colors block"
                                         >Il cloud di Azure ha subito
                                         un'interruzione.</a
                                     >
                                 </li>
                                 <li class="flex gap-4 items-start">
-                                    <span class="text-gray-400">Ieri</span>
+                                    <span class="text-gray-400 font-bold"
+                                        >Ieri</span
+                                    >
                                     <a
                                         href="#"
-                                        class="hover:text-accent hover:underline"
+                                        class="hover:text-accent transition-colors block"
                                         >Elon Musk annuncia l'ennesima cosa.</a
                                     >
                                 </li>
@@ -153,10 +159,10 @@ const latestArticle = {
                             >
                         </div>
                         <article
-                            class="group relative border-4 border-ink bg-white shadow-neo p-8 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(17,17,17,1)] transition-all cursor-pointer text-right"
+                            class="group relative card-ceramic p-8 hover:scale-[1.02] transition-all cursor-pointer text-right"
                         >
                             <h2
-                                class="font-sans font-black text-4xl md:text-5xl uppercase leading-none mb-4 group-hover:underline decoration-4 decoration-accent"
+                                class="font-sans font-black text-4xl md:text-5xl uppercase leading-none mb-4 group-hover:text-accent bg-clip-text transition-colors"
                             >
                                 {latestArticle.title}
                             </h2>
@@ -169,11 +175,11 @@ const latestArticle = {
                                 class="flex justify-between items-end flex-row-reverse"
                             >
                                 <span
-                                    class="font-mono text-xs bg-ink text-white px-2 py-1"
+                                    class="font-mono text-xs bg-gray-200 text-ink px-2 py-1 rounded-sm shadow-inner"
                                     >{latestArticle.date}</span
                                 >
                                 <span
-                                    class="font-mono font-bold group-hover:-translate-x-2 transition-transform"
+                                    class="font-mono font-bold text-accent group-hover:-translate-x-2 transition-transform"
                                     >← LEGGI IL FASCICOLO</span
                                 >
                             </div>
