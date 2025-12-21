@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+---
+
+<Layout title="Il Dispaccio Settimanale">
+    <div class="min-h-screen">
+        <Navigation />
+
+        <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
+            <header class="mb-16 max-w-4xl">
+                <h1
+                    class="font-sans font-black text-4xl md:text-6xl lg:text-8xl uppercase leading-none mb-6"
+                >
+                    Il Dispaccio<br /><span class="text-accent"
+                        >Settimanale</span
+                    >.
+                </h1>
+                <p
+                    class="font-serif text-xl md:text-2xl text-gray-600 border-l-4 border-ink pl-6 mt-8"
+                >
+                    Ogni domenica mattina. Niente spam, niente guru, niente
+                    "offerta scade tra 5 minuti".<br />
+                    Solo informatica spiegata bene e qualche delirio personale.
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl">
+                <!-- Subscription Form -->
+                <div
+                    class="bg-paper border-4 border-ink p-8 shadow-neo-lg relative"
+                >
+                    <div
+                        class="absolute -top-4 -left-4 bg-accent text-white font-mono text-sm px-4 py-1 uppercase tracking-widest font-bold"
+                    >
+                        Iscrizione Gratuita
+                    </div>
+
+                    <form
+                        action="https://buttondown.email/api/emails/embed-subscribe/roccoandrealigorio"
+                        method="post"
+                        target="popupwindow"
+                        onsubmit="window.open('https://buttondown.email/roccoandrealigorio', 'popupwindow')"
+                        class="space-y-6 mt-4"
+                    >
+                        <div>
+                            <label
+                                for="email"
+                                class="block font-mono font-bold uppercase text-xs mb-2"
+                                >La tua Email</label
+                            >
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="nome@esempio.it"
+                                required
+                                class="w-full bg-white border-2 border-ink p-3 font-serif focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                            />
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <input
+                                type="checkbox"
+                                id="privacy"
+                                required
+                                class="mt-1 border-2 border-ink"
+                            />
+                            <label
+                                for="privacy"
+                                class="font-mono text-xs text-gray-500"
+                            >
+                                Accetto che la mia mail venga usata solo per
+                                inviare questa newsletter. Niente vendita dati a
+                                terzi. Promesso.
+                            </label>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="w-full bg-ink text-white font-sans font-black uppercase text-xl py-4 hover:bg-accent hover:shadow-[4px_4px_0px_0px_white,8px_8px_0px_0px_#111] transition-all transform hover:-translate-y-1"
+                        >
+                            Iscrivimi
+                        </button>
+
+                        <p
+                            class="text-center font-mono text-xs text-gray-400 mt-4"
+                        >
+                            Powered by Buttondown. Cancellati quando vuoi con un
+                            click.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Preview Content -->
+                <div class="space-y-12">
+                    <div>
+                        <h3
+                            class="font-mono font-bold uppercase text-sm mb-4 text-gray-500"
+                        >
+                            /// Cosa riceverai
+                        </h3>
+                        <ul class="space-y-6 font-serif text-lg text-gray-800">
+                            <li class="flex gap-4">
+                                <span
+                                    class="bg-ink text-white w-8 h-8 flex items-center justify-center font-bold font-mono rounded-full shrink-0"
+                                    >1</span
+                                >
+                                <span>
+                                    <strong>L'articolo della settimana</strong
+                                    ><br />
+                                    Spiegazione di un concetto tech senza termini
+                                    incomprensibili.
+                                </span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span
+                                    class="bg-ink text-white w-8 h-8 flex items-center justify-center font-bold font-mono rounded-full shrink-0"
+                                    >2</span
+                                >
+                                <span>
+                                    <strong>Storie dal Fronte</strong><br />
+                                    Aneddoti agghiaccianti (e divertenti) dai miei
+                                    interventi di assistenza.
+                                </span>
+                            </li>
+                            <li class="flex gap-4">
+                                <span
+                                    class="bg-ink text-white w-8 h-8 flex items-center justify-center font-bold font-mono rounded-full shrink-0"
+                                    >3</span
+                                >
+                                <span>
+                                    <strong>Tip Salva-Vita</strong><br />
+                                    Un trucco rapido per usare meglio il tuo PC o
+                                    smartphone.
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</Layout>

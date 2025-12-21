@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Privacy Policy - Rocco Andrea Ligorio">
+    <div class="min-h-screen">
+        <Navigation />
+
+        <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
+            <header class="mb-16">
+                <h1
+                    class="font-sans font-black text-4xl md:text-6xl lg:text-8xl uppercase leading-none mb-4"
+                >
+                    Privacy<br /><span class="text-accent">Policy</span>.
+                </h1>
+                <p
+                    class="font-serif text-xl md:text-2xl text-gray-600 border-l-4 border-ink pl-6 max-w-2xl mt-8"
+                >
+                    La versione corta: Non vendo i tuoi dati. Non uso Google
+                    Analytics. Questa è probabilmente la Privacy Policy più
+                    onesta che leggerai oggi.
+                </p>
+            </header>
+
+            <div class="max-w-4xl prose prose-xl prose-stone font-serif">
+                <h3>1. Chi sono</h3>
+                <p>Sono Rocco Andrea Ligorio, tecnico informatico.</p>
+
+                <h3>2. Quali dati raccolgo (e perché)</h3>
+                <ul>
+                    <li>
+                        <strong>Form Contatti/SOS:</strong> Se mi scrivi, vedo il
+                        tuo nome e la tua mail. Li uso solo per risponderti. Non li
+                        metto in nessun database strano.
+                    </li>
+                    <li>
+                        <strong>Newsletter:</strong> Se ti iscrivi, la tua mail finisce
+                        su *Buttondown* (il provider che uso). Buttondown è affidabile
+                        e non vende i tuoi dati.
+                    </li>
+                    <li>
+                        <strong>Statistiche Sito:</strong> Uso tool che non usano
+                        cookie (o se li usano, sono solo tecnici). Non so chi sei,
+                        so solo che qualcuno ha visitato la pagina "Come velocizzare
+                        il PC".
+                    </li>
+                </ul>
+
+                <h3>3. Cookie</h3>
+                <p>
+                    Questo sito non usa cookie di profilazione terze parti. Non
+                    vedi il banner "Accetta Cookie" perché non c'è nulla da
+                    accettare. È tutto HTML statico.
+                </p>
+
+                <h3>4. I tuoi diritti (GDPR)</h3>
+                <p>
+                    In qualsiasi momento puoi scrivermi a <code
+                        >info@roccoandrealigorio.it</code
+                    > e chiedermi:
+                </p>
+                <ul>
+                    <li>
+                        "Che dati hai su di me?" (Risposta probabile: "La mail
+                        che mi hai mandato ieri").
+                    </li>
+                    <li>"Cancellami da tutto." (Lo faccio subito).</li>
+                </ul>
+
+                <div
+                    class="bg-yellow-50 p-6 border-2 border-dashed border-ink mt-8 not-prose"
+                >
+                    <h4 class="font-bold text-lg mb-2 uppercase font-sans">
+                        Disclaimer Legale
+                    </h4>
+                    <p class="text-sm font-mono text-gray-600">
+                        Questa policy è informativa. Per questioni legali
+                        complesse, fai riferimento alle norme vigenti italiane
+                        ed europee (GDPR 2016/679). Ultimo aggiornamento: 21
+                        Dicembre 2025.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-20">
+                <Footer />
+            </div>
+        </main>
+    </div>
+</Layout>

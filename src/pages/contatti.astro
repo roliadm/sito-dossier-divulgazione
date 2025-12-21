@@ -4,6 +4,22 @@ import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Canale SOS">
+    <script type="application/ld+json" slot="head">
+        {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contatti - Rocco Andrea Ligorio",
+            "description": "Canale di comunicazione ufficiale per assistenza e richieste.",
+            "url": "https://www.roccoandrealigorio.it/contatti",
+            "mainEntity": {
+                "@type": "Person",
+                "name": "Rocco Andrea Ligorio",
+                "jobTitle": "Tecnico Informatico Freelance",
+                "email": "info@roccoandrealigorio.it",
+                "url": "https://www.roccoandrealigorio.it"
+            }
+        }
+    </script>
     <div class="min-h-screen">
         <Navigation />
 
@@ -13,7 +29,8 @@ import Navigation from "../components/Navigation.astro";
                     class="font-sans font-black text-6xl md:text-8xl uppercase leading-none mb-4"
                 >
                     Canale<br />Ufficiale<br />SoS<span class="text-accent"
-                        >.</span>
+                        >.</span
+                    >
                 </h1>
                 <p
                     class="font-serif text-xl md:text-2xl text-gray-600 border-l-4 border-ink pl-6 max-w-2xl mt-8"

@@ -4,13 +4,25 @@ import Navigation from "../components/Navigation.astro";
 import NewsTicker from "../components/NewsTicker.astro";
 import TerminalSOS from "../components/TerminalSOS.astro";
 import BullshitDetector from "../components/BullshitDetector.astro";
+import Footer from "../components/Footer.astro";
 
-// Placeholder data - in a real scenario, fetchSimple from collections
+import { getCollection } from "astro:content";
+
+const allArticles = await getCollection("articoli");
+const sortedArticles = allArticles.sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const latestArticleData = sortedArticles[0];
+
 const latestArticle = {
-    title: "Perché il computer è lento?",
-    slug: "computer-lento",
-    desc: "Non è un virus. È che non lo spegni da tre settimane.",
-    date: "10 Ott 2025",
+    title: latestArticleData.data.title,
+    slug: latestArticleData.slug,
+    desc: latestArticleData.data.description,
+    date: latestArticleData.data.date.toLocaleDateString("it-IT", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+    }),
 };
 ---
 
@@ -167,49 +179,8 @@ const latestArticle = {
                     </div>
                 </div>
 
-                <!-- Footer-ish area -->
-                <div
-                    class="border-t-4 border-ink pt-12 mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm"
-                >
-                    <div>
-                        <h4 class="font-mono font-bold uppercase mb-4">
-                            Rocco Andrea Ligorio
-                        </h4>
-                        <p class="font-serif text-gray-600">
-                            Consulente, formatore e divulgatore.<br />
-                            Smonto la tecnologia pezzo per pezzo.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="font-mono font-bold uppercase mb-4">
-                            Mappa Sito
-                        </h4>
-                        <ul class="space-y-2 font-mono text-gray-600">
-                            <li>
-                                <a href="/articoli" class="hover:underline"
-                                    >Tutti gli Articoli</a>
-                            </li>
-                            <li>
-                                <a href="/news" class="hover:underline"
-                                    >News Feed</a>
-                            </li>
-                            <li>
-                                <a href="/contatti" class="hover:underline"
-                                    >Canale SOS</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-mono font-bold uppercase mb-4">
-                            Legal
-                        </h4>
-                        <p class="font-mono text-gray-500 text-xs">
-                            © 2025 Rickettsia Studio.<br />
-                            Nessun cookie tracciante.<br />
-                            Solo HTML artigianale.
-                        </p>
-                    </div>
-                </div>
+                <!-- Footer -->
+                <Footer />
             </div>
         </main>
     </div>
