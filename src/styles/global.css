@@ -39,10 +39,24 @@
   }
 
   .card-ceramic {
-    border-radius: 1.5rem;
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
-    box-shadow: var(--shadow-neo);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 2rem;
+    /* More rounded */
+    background: #f4f4f5;
+    /* Match bg-paper */
+    /* The trick for Ceramic Debossed/Embossed look */
+    box-shadow:
+      20px 20px 60px #cfcfd1,
+      -20px -20px 60px #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.4s ease;
+  }
+
+  .card-ceramic:hover {
+    box-shadow:
+      10px 10px 30px #cfcfd1,
+      -10px -10px 30px #ffffff;
+    transform: scale(0.98);
+    /* Press down effect */
   }
 }
 
