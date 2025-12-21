@@ -5,7 +5,10 @@ import { getCollection } from "astro:content";
 
 const posts = (
     await getCollection("articoli", ({ data }) => {
-        return import.meta.env.PROD ? data.draft !== true : true;
+        if (import.meta.env.PROD) {
+            return data.draft !== true && data.date <= new Date();
+        }
+        return true;
     })
 ).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---

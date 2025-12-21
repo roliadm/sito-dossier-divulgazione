@@ -8,7 +8,12 @@ import Footer from "../components/Footer.astro";
 
 import { getCollection } from "astro:content";
 
-const allArticles = await getCollection("articoli");
+const allArticles = await getCollection("articoli", ({ data }) => {
+    if (import.meta.env.PROD) {
+        return data.draft !== true && data.date <= new Date();
+    }
+    return true;
+});
 const sortedArticles = allArticles.sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
