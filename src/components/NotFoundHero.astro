@@ -1,0 +1,80 @@
+---
+
+---
+
+<div
+    class="fixed inset-0 z-50 bg-paper flex items-center justify-center min-h-screen w-full lg:pl-64"
+    id="fake-404-component"
+>
+    <div
+        class="max-w-4xl border-4 border-ink p-8 md:p-16 bg-white shadow-neo-lg relative overflow-hidden mx-4"
+    >
+        <!-- Background glitch decoration -->
+        <div
+            class="absolute -top-10 -right-10 text-[20rem] font-black text-gray-100 select-none z-0"
+        >
+            404
+        </div>
+
+        <div class="relative z-10">
+            <span
+                class="font-mono text-xs font-bold uppercase tracking-widest text-red-600 mb-6 block blink-animation"
+            >
+                /// SYSTEM ERROR: PAGE NOT FOUND ///
+            </span>
+
+            <h1
+                class="font-sans font-black text-5xl md:text-7xl uppercase leading-none mb-8"
+            >
+                Wow, qui non c'è <br /><span
+                    class="text-accent underline decoration-4">Niente</span
+                >.
+            </h1>
+
+            <div class="prose prose-lg font-serif text-gray-600 mb-12">
+                <p>
+                    Hai raggiunto il vuoto digitale. Probabilmente è successo
+                    una di queste cose:
+                </p>
+                <ul class="list-disc list-inside">
+                    <li>Ho sbagliato io a scrivere un link (probabile).</li>
+                    <li>Hai scritto male l'indirizzo (possibile).</li>
+                    <li>
+                        Un cane digitale ha mangiato la pagina (non escluderei
+                        l'ipotesi).
+                    </li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6">
+                <a
+                    href="/"
+                    class="bg-ink text-white font-sans font-black uppercase text-xl px-8 py-4 hover:bg-accent hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transition-all flex justify-center text-center"
+                >
+                    Torna alla Base
+                </a>
+                <a
+                    href="/contatti"
+                    class="border-4 border-ink text-ink font-sans font-black uppercase text-xl px-8 py-4 hover:bg-gray-100 transition-all flex justify-center text-center"
+                >
+                    Segnala il guasto
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+    .blink-animation {
+        animation: blink 1s step-end infinite;
+    }
+</style>
