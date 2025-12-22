@@ -58,9 +58,14 @@ import Navigation from "../components/Navigation.astro";
                         name="contatto"
                         method="POST"
                         data-netlify="true"
-                        action="/successo/"
+                        action="/successo"
                         class="space-y-6 mt-4"
                     >
+                        <input
+                            type="hidden"
+                            name="form-name"
+                            value="contatto"
+                        />
                         <div>
                             <label
                                 for="nome"
