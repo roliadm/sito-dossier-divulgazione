@@ -33,50 +33,15 @@
     </div>
     <div>
         <h4 class="font-mono font-bold uppercase mb-4">Legal</h4>
-        <li class="text-xs text-gray-400 mt-2">
-            © 2025 Rickettsia Studio.<br />
-            Nessun cookie tracciante.<br />
-            Solo HTML artigianale.
-        </li>
-        <li class="mt-4">
-            <button
-                id="admin-login-btn"
-                class="font-mono text-xs text-gray-400 hover:text-ink uppercase tracking-widest border border-gray-200 px-2 py-1 rounded hover:border-ink transition-all"
-            >
-                /// Admin Access
-            </button>
-        </li>
+        <ul class="space-y-2 font-mono text-gray-600">
+            <li>
+                <a href="/privacy" class="hover:underline">Privacy Policy</a>
+            </li>
+            <li class="text-xs text-gray-400 mt-2">
+                © 2025 Rickettsia Studio.<br />
+                Nessun cookie tracciante.<br />
+                Solo HTML artigianale.
+            </li>
+        </ul>
     </div>
 </footer>
-
-<script>
-    // Handle Admin Login Click securely
-    const btn = document.getElementById("admin-login-btn");
-    if (btn) {
-        btn.addEventListener("click", () => {
-            if (window.netlifyIdentity) {
-                window.netlifyIdentity.open();
-            } else {
-                console.error("Netlify Identity script not loaded yet.");
-                alert("Attendere caricamento sistema di sicurezza...");
-            }
-        });
-    }
-
-    // Auto-detect invitation token from email
-    if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-            if (!user) {
-                window.netlifyIdentity.on("login", () => {
-                    document.location.href = "/admin/";
-                });
-            }
-        });
-    }
-</script>
-
-<!-- Force load Identity Widget -->
-<script
-    is:inline
-    async
-    src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
