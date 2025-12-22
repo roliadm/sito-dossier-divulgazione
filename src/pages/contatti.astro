@@ -55,6 +55,7 @@ import Navigation from "../components/Navigation.astro";
                     </div>
 
                     <form
+                        id="contact-form"
                         name="modulo-contatti"
                         method="POST"
                         data-netlify="true"
@@ -110,6 +111,11 @@ import Navigation from "../components/Navigation.astro";
                                 class="block font-mono font-bold uppercase text-xs mb-2"
                                 >Messaggio in Chiaro</label
                             >
+                            <input
+                                type="hidden"
+                                name="subject"
+                                value="Nuovo messaggio dal sito web"
+                            />
                             <textarea
                                 name="messaggio"
                                 id="messaggio"
@@ -126,6 +132,34 @@ import Navigation from "../components/Navigation.astro";
                             Invia Trasmissione
                         </button>
                     </form>
+
+                    <script>
+                        const handleSubmit = (event) => {
+                            event.preventDefault();
+
+                            const myForm = event.target;
+                            const formData = new FormData(myForm);
+
+                            fetch("/", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type":
+                                        "application/x-www-form-urlencoded",
+                                },
+                                body: new URLSearchParams(formData).toString(),
+                            })
+                                .then(() => {
+                                    window.location.href = "/messaggio-inviato";
+                                })
+                                .catch((error) => {
+                                    alert("Errore di trasmissione: " + error);
+                                });
+                        };
+
+                        document
+                            .querySelector("#contact-form")
+                            .addEventListener("submit", handleSubmit);
+                    </script>
                 </div>
 
                 <!-- Alternative Contact Info -->
