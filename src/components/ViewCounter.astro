@@ -1,0 +1,33 @@
+<div
+    class="inline-flex items-center gap-2 font-mono text-xs border border-ink/30 px-3 py-1 bg-ink/5 rounded"
+>
+    <span class="text-gray-500 uppercase">System Hits:</span>
+    <span id="hit-counter" class="text-accent font-bold animate-pulse">---</span
+    >
+</div>
+
+<script>
+    async function updateCounter() {
+        try {
+            // Usa il dominio per creare un contatore univoco
+            const url = `https://hits.sh/${window.location.hostname}/hits?output=json`;
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const counterElement = document.getElementById("hit-counter");
+            if (counterElement) {
+                // Formatta il numero con zeri iniziali (es. 0042)
+                counterElement.innerText = data.count
+                    .toString()
+                    .padStart(6, "0");
+                counterElement.classList.remove("animate-pulse"); // Ferma il lampeggio quando caricato
+            }
+        } catch (error) {
+            console.error("Errore contatore:", error);
+        }
+    }
+
+    // Esegui al caricamento
+    updateCounter();
+</script>

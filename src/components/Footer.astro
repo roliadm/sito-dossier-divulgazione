@@ -1,5 +1,5 @@
 ---
-
+import ViewCounter from "./ViewCounter.astro";
 ---
 
 <footer
@@ -37,20 +37,20 @@
             <li>
                 <a href="/privacy" class="hover:underline">Privacy Policy</a>
             </li>
-            <li class="text-xs text-gray-400 mt-2">
-                © 2025 Rickettsia Studio.<br />
-                Nessun cookie tracciante.<br />
-                Solo HTML artigianale.
-            </li>
-            <li class="mt-4">
-                <button
-                    id="admin-login-btn"
-                    class="font-mono text-xs text-gray-400 hover:text-ink uppercase tracking-widest border border-gray-200 px-2 py-1 rounded hover:border-ink transition-all"
-                >
-                    /// Admin Access
-                </button>
-            </li>
+            Nessun cookie tracciante.<br />
+            Solo HTML artigianale.
         </ul>
+        <li class="mt-4">
+            <ViewCounter />
+        </li>
+        <li class="mt-4">
+            <button
+                id="admin-login-btn"
+                class="font-mono text-xs text-gray-400 hover:text-ink uppercase tracking-widest border border-gray-200 px-2 py-1 rounded hover:border-ink transition-all"
+            >
+                /// Admin Access
+            </button>
+        </li>
     </div>
 </footer>
 
