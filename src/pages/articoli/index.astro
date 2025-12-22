@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import HeaderTechOdyssey from "../../components/HeaderTechOdyssey.astro";
+import Navigation from "../../components/Navigation.astro";
 import { getCollection } from "astro:content";
 
 const posts = (
@@ -14,11 +14,11 @@ const posts = (
 ---
 
 <Layout title="Archivio Protocolli">
-    <div class="min-h-screen flex flex-col items-center">
-        <HeaderTechOdyssey />
+    <div class="min-h-screen">
+        <Navigation />
 
         <main
-            class="p-6 md:p-12 relative z-10 w-full max-w-5xl mx-auto items-center flex flex-col"
+            class="p-6 md:p-12 relative z-10 w-full max-w-5xl mx-auto items-center flex flex-col lg:ml-64"
         >
             <header class="mb-12 text-center">
                 <h1

@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HeaderTechOdyssey from "../components/HeaderTechOdyssey.astro";
+import Navigation from "../components/Navigation.astro";
 import NewsTicker from "../components/NewsTicker.astro";
 import TerminalSOS from "../components/TerminalSOS.astro";
 import BullshitDetector from "../components/BullshitDetector.astro";
@@ -33,9 +33,10 @@ const latestArticle = {
 
 <Layout title="Protocollo Principale">
     <div class="min-h-screen">
+        <Navigation />
         <!-- Navigation hidden on Home for specific layout, or we can keep it for mobile sidebar only? keeping clear for now -->
 
-        <main class="min-h-screen flex flex-col items-center justify-center p-8 lg:p-12 relative z-10 w-full max-w-7xl mx-auto">
+        <main class="min-h-screen flex flex-col items-center justify-center p-8 lg:p-12 relative z-10 w-full max-w-7xl mx-auto lg:ml-64">
             <!-- 1. HEADER: 3D Chrome Title -->
             <header class="text-center mb-16 w-full">
                 <h1
@@ -48,23 +49,7 @@ const latestArticle = {
                 </p>
             </header>
 
-            <!-- 2. NAVIGATION: Minimal Row -->
-            <nav class="mb-24 w-full">
-                <ul class="flex justify-center flex-wrap gap-8 md:gap-16 font-sans font-bold text-gray-500 text-xs md:text-sm uppercase tracking-widest">
-                    <li><a href="/" class="hover:text-ink transition-colors flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home
-                    </a></li>
-                    <li><a href="/articoli" class="hover:text-ink transition-colors flex items-center gap-2">
-                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg> Articoli
-                    </a></li>
-                     <li><a href="/servizi" class="hover:text-ink transition-colors flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg> About
-                    </a></li>
-                    <li><a href="/contatti" class="hover:text-ink transition-colors flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Contact
-                    </a></li>
-                </ul>
-            </nav>
+
 
             <!-- 3. CARDS: The Ceramic Grid (3 Columns) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mb-20">

@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import HeaderTechOdyssey from "../components/HeaderTechOdyssey.astro";
+import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Canale SOS">
@@ -20,11 +20,11 @@ import HeaderTechOdyssey from "../components/HeaderTechOdyssey.astro";
             }
         }
     </script>
-    <div class="min-h-screen flex flex-col items-center">
-        <HeaderTechOdyssey />
+    <div class="min-h-screen">
+        <Navigation />
 
         <main
-            class="relative z-10 w-full max-w-7xl mx-auto p-6 md:p-12 items-center flex flex-col"
+            class="relative z-10 w-full max-w-7xl mx-auto p-6 md:p-12 items-center flex flex-col lg:ml-64"
         >
             <header class="mb-16 text-center max-w-3xl">
                 <h1
@@ -58,7 +58,7 @@ import HeaderTechOdyssey from "../components/HeaderTechOdyssey.astro";
                         name="contatto"
                         method="POST"
                         data-netlify="true"
-                        action="/successo"
+                        action="/successo/"
                         class="space-y-6 mt-4"
                     >
                         <div>
