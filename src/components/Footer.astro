@@ -44,7 +44,7 @@
             </li>
             <li class="mt-4">
                 <button
-                    onclick="netlifyIdentity.open()"
+                    id="admin-login-btn"
                     class="font-mono text-xs text-gray-400 hover:text-ink uppercase tracking-widest border border-gray-200 px-2 py-1 rounded hover:border-ink transition-all"
                 >
                     /// Admin Access
@@ -53,3 +53,20 @@
         </ul>
     </div>
 </footer>
+
+<script>
+    // Handle Admin Login Click securely
+    const btn = document.getElementById("admin-login-btn");
+    if (btn) {
+        btn.addEventListener("click", () => {
+            if (window.netlifyIdentity) {
+                window.netlifyIdentity.open();
+            } else {
+                console.error("Netlify Identity script not loaded yet.");
+                alert(
+                    "Sistema di Identità non ancora pronto. Riprova tra un secondo.",
+                );
+            }
+        });
+    }
+</script>
