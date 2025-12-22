@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Form for Netlify Detection</title>
+</head>
+
+<body>
+    <!-- 
+        This is a dummy form to ensure Netlify bots detect the 'contatto' form 
+        during post-processing. It matches the fields in contatti.astro 
+    -->
+    <form name="contatto" netlify netlify-honeypot="bot-field" action="/conferma" hidden>
+        <input type="hidden" name="form-name" value="contatto" />
+        <input name="bot-field" />
+        <input type="text" name="nome" />
+        <input type="email" name="email" />
+        <textarea name="messaggio"></textarea>
+    </form>
+</body>
+
+</html>
