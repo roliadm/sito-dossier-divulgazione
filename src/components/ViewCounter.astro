@@ -1,24 +1,11 @@
 <div
-    class="inline-flex items-center gap-2 font-mono text-xs text-gray-500 mt-1"
+    class="inline-flex items-center gap-2 font-mono text-xs text-gray-400 mt-1 opacity-70 hover:opacity-100 transition-opacity"
 >
-    <span class="uppercase tracking-wider">Visite:</span>
+    <span class="uppercase tracking-widest text-[10px]">Visite:</span>
     <img
-        src="https://hits.sh/roccoandrealigorio.it.svg?style=flat&label=&color=000000&labelColor=000000"
+        src="https://hits.sh/roccoandrealigorio.it.svg?style=flat&label=&color=9ca3af&labelColor=9ca3af"
         alt="Stats"
-        class="h-4 system-hits-filter opacity-80"
+        class="h-3 grayscale opacity-80"
         loading="lazy"
     />
 </div>
-
-<style>
-    /* 
-     * TRUCCHETTO CSS:
-     * L'immagine di hits.sh è nera. La usiamo come maschera o la filtriamo
-     * per farla diventare del colore "Accent" (#00ccff o simile).
-     */
-    .system-hits-filter {
-        /* Questo filtro trasforma il nero in un verdino/blu elettrico simile al tema */
-        filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg)
-            brightness(118%) contrast(119%);
-    }
-</style>
