@@ -1,7 +1,7 @@
 ---
 title: "Megapixel: La più grande bugia degli smartphone"
 description: "Perché il tuo telefono da 100MP fa foto peggiori della macchina fotografica da 12MP di dieci anni fa."
-date: 2025-12-26
+date: 2025-12-22
 category: "Hardware"
 bsLevel: 90
 draft: false
