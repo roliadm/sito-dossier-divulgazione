@@ -62,7 +62,7 @@
     let isGlitching = false;
 
     // Funzione per attivare il BSOD (chiamabile dall'esterno)
-    window.triggerBSOD = () => {
+    (window as any).triggerBSOD = () => {
         screen?.classList.remove("hidden");
         screen?.classList.add("flex");
         // Start glitch effect

@@ -63,7 +63,8 @@
     const payBtn = document.getElementById("pay-fake-btn");
 
     // Funzione per attivare (chiamabile dall'esterno)
-    window.triggerRansomware = () => {
+    // Funzione per attivare (chiamabile dall'esterno)
+    (window as any).triggerRansomware = () => {
         screen?.classList.remove("hidden");
         screen?.classList.add("flex");
     };
