@@ -63,9 +63,18 @@
                 window.netlifyIdentity.open();
             } else {
                 console.error("Netlify Identity script not loaded yet.");
-                alert(
-                    "Sistema di Identità non ancora pronto. Riprova tra un secondo.",
-                );
+                alert("Attendere caricamento sistema di sicurezza...");
+            }
+        });
+    }
+
+    // Auto-detect invitation token from email
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+            if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                });
             }
         });
     }
