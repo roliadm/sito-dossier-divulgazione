@@ -17,8 +17,11 @@ import Navigation from "../components/Navigation.astro";
                     Servizi Tech & Altro
                 </h1>
                 <p
-                    class="font-serif text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto"
+                    class="font-serif text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-4"
                 >
+                    Target: Privati e Piccole Aziende
+                </p>
+                <p class="font-serif text-lg text-gray-500 max-w-2xl mx-auto">
                     Risolvo problemi che tu non sai di avere in modi che non
                     capirai. Scherzo. Ti spiego tutto e te lo sistemo. Le
                     tariffe sono oneste e chiare, niente sorprese finali.
@@ -28,126 +31,269 @@ import Navigation from "../components/Navigation.astro";
             <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
             >
-                <!-- Card 1: Assistenza Remota -->
+                <!-- 1. Assistenza informatica per privati -->
                 <div
                     class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
                 >
                     <div
                         class="h-12 w-12 bg-accent mb-6 flex items-center justify-center border-2 border-ink"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6 text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            ><path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                            ></path></svg
+                        <span class="font-mono font-bold text-white text-xl"
+                            >01</span
                         >
                     </div>
                     <h3 class="font-sans font-black text-2xl uppercase mb-4">
-                        Assistenza Remota
+                        Assistenza Informatica
                     </h3>
-                    <p class="font-serif text-gray-600 mb-6">
-                        Mi collego al tuo PC via TeamViewer/AnyDesk mentre tu
-                        bevi un caffè. Perfetto per virus, lentezza, posta che
-                        non va.
-                    </p>
-                    <div
-                        class="font-mono text-lg font-bold border-t-2 border-dashed border-gray-300 pt-4"
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
                     >
-                        € 40,00 / ora<br />
-                        <span class="text-xs text-gray-400 font-normal"
-                            >Fatturazione minima 30 min</span
-                        >
-                    </div>
+                        <li>PC lenti o instabili</li>
+                        <li>Configurazione nuovi computer</li>
+                        <li>Migrazione dati</li>
+                        <li>Problemi post-aggiornamento</li>
+                        <li>Ripristino sistemi mal configurati</li>
+                    </ul>
                 </div>
 
-                <!-- Card 2: Intervento On-Site -->
+                <!-- 2. Supporto remoto -->
                 <div
                     class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
                 >
                     <div
                         class="h-12 w-12 bg-ink mb-6 flex items-center justify-center border-2 border-ink"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6 text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            ><path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                            ></path><path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                            ></path></svg
+                        <span class="font-mono font-bold text-white text-xl"
+                            >02</span
                         >
                     </div>
                     <h3 class="font-sans font-black text-2xl uppercase mb-4">
-                        A Domicilio
+                        Supporto Remoto
                     </h3>
-                    <p class="font-serif text-gray-600 mb-6">
-                        Vengo io da te (zona limitata). Per quando internet è
-                        morto, la stampante ha preso vita o il PC non si accende
-                        proprio.
-                    </p>
-                    <div
-                        class="font-mono text-lg font-bold border-t-2 border-dashed border-gray-300 pt-4"
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
                     >
-                        € 50,00 / ora<br />
-                        <span class="text-xs text-gray-400 font-normal"
-                            >+ Chiamata (in base ai km)</span
-                        >
-                    </div>
+                        <li>Interventi rapidi</li>
+                        <li>Spiegazioni durante l’intervento</li>
+                        <li>Possibilità di pacchetti ore</li>
+                    </ul>
                 </div>
 
-                <!-- Card 3: Recupero Dati -->
+                <!-- 3. Consulenza informatica -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-gray-600 mb-6 flex items-center justify-center border-2 border-ink"
+                    >
+                        <span class="font-mono font-bold text-white text-xl"
+                            >03</span
+                        >
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Consulenza
+                    </h3>
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
+                    >
+                        <li>Scelta hardware e software</li>
+                        <li>Valutazione soluzioni cloud</li>
+                        <li>Aiuto prima di acquistare</li>
+                        <li>Risposte oneste e pratiche</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Seconda opinione tecnica -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-yellow-500 mb-6 flex items-center justify-center border-2 border-ink"
+                    >
+                        <span class="font-mono font-bold text-white text-xl"
+                            >04</span
+                        >
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Seconda Opinione
+                    </h3>
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
+                    >
+                        <li>Valutazione preventivi</li>
+                        <li>Software e progetti digitali</li>
+                        <li>Soluzioni proposte da terzi</li>
+                        <li>Valutazione indipendente</li>
+                    </ul>
+                </div>
+
+                <!-- 5. Creazione siti internet -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-pink-500 mb-6 flex items-center justify-center border-2 border-ink"
+                    >
+                        <span class="font-mono font-bold text-white text-xl"
+                            >05</span
+                        >
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Siti Web
+                    </h3>
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
+                    >
+                        <li>Siti semplici e funzionali</li>
+                        <li>Per professionisti e attività</li>
+                        <li>Mobile-first</li>
+                        <li>Struttura comprensibile</li>
+                        <li>Niente funzioni inutili</li>
+                    </ul>
+                </div>
+
+                <!-- 6. Sviluppo web app -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-purple-600 mb-6 flex items-center justify-center border-2 border-ink"
+                    >
+                        <span class="font-mono font-bold text-white text-xl"
+                            >06</span
+                        >
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Web App su Misura
+                    </h3>
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
+                    >
+                        <li>Mini gestionali e dashboard</li>
+                        <li>Strumenti raccolta dati</li>
+                        <li>Web app interne per team</li>
+                        <li>Soluzioni leggere</li>
+                    </ul>
+                </div>
+
+                <!-- 7. Automazioni -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-green-600 mb-6 flex items-center justify-center border-2 border-ink"
+                    >
+                        <span class="font-mono font-bold text-white text-xl"
+                            >07</span
+                        >
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Automazioni
+                    </h3>
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
+                    >
+                        <li>Moduli intelligenti</li>
+                        <li>Flussi di lavoro</li>
+                        <li>Report automatici</li>
+                        <li>Meno attività ripetitive</li>
+                    </ul>
+                </div>
+
+                <!-- 8. Backup e protezione dati -->
                 <div
                     class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
                 >
                     <div
                         class="h-12 w-12 bg-red-600 mb-6 flex items-center justify-center border-2 border-ink"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6 text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            ><path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
-                            ></path></svg
+                        <span class="font-mono font-bold text-white text-xl"
+                            >08</span
                         >
                     </div>
                     <h3 class="font-sans font-black text-2xl uppercase mb-4">
-                        Recupero Dati
+                        Backup & Protezione
                     </h3>
-                    <p class="font-serif text-gray-600 mb-6">
-                        Hard disk caduto? Chiavetta illeggibile? Faccio una
-                        diagnosi gratuita. Se non recupero nulla, non paghi
-                        nulla.
-                    </p>
-                    <div
-                        class="font-mono text-lg font-bold border-t-2 border-dashed border-gray-300 pt-4"
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
                     >
-                        Da € 80,00<br />
-                        <span class="text-xs text-gray-400 font-normal"
-                            >Preventivo dopo analisi</span
+                        <li>Backup locali e cloud</li>
+                        <li>Test di ripristino</li>
+                        <li>Protezione dati essenziale</li>
+                        <li>Tranquillità garantita</li>
+                    </ul>
+                </div>
+
+                <!-- 9. Sicurezza informatica -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-blue-800 mb-6 flex items-center justify-center border-2 border-ink"
+                    >
+                        <span class="font-mono font-bold text-white text-xl"
+                            >09</span
                         >
                     </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Sicurezza Base
+                    </h3>
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
+                    >
+                        <li>Password sensate</li>
+                        <li>Prevenzione phishing</li>
+                        <li>Buone pratiche quotidiane</li>
+                        <li>Senza allarmismi</li>
+                    </ul>
+                </div>
+
+                <!-- 10. Formazione pratica -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform"
+                >
+                    <div
+                        class="h-12 w-12 bg-orange-500 mb-6 flex items-center justify-center border-2 border-ink"
+                    >
+                        <span class="font-mono font-bold text-white text-xl"
+                            >10</span
+                        >
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Formazione
+                    </h3>
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
+                    >
+                        <li>Sessioni brevi e mirate</li>
+                        <li>Uso consapevole del PC</li>
+                        <li>Organizzazione digitale</li>
+                        <li>Impara facendo</li>
+                    </ul>
+                </div>
+
+                <!-- 11. Help Desk -->
+                <div
+                    class="bg-white border-4 border-ink p-8 shadow-neo hover:-translate-y-2 transition-transform md:col-span-2 lg:col-span-1"
+                >
+                    <div
+                        class="h-12 w-12 bg-teal-600 mb-6 flex items-center justify-center border-2 border-ink"
+                    >
+                        <span class="font-mono font-bold text-white text-xl"
+                            >11</span
+                        >
+                    </div>
+                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
+                        Help Desk
+                    </h3>
+                    <ul
+                        class="font-serif text-gray-600 space-y-2 list-disc pl-5"
+                    >
+                        <li>Supporto continuativo</li>
+                        <li>Riferimento tecnico unico</li>
+                        <li>Ideale per micro-aziende</li>
+                        <li>Sempre presente</li>
+                    </ul>
                 </div>
             </div>
 
