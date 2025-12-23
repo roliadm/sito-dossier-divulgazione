@@ -4,206 +4,478 @@ import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Canale SOS">
-    <script type="application/ld+json" slot="head">
-        {
-            "@context": "https://schema.org",
-            "@type": "ContactPage",
-            "name": "Contatti - Rocco Andrea Ligorio",
-            "description": "Canale di comunicazione ufficiale per assistenza e richieste.",
-            "url": "https://www.roccoandrealigorio.it/contatti",
-            "mainEntity": {
-                "@type": "Person",
-                "name": "Rocco Andrea Ligorio",
-                "jobTitle": "Tecnico Informatico Freelance",
-                "email": "info@roccoandrealigorio.it",
-                "url": "https://www.roccoandrealigorio.it"
-            }
-        }
-    </script>
+<Layout title="Richiedi SOS - Assistenza Guidata">
     <Navigation />
 
     <div class="min-h-screen bg-slate-50 flex flex-col">
-        <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
-            <header class="mb-16 text-center max-w-3xl mx-auto">
+        <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-12 md:py-20">
+            <header class="mb-12 text-center">
                 <h1
-                    class="font-bold text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight"
+                    class="font-bold text-4xl md:text-5xl text-slate-900 mb-4 tracking-tight"
                 >
-                    Canale<br />Ufficiale<br />SoS<span class="text-blue-600"
-                        >.</span
-                    >
+                    Richiedi <span class="text-blue-600">SOS</span>.
                 </h1>
-                <p class="text-xl text-slate-600 leading-relaxed font-medium">
-                    Non uso chatbot. Rispondo personalmente.<br />
-                    Usa questo modulo per richieste di aiuto, suggerimenti o per segnalare
-                    errori nella matrice.
+                <p
+                    class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto"
+                >
+                    Compila il modulo guidato per ricevere assistenza mirata.
+                    <br class="hidden md:block" />Più precisi sono i dettagli,
+                    più rapida sarà la soluzione.
                 </p>
             </header>
 
             <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 max-w-6xl mx-auto"
+                class="bg-white border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10 relative overflow-hidden"
             >
-                <!-- Contact Form -->
+                <!-- Status Bar / Decorative -->
                 <div
-                    class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm relative overflow-hidden"
+                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500"
                 >
-                    <div
-                        class="absolute top-0 left-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-br-lg uppercase tracking-wider"
-                    >
-                        Modulo Trasmissione
-                    </div>
+                </div>
 
-                    <form
-                        id="contact-form"
-                        name="modulo-contatti"
-                        method="POST"
-                        data-netlify="true"
-                        netlify-honeypot="bot-field"
-                        action="/messaggio-inviato"
-                        class="space-y-6 mt-8"
-                    >
-                        <p class="hidden">
-                            <label>
-                                Don't fill this out if you're human: <input
-                                    name="bot-field"
+                <form id="sos-form" class="space-y-8">
+                    <!-- 1. Dati Anagrafici -->
+                    <div class="space-y-6">
+                        <h3
+                            class="text-sm font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-2"
+                        >
+                            1. Chi sei?
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label
+                                    for="nome"
+                                    class="block text-sm font-medium text-slate-700 mb-2"
+                                    >Nome *</label
+                                >
+                                <input
+                                    type="text"
+                                    id="nome"
+                                    name="nome"
+                                    required
+                                    class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    placeholder="Mario"
                                 />
-                            </label>
-                        </p>
-                        <input
-                            type="hidden"
-                            name="form-name"
-                            value="modulo-contatti"
-                        />
+                            </div>
+                            <div>
+                                <label
+                                    for="cognome"
+                                    class="block text-sm font-medium text-slate-700 mb-2"
+                                    >Cognome *</label
+                                >
+                                <input
+                                    type="text"
+                                    id="cognome"
+                                    name="cognome"
+                                    required
+                                    class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    placeholder="Rossi"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label
+                                    for="email"
+                                    class="block text-sm font-medium text-slate-700 mb-2"
+                                    >Email *</label
+                                >
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    placeholder="mario.rossi@email.com"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    for="telefono"
+                                    class="block text-sm font-medium text-slate-700 mb-2"
+                                    >Telefono (Facoltativo)</label
+                                >
+                                <input
+                                    type="tel"
+                                    id="telefono"
+                                    name="telefono"
+                                    class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    placeholder="+39 ..."
+                                />
+                            </div>
+                        </div>
 
                         <div>
                             <label
-                                for="nome"
-                                class="block text-sm font-bold text-slate-700 uppercase mb-2"
-                                >Identificativo (Nome)</label
+                                for="azienda"
+                                class="block text-sm font-medium text-slate-700 mb-2"
+                                >Azienda (Facoltativo)</label
                             >
                             <input
                                 type="text"
-                                name="nome"
-                                id="nome"
-                                required
-                                class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                placeholder="Mario Rossi"
+                                id="azienda"
+                                name="azienda"
+                                class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                placeholder="Nome Azienda SRL"
                             />
+                        </div>
+                    </div>
+
+                    <!-- 2. Dettagli Richiesta -->
+                    <div class="space-y-6">
+                        <h3
+                            class="text-sm font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-2"
+                        >
+                            2. Di cosa hai bisogno?
+                        </h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label
+                                    for="categoria"
+                                    class="block text-sm font-medium text-slate-700 mb-2"
+                                    >Categoria *</label
+                                >
+                                <select
+                                    id="categoria"
+                                    name="categoria"
+                                    required
+                                    class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all cursor-not-allowed text-slate-500"
+                                    readonly
+                                >
+                                    <option value="Altro" selected>Altro</option
+                                    >
+                                </select>
+                            </div>
+                            <div>
+                                <label
+                                    for="sottocategoria"
+                                    class="block text-sm font-medium text-slate-700 mb-2"
+                                    >Sotto-categoria *</label
+                                >
+                                <select
+                                    id="sottocategoria"
+                                    name="sottocategoria"
+                                    required
+                                    class="w-full bg-white border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                >
+                                    <option value="" disabled selected
+                                        >Seleziona un'opzione...</option
+                                    >
+                                    <option value="preventivo"
+                                        >Consulenza / Preventivo</option
+                                    >
+                                    <option value="webapp"
+                                        >Sito web / Web app (richiesta)</option
+                                    >
+                                    <option value="recupero"
+                                        >Recupero dati</option
+                                    >
+                                    <option value="tutoraggio"
+                                        >Formazione / Tutoraggio</option
+                                    >
+                                    <option value="generica"
+                                        >Richiesta generica</option
+                                    >
+                                    <option value="suggerimento"
+                                        >Segnalazione / Suggerimento</option
+                                    >
+                                    <option value="logistica"
+                                        >Logistica non tecnica</option
+                                    >
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Campi Condizionali: Web App -->
+                        <div
+                            id="conditional-webapp"
+                            class="hidden bg-blue-50 border border-blue-100 rounded-xl p-6 space-y-6 animate-fade-in relative"
+                        >
+                            <div
+                                class="absolute top-0 left-0 w-1 h-full bg-blue-400 rounded-l-xl"
+                            >
+                            </div>
+                            <p class="text-sm text-blue-800 font-medium">
+                                ℹ️ Compila i campi specifici per permetterci di
+                                rispondere più rapidamente.
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label
+                                        for="tipo_progetto"
+                                        class="block text-sm font-medium text-slate-700 mb-2"
+                                        >Tipo richiesta *</label
+                                    >
+                                    <select
+                                        id="tipo_progetto"
+                                        name="tipo_progetto"
+                                        class="w-full bg-white border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                                    >
+                                        <option value="vetrina"
+                                            >Sito vetrina</option
+                                        >
+                                        <option value="landing"
+                                            >Landing page</option
+                                        >
+                                        <option value="webapp"
+                                            >Web app complessa</option
+                                        >
+                                        <option value="ecommerce"
+                                            >Ecommerce</option
+                                        >
+                                    </select>
+                                </div>
+                                <div>
+                                    <label
+                                        for="obiettivo"
+                                        class="block text-sm font-medium text-slate-700 mb-2"
+                                        >Obiettivo principale *</label
+                                    >
+                                    <select
+                                        id="obiettivo"
+                                        name="obiettivo"
+                                        class="w-full bg-white border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                                    >
+                                        <option value="contatti"
+                                            >Generare Contatti</option
+                                        >
+                                        <option value="prenotazioni"
+                                            >Gestire Prenotazioni</option
+                                        >
+                                        <option value="vendite"
+                                            >Vendite Online</option
+                                        >
+                                        <option value="altro">Altro</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label
+                                        for="tempistiche"
+                                        class="block text-sm font-medium text-slate-700 mb-2"
+                                        >Tempistiche desiderate *</label
+                                    >
+                                    <select
+                                        id="tempistiche"
+                                        name="tempistiche"
+                                        class="w-full bg-white border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                                    >
+                                        <option value="7gg"
+                                            >Entro 7 giorni (Urgente)</option
+                                        >
+                                        <option value="30gg"
+                                            >Entro 30 giorni</option
+                                        >
+                                        <option value="60gg"
+                                            >Entro 60 giorni</option
+                                        >
+                                    </select>
+                                </div>
+                                <div>
+                                    <label
+                                        for="budget"
+                                        class="block text-sm font-medium text-slate-700 mb-2"
+                                        >Budget indicativo (€)</label
+                                    >
+                                    <input
+                                        type="number"
+                                        id="budget"
+                                        name="budget"
+                                        class="w-full bg-white border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        placeholder="es. 1500"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label
+                                    for="esempi"
+                                    class="block text-sm font-medium text-slate-700 mb-2"
+                                    >Link esempi (Facoltativo)</label
+                                >
+                                <textarea
+                                    id="esempi"
+                                    name="esempi"
+                                    rows="2"
+                                    class="w-full bg-white border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 outline-none"
+                                    placeholder="Inserisci link a siti che ti piacciono..."
+                                ></textarea>
+                            </div>
                         </div>
 
                         <div>
                             <label
-                                for="email"
-                                class="block text-sm font-bold text-slate-700 uppercase mb-2"
-                                >Punto di Contatto (Email)</label
+                                for="descrizione"
+                                class="block text-sm font-medium text-slate-700 mb-2"
+                                >Descrizione Generale *</label
                             >
-                            <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                required
-                                class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                placeholder="mario@email.com"
-                            />
-                        </div>
-
-                        <div>
-                            <label
-                                for="messaggio"
-                                class="block text-sm font-bold text-slate-700 uppercase mb-2"
-                                >Messaggio in Chiaro</label
-                            >
-                            <input
-                                type="hidden"
-                                name="subject"
-                                value="Nuovo messaggio dal sito web"
-                            />
                             <textarea
-                                name="messaggio"
-                                id="messaggio"
+                                id="descrizione"
+                                name="descrizione"
                                 rows="5"
                                 required
-                                class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                                placeholder="Descrivi il problema..."
+                                class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                placeholder="Descrivi qui la tua richiesta in modo dettagliato..."
                             ></textarea>
                         </div>
 
-                        <button
-                            type="submit"
-                            class="w-full bg-slate-900 text-white font-bold uppercase text-lg py-4 rounded-lg hover:bg-blue-600 hover:shadow-lg transition-all transform hover:-translate-y-1"
-                        >
-                            Invia Trasmissione
-                        </button>
-                    </form>
-
-                    <script>
-                        const handleSubmit = (event) => {
-                            event.preventDefault();
-                            const myForm = event.target;
-                            const formData = new FormData(myForm);
-                            fetch("/", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type":
-                                        "application/x-www-form-urlencoded",
-                                },
-                                body: new URLSearchParams(formData).toString(),
-                            })
-                                .then(() => {
-                                    window.location.href = "/messaggio-inviato";
-                                })
-                                .catch((error) => {
-                                    alert("Errore di trasmissione: " + error);
-                                });
-                        };
-                        document
-                            .querySelector("#contact-form")
-                            .addEventListener("submit", handleSubmit);
-                    </script>
-                </div>
-
-                <!-- Alternative Contact Info -->
-                <div class="space-y-12 py-8">
-                    <div>
-                        <h3
-                            class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4"
-                        >
-                            /// Contatto Diretto
-                        </h3>
-                        <p class="text-lg text-slate-600">
-                            Se il modulo non funziona o preferisci i metodi
-                            tradizionali:<br />
-                            <a
-                                href="mailto:info@roccoandrealigorio.it"
-                                class="font-bold text-2xl text-slate-900 underline decoration-blue-500/30 decoration-4 hover:decoration-blue-600 transition-all hover:text-blue-600"
-                                >info@roccoandrealigorio.it</a
+                        <div>
+                            <label
+                                for="allegati"
+                                class="block text-sm font-medium text-slate-700 mb-2"
+                                >Allegati (Max 10MB)</label
                             >
-                        </p>
+                            <input
+                                type="file"
+                                id="allegati"
+                                name="allegati"
+                                accept=".png,.jpg,.jpeg,.pdf"
+                                class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-all cursor-pointer"
+                            />
+                        </div>
                     </div>
 
-                    <div>
-                        <h3
-                            class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4"
+                    <!-- 3. Consensi e Invio -->
+                    <div class="pt-6 border-t border-slate-100">
+                        <label
+                            class="flex items-start gap-3 cursor-pointer group"
                         >
-                            /// Policy di Risposta
-                        </h3>
-                        <ul
-                            class="list-disc list-inside text-slate-600 space-y-3 leading-relaxed"
-                        >
-                            <li>Leggo tutto.</li>
-                            <li>
-                                Rispondo appena ho finito di sistemare i server.
-                            </li>
-                            <li>
-                                Non faccio assistenza tecnica gratuita per
-                                stampanti possedute dal demonio (ma posso
-                                scriverci un articolo).
-                            </li>
-                        </ul>
+                            <input
+                                type="checkbox"
+                                id="privacy"
+                                name="privacy"
+                                required
+                                class="mt-1 w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500"
+                            />
+                            <span
+                                class="text-sm text-slate-600 group-hover:text-slate-800 transition-colors"
+                            >
+                                Dichiaro di aver letto l'informativa sulla
+                                privacy e acconsento al trattamento dei dati
+                                personali per la gestione della richiesta.
+                            </span>
+                        </label>
                     </div>
-                </div>
+
+                    <div
+                        id="form-feedback"
+                        class="hidden p-4 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium text-center animate-fade-in"
+                    >
+                        Richiesta inviata correttamente ✅
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="submit-btn"
+                        class="w-full bg-blue-600 text-white font-bold uppercase text-lg py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Invia Richiesta SOS
+                    </button>
+                </form>
             </div>
         </main>
         <Footer />
     </div>
+
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <script is:inline>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("sos-form");
+            const subCategorySelect = document.getElementById("sottocategoria");
+            const conditionalBlock =
+                document.getElementById("conditional-webapp");
+            const feedbackBox = document.getElementById("form-feedback");
+            const submitBtn = document.getElementById("submit-btn");
+
+            // Conditional Logic for "Web App"
+            subCategorySelect.addEventListener("change", (e) => {
+                if (e.target.value === "webapp") {
+                    conditionalBlock.classList.remove("hidden");
+                    // Add requirement attributes for nested fields if needed logic-wise,
+                    // though HTML5 'required' inside hidden div might block submission if browser checks visibility.
+                    // Standard browsers don't validate hidden fields usually, but let's be safe.
+                    document
+                        .getElementById("tipo_progetto")
+                        .setAttribute("required", "true");
+                    document
+                        .getElementById("obiettivo")
+                        .setAttribute("required", "true");
+                    document
+                        .getElementById("tempistiche")
+                        .setAttribute("required", "true");
+                } else {
+                    conditionalBlock.classList.add("hidden");
+                    document
+                        .getElementById("tipo_progetto")
+                        .removeAttribute("required");
+                    document
+                        .getElementById("obiettivo")
+                        .removeAttribute("required");
+                    document
+                        .getElementById("tempistiche")
+                        .removeAttribute("required");
+                }
+            });
+
+            // Form Submission
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                // 1. Validation Check (HTML5 does most, but let's double check SubCAT)
+                if (!subCategorySelect.value) {
+                    alert("Seleziona una categoria valida.");
+                    return;
+                }
+
+                // 2. Prepare Data
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                // Simulate processing
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Invio in corso...";
+
+                console.log(
+                    "📤 [SOS FORM DATA]:",
+                    JSON.stringify(data, null, 2),
+                );
+
+                // Simulate network delay
+                setTimeout(() => {
+                    // Success State
+                    submitBtn.textContent = "Inviato!";
+                    feedbackBox.classList.remove("hidden");
+                    form.reset();
+                    conditionalBlock.classList.add("hidden");
+
+                    // Reset button after 3s
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "Invia Richiesta SOS";
+                        feedbackBox.classList.add("hidden");
+                    }, 5000);
+                }, 1000);
+            });
+        });
+    </script>
 </Layout>
