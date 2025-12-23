@@ -1,119 +1,145 @@
 ---
 const navItems = [
     { name: "Home", href: "/" },
-    { name: "Indice Articoli", href: "/articoli" },
-    { name: "Servizi Tech", href: "/servizi" },
-    { name: "Telex News", href: "/news" },
-    { name: "Risorse Esterne", href: "/risorse" },
-    { name: "Identità", href: "/chi-sono" },
-    { name: "Laboratorio Sim", href: "/laboratorio" },
-    { name: "APP DIAGNOSTICA", href: "/laboratorio-sim.html" },
-    { name: "Contatti / SOS", href: "/contatti" },
+    { name: "Servizi", href: "/servizi" },
+    { name: "Laboratorio", href: "/laboratorio" },
+    { name: "Articoli", href: "/articoli" },
+    { name: "Chi Sono", href: "/chi-sono" },
+    { name: "News", href: "/news" },
 ];
 ---
 
-<!-- Desktop Sidebar -->
-<nav
-    class="fixed left-0 top-0 h-screen w-64 border-r-4 border-ink bg-paper z-40 flex flex-col justify-between py-8 hidden lg:flex overflow-y-auto custom-scrollbar"
+<header
+    class="fixed top-0 w-full h-20 bg-white/95 backdrop-blur-sm border-b border-slate-200 z-50"
 >
-    <div class="px-6">
-        <a
-            href="/"
-            class="block font-sans font-black text-3xl leading-[0.85] uppercase tracking-tighter hover:text-accent transition-colors"
-        >
-            Rocco<br />Andrea<br />Ligorio<span class="text-accent">.</span>
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between"
+    >
+        <!-- Logo -->
+        <a href="/" class="flex flex-col leading-none group no-underline">
+            <span
+                class="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors"
+            >
+                Rocco Andrea Ligorio<span class="text-blue-600">.</span>
+            </span>
+            <span
+                class="text-[0.65rem] font-medium text-slate-500 uppercase tracking-widest mt-0.5"
+            >
+                Tecnico Informatico Roma
+            </span>
         </a>
-        <div class="mt-4 flex items-center gap-2">
-            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <p class="font-mono text-xs font-bold uppercase tracking-widest">
-                System Online
-            </p>
-        </div>
-    </div>
 
-    <ul class="flex flex-col gap-3 px-4">
-        {
-            navItems.map((item) => (
-                <li>
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-8">
+            {
+                navItems.map((item) => (
                     <a
                         href={item.href}
-                        class="group block px-4 py-3 font-mono text-sm font-bold border-2 border-transparent hover:border-ink hover:bg-white hover:shadow-neo-sm transition-all uppercase tracking-wide flex justify-center text-center items-center text-gray-600 hover:text-ink relative"
+                        class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors relative no-underline"
                     >
-                        <span class="z-10">{item.name}</span>
+                        {item.name}
                     </a>
-                </li>
-            ))
-        }
-    </ul>
+                ))
+            }
+        </nav>
 
-    <div class="px-6">
-        <div class="w-full h-4 border-t-2 border-ink border-dashed mb-4"></div>
-        <p class="font-serif text-xs italic leading-tight text-gray-500">
-            Divulgazione informatica dal mondo reale.<br />
-            <span class="font-bold not-italic mt-2 block text-ink"
-                >Est. 2025</span
+        <!-- CTA & Mobile Toggle -->
+        <div class="flex items-center gap-4">
+            <a
+                href="/laboratorio-sim.html"
+                class="hidden lg:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-lg hover:bg-blue-100 transition-colors no-underline"
             >
-        </p>
-    </div>
-</nav>
+                App Diagnostica
+            </a>
+            <a
+                href="/contatti"
+                class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 shadow-sm hover:shadow no-underline"
+            >
+                Contattami
+            </a>
 
-<!-- Mobile Header -->
-<div
-    class="lg:hidden fixed top-0 left-0 w-full bg-paper border-b-4 border-ink z-40 px-4 py-3 flex justify-between items-center shadow-neo-sm"
->
-    <a
-        href="/"
-        class="font-sans font-black text-xl leading-none uppercase tracking-tighter"
-    >
-        Rocco A. Ligorio<span class="text-accent">.</span>
-    </a>
-    <button
-        id="mobile-menu-btn"
-        class="font-mono text-sm font-bold bg-white border-2 border-ink px-3 py-1 shadow-neo-sm active:translate-y-[2px] active:shadow-none transition-all"
-    >
-        MENU
-    </button>
-</div>
+            <!-- Mobile Menu Button -->
+            <button
+                id="mobile-menu-btn"
+                class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+                aria-label="Menu"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
 
 <!-- Mobile Menu Overlay -->
 <div
     id="mobile-menu"
-    class="fixed inset-0 bg-paper z-50 flex flex-col p-8 hidden"
+    class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-6 pb-6 shadow-2xl"
 >
-    <div class="flex justify-end mb-8">
-        <button id="close-menu-btn" class="font-mono text-xl font-bold"
-            >✕ CHIUDI</button
+    <button
+        id="close-menu-btn"
+        class="absolute top-6 right-6 p-2 text-slate-500 hover:bg-slate-100 rounded-full"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
         >
-    </div>
-    <ul class="flex flex-col gap-6 text-center">
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+
+    <nav class="flex flex-col gap-6 text-center">
         {
             navItems.map((item) => (
-                <li>
-                    <a
-                        href={item.href}
-                        class="font-sans font-bold text-3xl uppercase hover:text-accent hover:underline decoration-4"
-                    >
-                        {item.name}
-                    </a>
-                </li>
+                <a
+                    href={item.href}
+                    class="text-2xl font-semibold text-slate-800 hover:text-blue-600 no-underline"
+                >
+                    {item.name}
+                </a>
             ))
         }
-    </ul>
-    <div class="mt-auto text-center font-mono text-xs opacity-50">
-        FINE PROTOCOLLO
-    </div>
+        <hr class="border-slate-100 my-2" />
+        <a
+            href="/laboratorio-sim.html"
+            class="text-lg font-medium text-blue-600 no-underline"
+            >App Diagnostica</a
+        >
+        <a
+            href="/contatti"
+            class="text-lg font-medium text-slate-800 no-underline">Contatti</a
+        >
+    </nav>
 </div>
 
 <script>
-    const menuBtn = document.getElementById("mobile-menu-btn");
+    const btn = document.getElementById("mobile-menu-btn");
     const closeBtn = document.getElementById("close-menu-btn");
     const menu = document.getElementById("mobile-menu");
 
     function toggleMenu() {
-        menu?.classList.toggle("hidden");
+        menu?.classList.toggle("translate-x-full");
         document.body.classList.toggle("overflow-hidden");
     }
 
-    menuBtn?.addEventListener("click", toggleMenu);
+    btn?.addEventListener("click", toggleMenu);
     closeBtn?.addEventListener("click", toggleMenu);
 </script>

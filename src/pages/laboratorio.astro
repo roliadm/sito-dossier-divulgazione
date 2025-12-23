@@ -4,24 +4,23 @@ import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Laboratorio SIM - Strumenti Avanzati">
-    <div class="min-h-screen bg-gray-50 text-ink">
-        <Navigation />
+    <Navigation />
 
-        <main class="lg:ml-64 p-4 md:p-8 lg:p-12">
+    <div class="min-h-screen bg-slate-50">
+        <main class="w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
             <!-- Header -->
-            <header class="mb-12 border-b-4 border-ink pb-8">
+            <header class="mb-12 border-b border-slate-200 pb-8">
                 <span
-                    class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block"
-                    >/// Strumenti Pratici e Reali</span
+                    class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 block"
                 >
+                    /// Strumenti Pratici e Reali
+                </span>
                 <h1
-                    class="font-sans font-black text-4xl md:text-6xl uppercase leading-none mb-4"
+                    class="font-bold text-4xl md:text-5xl text-slate-900 mb-4 tracking-tight"
                 >
-                    Laboratorio <span class="text-accent">SIM</span>
+                    Laboratorio <span class="text-blue-600">SIM</span>
                 </h1>
-                <p
-                    class="font-serif text-xl md:text-2xl text-gray-600 max-w-3xl"
-                >
+                <p class="text-xl text-slate-600 max-w-3xl leading-relaxed">
                     Nessuna magia. Solo strumenti giusti per capire cosa non va.
                     <br />Usa questi tool, copia i risultati e avremo una base
                     solida su cui lavorare.
@@ -29,12 +28,12 @@ import Navigation from "../components/Navigation.astro";
                 <div class="mt-8">
                     <a
                         href="/laboratorio-sim.html"
-                        class="inline-block bg-accent text-ink font-black uppercase text-xl px-8 py-4 border-2 border-ink shadow-neo hover:translate-y-[-2px] transition-transform flex items-center gap-2 justify-center md:inline-flex"
+                        class="inline-flex items-center gap-2 bg-blue-600 text-white font-bold uppercase text-lg px-8 py-4 rounded-lg hover:bg-blue-700 hover:shadow-lg transition-all transform hover:-translate-y-1 no-underline"
                     >
                         <span>🚀</span> APRI WEB APP DIAGNOSTICA
                     </a>
                     <p
-                        class="font-mono text-xs mt-2 text-gray-500 uppercase font-bold"
+                        class="font-mono text-xs mt-3 text-slate-400 uppercase font-semibold tracking-wide"
                     >
                         MODELLO STANDALONE • NO INSTALL • FREE
                     </p>
@@ -42,32 +41,32 @@ import Navigation from "../components/Navigation.astro";
             </header>
 
             <!-- TABS NAVIGATION -->
-            <div class="mb-8 flex flex-wrap gap-4" role="tablist">
+            <div class="mb-8 flex flex-wrap gap-2" role="tablist">
                 <button
                     onclick="switchTab('diagnostica')"
                     id="tab-diagnostica"
-                    class="tab-btn px-6 py-3 font-mono font-bold uppercase border-2 border-ink bg-ink text-white shadow-neo hover:translate-y-[-2px] transition-transform active:bg-accent active:text-ink"
+                    class="tab-btn px-6 py-3 font-bold uppercase rounded-lg transition-colors border border-transparent bg-blue-600 text-white shadow-sm"
                 >
                     Diagnostica Guidata
                 </button>
                 <button
                     onclick="switchTab('comandi')"
                     id="tab-comandi"
-                    class="tab-btn px-6 py-3 font-mono font-bold uppercase border-2 border-ink bg-white text-ink shadow-neo hover:translate-y-[-2px] transition-transform hover:bg-gray-100"
+                    class="tab-btn px-6 py-3 font-bold uppercase rounded-lg transition-colors border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 >
                     Generatore Comandi
                 </button>
                 <button
                     onclick="switchTab('kit')"
                     id="tab-kit"
-                    class="tab-btn px-6 py-3 font-mono font-bold uppercase border-2 border-ink bg-white text-ink shadow-neo hover:translate-y-[-2px] transition-transform hover:bg-gray-100"
+                    class="tab-btn px-6 py-3 font-bold uppercase rounded-lg transition-colors border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 >
                     Kit Pronto Soccorso
                 </button>
                 <button
                     onclick="switchTab('demo')"
                     id="tab-demo"
-                    class="tab-btn px-6 py-3 font-mono font-bold uppercase border-2 border-ink bg-white text-ink shadow-neo hover:translate-y-[-2px] transition-transform hover:bg-gray-100"
+                    class="tab-btn px-6 py-3 font-bold uppercase rounded-lg transition-colors border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 >
                     Demo Web App
                 </button>
@@ -76,41 +75,42 @@ import Navigation from "../components/Navigation.astro";
             <!-- SECTION 1: DIAGNOSTICA GUIDATA -->
             <section id="section-diagnostica" class="tab-content block">
                 <div
-                    class="bg-white border-2 border-ink p-6 md:p-8 shadow-neo-lg relative"
+                    class="bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm relative overflow-hidden"
                 >
                     <div
-                        class="absolute top-0 right-0 bg-accent text-ink px-3 py-1 font-mono text-xs font-bold uppercase border-l-2 border-b-2 border-ink"
+                        class="absolute top-0 right-0 bg-blue-50 text-blue-700 px-4 py-2 font-mono text-xs font-bold uppercase rounded-bl-xl border-l border-b border-blue-100"
                     >
                         Wizard v1.0
                     </div>
 
                     <h2
-                        class="font-black text-3xl uppercase mb-6 flex items-center gap-3"
+                        class="font-bold text-2xl uppercase mb-8 flex items-center gap-3 text-slate-800"
                     >
-                        <span class="text-4xl">🩺</span> Diagnostica Rapida
+                        <span class="text-3xl">🩺</span> Diagnostica Rapida
                     </h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Sidebar Scelta Problema -->
                         <div
-                            class="md:col-span-1 border-r-2 border-gray-200 pr-4 h-[600px] overflow-y-auto"
+                            class="md:col-span-1 border-r border-slate-100 pr-4 h-[600px] overflow-y-auto custom-scrollbar"
                         >
                             <h3
-                                class="font-mono text-sm font-bold uppercase text-gray-500 mb-4"
+                                class="font-bold text-xs uppercase text-slate-400 mb-4 tracking-wider"
                             >
                                 Seleziona il problema:
                             </h3>
-                            <div class="space-y-2" id="problem-list">
+                            <div class="space-y-1" id="problem-list">
                                 <!-- Populated via JS -->
                             </div>
                         </div>
 
                         <!-- Area Wizard -->
                         <div class="md:col-span-2 pl-4">
-                            <div id="wizard-start" class="text-center py-20">
-                                <p
-                                    class="text-gray-400 text-xl font-serif italic"
-                                >
+                            <div
+                                id="wizard-start"
+                                class="text-center py-24 bg-slate-50 rounded-lg border border-dashed border-slate-200"
+                            >
+                                <p class="text-slate-400 text-lg font-medium">
                                     ← Seleziona un problema dalla lista per
                                     iniziare.
                                 </p>
@@ -118,16 +118,16 @@ import Navigation from "../components/Navigation.astro";
 
                             <div id="wizard-content" class="hidden">
                                 <div
-                                    class="flex justify-between items-center mb-6"
+                                    class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4"
                                 >
                                     <h3
                                         id="wizard-title"
-                                        class="font-black text-2xl uppercase text-ink"
+                                        class="font-bold text-xl uppercase text-slate-800"
                                     >
                                     </h3>
                                     <span
                                         id="wizard-severity"
-                                        class="px-3 py-1 rounded-full text-xs font-bold uppercase border border-ink"
+                                        class="px-3 py-1 rounded-full text-xs font-bold uppercase"
                                     ></span>
                                 </div>
 
@@ -136,40 +136,40 @@ import Navigation from "../components/Navigation.astro";
                                 </form>
 
                                 <div
-                                    class="bg-gray-50 p-6 border-2 border-dashed border-gray-300 rounded"
+                                    class="bg-blue-50 p-6 rounded-lg border border-blue-100"
                                 >
                                     <h4
-                                        class="font-bold uppercase text-sm mb-2"
+                                        class="font-bold uppercase text-sm mb-3 text-blue-900"
                                     >
                                         Risultato Diagnostico:
                                     </h4>
                                     <div
                                         id="wizard-output"
-                                        class="font-mono text-sm bg-white p-4 border border-gray-200 mb-4 whitespace-pre-wrap min-h-[100px]"
+                                        class="font-mono text-sm bg-white p-4 border border-blue-200 rounded mb-4 whitespace-pre-wrap min-h-[100px] text-slate-700 shadow-inner"
                                     >
                                         In attesa di risposte...
                                     </div>
-                                    <div class="flex flex-wrap gap-4">
+                                    <div class="flex flex-wrap gap-3">
                                         <button
                                             onclick="copyDiagnostic()"
-                                            class="bg-ink text-white px-4 py-2 font-bold hover:bg-accent hover:text-ink transition-colors uppercase text-sm"
-                                            >Copia Risultato</button
+                                            class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-blue-700 transition-colors uppercase text-sm shadow-sm flex items-center gap-2"
                                         >
+                                            <span>📋</span> Copia Risultato
+                                        </button>
                                         <button
                                             onclick="downloadDiagnostic()"
-                                            class="bg-white border border-ink text-ink px-4 py-2 font-bold hover:bg-gray-100 transition-colors uppercase text-sm"
-                                            >Scarica .txt</button
+                                            class="bg-white border border-slate-300 text-slate-700 px-5 py-2.5 rounded-lg font-bold hover:bg-slate-50 transition-colors uppercase text-sm shadow-sm flex items-center gap-2"
                                         >
+                                            <span>⬇</span> Scarica .txt
+                                        </button>
                                     </div>
-                                    <p
-                                        class="mt-4 text-xs text-gray-500 italic"
-                                    >
+                                    <p class="mt-4 text-xs text-slate-500">
                                         💡 Suggerimento: Copia questo testo e
                                         mandamelo via email per un preventivo
                                         mirato.
                                         <a
                                             href="mailto:info@roccoandrealigorio.it"
-                                            class="underline text-blue-600 font-bold ml-1"
+                                            class="underline text-blue-600 font-bold ml-1 hover:text-blue-800"
                                             >info@roccoandrealigorio.it</a
                                         >
                                     </p>
@@ -183,64 +183,64 @@ import Navigation from "../components/Navigation.astro";
             <!-- SECTION 2: GENERATORE COMANDI -->
             <section id="section-comandi" class="tab-content hidden">
                 <div
-                    class="bg-white border-2 border-ink p-6 md:p-8 shadow-neo-lg"
+                    class="bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm"
                 >
                     <h2
-                        class="font-black text-3xl uppercase mb-2 flex items-center gap-3"
+                        class="font-bold text-2xl uppercase mb-2 flex items-center gap-3 text-slate-800"
                     >
-                        <span class="text-4xl">💻</span> Generatore Comandi
+                        <span class="text-3xl">💻</span> Generatore Comandi
                     </h2>
-                    <p class="font-serif text-gray-600 mb-8 max-w-2xl">
+                    <p class="text-slate-600 mb-8 max-w-2xl leading-relaxed">
                         Non ricordi mai la sintassi esatta? Ecco i comandi
                         pronti. Clicca "Copia", incollali nel terminale (CMD o
                         PowerShell) e guarda cosa succede.
                     </p>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <!-- Lista Comandi -->
                         <div
                             class="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar"
                         >
-                            <!-- Commands injected via JS -->
-                            <div id="commands-list" class="space-y-4"></div>
+                            <div id="commands-list" class="space-y-3"></div>
                         </div>
 
-                        <!-- Output Area (Opzionale per l'utente) -->
+                        <!-- Output Area -->
                         <div
-                            class="bg-gray-900 p-6 rounded-lg text-green-400 font-mono text-sm relative border-4 border-gray-800 shadow-inner h-full min-h-[400px]"
+                            class="bg-slate-900 p-6 rounded-xl text-green-400 font-mono text-sm relative border border-slate-700 shadow-inner h-full min-h-[400px] flex flex-col"
                         >
                             <div
-                                class="absolute top-0 left-0 w-full bg-gray-800 text-gray-400 px-4 py-2 text-xs flex justify-between items-center rounded-t-lg"
+                                class="flex justify-between items-center mb-4 pb-2 border-b border-slate-700"
                             >
                                 <span
-                                    >TERMINALE (Preview / Incolla qui l'output
-                                    se vuoi)</span
+                                    class="text-xs uppercase text-slate-400 font-bold"
+                                    >Terminale (Preview / Paste)</span
                                 >
-                                <div class="flex gap-2">
+                                <div class="flex gap-1.5">
                                     <div
-                                        class="w-3 h-3 rounded-full bg-red-500"
+                                        class="w-2.5 h-2.5 rounded-full bg-red-500"
                                     >
                                     </div>
                                     <div
-                                        class="w-3 h-3 rounded-full bg-yellow-500"
+                                        class="w-2.5 h-2.5 rounded-full bg-yellow-500"
                                     >
                                     </div>
                                     <div
-                                        class="w-3 h-3 rounded-full bg-green-500"
+                                        class="w-2.5 h-2.5 rounded-full bg-green-500"
                                     >
                                     </div>
                                 </div>
                             </div>
                             <textarea
                                 id="terminal-paste-area"
-                                class="w-full h-full bg-transparent border-none resize-none focus:outline-none mt-6 custom-scrollbar placeholder-gray-700"
-                                placeholder="> Incolla qui l'output del comando per pulirlo o controllarlo..."
+                                class="w-full flex-grow bg-transparent border-none resize-none focus:outline-none custom-scrollbar placeholder-slate-700 text-sm leading-relaxed"
+                                placeholder="> Incolla qui l'output del comando..."
                             ></textarea>
                             <button
                                 onclick="copyTerminal()"
-                                class="absolute bottom-4 right-4 bg-green-600 text-white px-3 py-1 font-bold text-xs hover:bg-green-500 rounded uppercase"
-                                >Copia Tutto</button
+                                class="self-end mt-4 bg-green-600 text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-green-500 uppercase tracking-wide"
                             >
+                                Copia Tutto
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -249,15 +249,15 @@ import Navigation from "../components/Navigation.astro";
             <!-- SECTION 3: KIT PRONTO SOCCORSO -->
             <section id="section-kit" class="tab-content hidden">
                 <div
-                    class="bg-white border-2 border-ink p-6 md:p-8 shadow-neo-lg border-t-8 border-t-red-500"
+                    class="bg-white border border-slate-200 rounded-xl p-6 md:p-8 shadow-sm border-t-4 border-t-red-500"
                 >
                     <h2
-                        class="font-black text-3xl uppercase mb-6 flex items-center gap-3"
+                        class="font-bold text-2xl uppercase mb-6 flex items-center gap-3 text-slate-800"
                     >
-                        <span class="text-4xl">💊</span> Kit Pronto Soccorso Digitale
+                        <span class="text-3xl">💊</span> Kit Pronto Soccorso Digitale
                     </h2>
                     <p
-                        class="font-serif text-gray-600 mb-8 max-w-2xl bg-yellow-50 p-4 border-l-4 border-yellow-400"
+                        class="text-slate-700 mb-8 max-w-3xl bg-amber-50 p-4 border-l-4 border-amber-400 rounded-r-lg"
                     >
                         <strong>Disclaimer:</strong> Questi sono software di terze
                         parti, gratuiti e standard del settore. Usali a tuo rischio.
@@ -273,17 +273,19 @@ import Navigation from "../components/Navigation.astro";
                 </div>
             </section>
 
-            <!-- SECTION 4: DEMO WEB APP (Restored) -->
+            <!-- SECTION 4: DEMO WEB APP -->
             <section id="section-demo" class="tab-content hidden">
                 <div class="space-y-12">
                     <div
-                        class="bg-gray-50 border-2 border-dashed border-gray-300 p-8 text-center mb-12"
+                        class="bg-slate-50 border border-slate-200 rounded-xl p-10 text-center mb-12"
                     >
-                        <h2 class="font-black text-3xl uppercase mb-4">
+                        <h2
+                            class="font-bold text-2xl uppercase mb-4 text-slate-900"
+                        >
                             Demo Web App
                         </h2>
                         <p
-                            class="font-serif text-lg text-gray-600 max-w-2xl mx-auto"
+                            class="text-slate-600 max-w-2xl mx-auto leading-relaxed"
                         >
                             Oltre ai tool di diagnostica, sviluppo applicazioni
                             web su misura per risolvere problemi aziendali
@@ -291,134 +293,86 @@ import Navigation from "../components/Navigation.astro";
                         </p>
                     </div>
 
+                    <!-- Demo Items (Static for now) -->
                     <!-- Demo 1 -->
                     <div
-                        class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 border-l-8 border-accent shadow-sm hover:shadow-md transition-shadow"
+                        class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all"
                     >
                         <div
-                            class="w-full md:w-1/3 aspect-video bg-gray-100 border-2 border-ink overflow-hidden cursor-pointer group"
+                            class="w-full md:w-1/3 aspect-video bg-slate-100 rounded-lg overflow-hidden cursor-pointer group border border-slate-200"
                             onclick="window.open('/tracker-demo.png', '_blank')"
                         >
-                            <img
-                                src="/tracker-demo.png"
-                                alt="Tracker Interventi Dashboard"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                            />
+                            <div
+                                class="w-full h-full flex items-center justify-center text-slate-400 bg-slate-100"
+                            >
+                                <span class="text-xs uppercase font-bold"
+                                    >Screenshot Placeholder</span
+                                >
+                            </div>
                         </div>
                         <div class="w-full md:w-2/3">
-                            <h4 class="font-black text-2xl uppercase mb-2">
+                            <h4
+                                class="font-bold text-xl uppercase mb-2 text-slate-800"
+                            >
                                 Tracker Interventi
                             </h4>
-                            <p class="font-serif text-lg text-gray-600 mb-4">
+                            <p class="text-slate-600 mb-4 leading-relaxed">
                                 Tieni traccia di chi fa cosa. Ideale per piccoli
                                 team che si perdono i fogli di carta.
                             </p>
-                            <ul
-                                class="font-mono text-sm space-y-2 mb-6 text-gray-500"
-                            >
+                            <ul class="text-sm space-y-2 mb-6 text-slate-500">
                                 <li>
-                                    <strong>Cosa fa:</strong> Registra attività, tempi
-                                    e note tecniche.
+                                    <strong class="text-slate-700"
+                                        >Cosa fa:</strong
+                                    > Registra attività, tempi e note tecniche.
                                 </li>
                                 <li>
-                                    <strong>A chi serve:</strong> Artigiani, tecnici,
-                                    piccole squadre.
-                                </li>
-                                <li>
-                                    <strong>Vantaggio:</strong> Sai sempre cosa è
-                                    stato fatto e quando.
+                                    <strong class="text-slate-700"
+                                        >A chi serve:</strong
+                                    > Artigiani, tecnici, piccole squadre.
                                 </li>
                             </ul>
-                            <button
-                                onclick="window.open('/tracker-demo.png', '_blank')"
-                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors text-xs"
-                                >Vedi Screenshot Full</button
-                            >
                         </div>
                     </div>
-
                     <!-- Demo 2 -->
                     <div
-                        class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 border-l-8 border-ink shadow-sm hover:shadow-md transition-shadow"
+                        class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all"
                     >
                         <div
-                            class="w-full md:w-1/3 aspect-video bg-gray-100 border-2 border-ink overflow-hidden cursor-pointer group"
+                            class="w-full md:w-1/3 aspect-video bg-slate-100 rounded-lg overflow-hidden cursor-pointer group border border-slate-200"
                             onclick="window.open('/asset-demo.png', '_blank')"
                         >
-                            <img
-                                src="/asset-demo.png"
-                                alt="Asset Manager Inventory"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                            />
+                            <div
+                                class="w-full h-full flex items-center justify-center text-slate-400 bg-slate-100"
+                            >
+                                <span class="text-xs uppercase font-bold"
+                                    >Screenshot Placeholder</span
+                                >
+                            </div>
                         </div>
                         <div class="w-full md:w-2/3">
-                            <h4 class="font-black text-2xl uppercase mb-2">
-                                Gestione Asset IT (Light)
+                            <h4
+                                class="font-bold text-xl uppercase mb-2 text-slate-800"
+                            >
+                                Gestione Asset IT
                             </h4>
-                            <p class="font-serif text-lg text-gray-600 mb-4">
+                            <p class="text-slate-600 mb-4 leading-relaxed">
                                 Sai quanti computer hai? Ti serve questo per
                                 smettere di comprare toner per stampanti buttate
                                 anni fa.
                             </p>
-                            <ul
-                                class="font-mono text-sm space-y-2 mb-6 text-gray-500"
-                            >
+                            <ul class="text-sm space-y-2 mb-6 text-slate-500">
                                 <li>
-                                    <strong>Cosa fa:</strong> Cataloga hardware e
-                                    software in modo semplice.
+                                    <strong class="text-slate-700"
+                                        >Cosa fa:</strong
+                                    > Cataloga hardware e software.
                                 </li>
                                 <li>
-                                    <strong>A chi serve:</strong> Uffici con più di
-                                    3 PC.
-                                </li>
-                            </ul>
-                            <button
-                                onclick="window.open('/asset-demo.png', '_blank')"
-                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors text-xs"
-                                >Vedi Screenshot Full</button
-                            >
-                        </div>
-                    </div>
-
-                    <!-- Demo 3 -->
-                    <div
-                        class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 border-l-8 border-blue-500 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                        <div
-                            class="w-full md:w-1/3 aspect-video bg-gray-100 border-2 border-ink overflow-hidden cursor-pointer group"
-                            onclick="window.open('/data-demo.png', '_blank')"
-                        >
-                            <img
-                                src="/data-demo.png"
-                                alt="Data Collection Form"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                            />
-                        </div>
-                        <div class="w-full md:w-2/3">
-                            <h4 class="font-black text-2xl uppercase mb-2">
-                                Raccolta Dati + Export CSV
-                            </h4>
-                            <p class="font-serif text-lg text-gray-600 mb-4">
-                                Raccogli dati sul campo da tablet/telefono e
-                                scaricali in Excel. Basta foglietti volanti.
-                            </p>
-                            <ul
-                                class="font-mono text-sm space-y-2 mb-6 text-gray-500"
-                            >
-                                <li>
-                                    <strong>Cosa fa:</strong> Form digitali personalizzati
-                                    con export immediato.
-                                </li>
-                                <li>
-                                    <strong>A chi serve:</strong> Chi fa sopralluoghi,
-                                    sondaggi o controlli qualità.
+                                    <strong class="text-slate-700"
+                                        >A chi serve:</strong
+                                    > Uffici con più di 3 PC.
                                 </li>
                             </ul>
-                            <button
-                                onclick="window.open('/data-demo.png', '_blank')"
-                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors text-xs"
-                                >Vedi Screenshot Full</button
-                            >
                         </div>
                     </div>
                 </div>
@@ -634,86 +588,6 @@ import Navigation from "../components/Navigation.astro";
                     },
                 ],
             },
-            {
-                id: "cloud-sync",
-                label: "Cloud Sync (OneDrive/Drive)",
-                severity: "Media",
-                questions: [
-                    {
-                        id: "icon",
-                        text: "L'icona del cloud è grigia o ha una X rossa?",
-                        type: "radio",
-                    },
-                    {
-                        id: "space",
-                        text: "Lo spazio online è esaurito?",
-                        type: "radio",
-                    },
-                ],
-            },
-            {
-                id: "sw-license",
-                label: "Software non parte / Licenze",
-                severity: "Media",
-                questions: [
-                    {
-                        id: "error",
-                        text: "C'è un messaggio di errore specifico?",
-                        type: "radio",
-                    },
-                    {
-                        id: "sub",
-                        text: "L'abbonamento è scaduto?",
-                        type: "radio",
-                    },
-                ],
-            },
-            {
-                id: "app-slow",
-                label: "Lentezza App Specifica",
-                severity: "Bassa",
-                questions: [
-                    {
-                        id: "update",
-                        text: "L'app è aggiornata all'ultima versione?",
-                        type: "radio",
-                    },
-                ],
-            },
-            {
-                id: "security",
-                label: "Sicurezza Base",
-                severity: "Alta",
-                questions: [
-                    {
-                        id: "antivirus",
-                        text: "L'antivirus è attivo e aggiornato?",
-                        type: "radio",
-                    },
-                    {
-                        id: "scan",
-                        text: "Hai fatto una scansione completa recentemente?",
-                        type: "radio",
-                    },
-                ],
-            },
-            {
-                id: "corp-pc",
-                label: "PC Aziendale (Permessi)",
-                severity: "Alta",
-                questions: [
-                    {
-                        id: "admin",
-                        text: "Hai i permessi di amministratore?",
-                        type: "radio",
-                    },
-                    {
-                        id: "vpn",
-                        text: "Sei connesso alla VPN aziendale?",
-                        type: "radio",
-                    },
-                ],
-            },
         ];
 
         // --- DATA: COMANDI ---
@@ -778,24 +652,8 @@ import Navigation from "../components/Navigation.astro";
                 desc: "Analizza l'efficienza energetica e la batteria.",
                 usage: "Genera un report HTML dettagliato sul consumo.",
             },
-            {
-                cmd: 'wevtutil qe system /c:20 /f:text /q:"*[System[(Level=2)]]"',
-                desc: "Legge gli ultimi 20 errori critici dal registro eventi.",
-                usage: "Cosa è successo prima del crash?",
-            },
-            {
-                cmd: "net use",
-                desc: "Mostra le cartelle di rete connesse.",
-                usage: "Utile in azienda per problemi di accesso ai file condivisi.",
-            },
-            {
-                cmd: "driverquery",
-                desc: "Elenca tutti i driver installati.",
-                usage: "Per capire se un driver specifico manca o è vecchio.",
-            },
         ];
 
-        // --- DATA: KIT ---
         const kitData = [
             {
                 category: "Diagnostica HW",
@@ -835,20 +693,6 @@ import Navigation from "../components/Navigation.astro";
                         caution: "Richiede chiavetta USB avviabile",
                         link: "https://www.memtest86.com/",
                     },
-                    {
-                        name: "BatteryInfoView",
-                        desc: "Cicli Batteria Laptop",
-                        use: "Info batteria portatili",
-                        caution: "OK",
-                        link: "https://www.nirsoft.net/utils/battery_information_view.html",
-                    },
-                    {
-                        name: "BlueScreenView",
-                        desc: "Analisi file DMP (BSOD)",
-                        use: "Dopo schermata blu",
-                        caution: "OK",
-                        link: "https://www.nirsoft.net/utils/blue_screen_view.html",
-                    },
                 ],
             },
             {
@@ -876,13 +720,6 @@ import Navigation from "../components/Navigation.astro";
                         link: "https://www.hitmanpro.com/",
                     },
                     {
-                        name: "Bitdefender Free",
-                        desc: "Antivirus leggero",
-                        use: "Protezione base",
-                        caution: "Richiede Account",
-                        link: "https://www.bitdefender.com/solutions/free.html",
-                    },
-                    {
                         name: "VirusTotal (Web)",
                         desc: "Analisi file online",
                         use: "Controllo singolo file sospetto",
@@ -898,7 +735,7 @@ import Navigation from "../components/Navigation.astro";
                         name: "BleachBit",
                         desc: "Pulizia file inutili",
                         use: "Liberare spazio",
-                        caution: "Attento alle opzioni (cookie, password)!",
+                        caution: "Attento alle opzioni",
                         link: "https://www.bleachbit.org/",
                     },
                     {
@@ -914,13 +751,6 @@ import Navigation from "../components/Navigation.astro";
                         use: "Rimuovere programmi ostinati",
                         caution: "OK",
                         link: "https://www.revouninstaller.com/revo-uninstaller-free-download/",
-                    },
-                    {
-                        name: "AutoRuns",
-                        desc: "Gestione avvio avanzata",
-                        use: "Pulizia esecuzione automatica",
-                        caution: "Per esperti - Rischi instabilità",
-                        link: "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
                     },
                     {
                         name: "Ninite",
@@ -948,73 +778,6 @@ import Navigation from "../components/Navigation.astro";
                         caution: "Ottimo per migrare OS",
                         link: "https://www.easyuefi.com/backup-software/backup-suite-free.html",
                     },
-                    {
-                        name: "Recuva",
-                        desc: "Recupero file cancellati",
-                        use: "File persi per errore",
-                        caution:
-                            "Non installare sul disco dove hai perso i dati",
-                        link: "https://www.ccleaner.com/recuva",
-                    },
-                ],
-            },
-            {
-                category: "Rete & Internet",
-                items: [
-                    {
-                        name: "WiFi Analyzer (Store)",
-                        desc: "Analisi canali Wi-Fi",
-                        use: "Ottimizzazione Wi-Fi",
-                        caution: "Windows App",
-                        link: "https://apps.microsoft.com/detail/9nblggh33n0n",
-                    },
-                    {
-                        name: "Advanced IP Scanner",
-                        desc: "Scanner di rete",
-                        use: "Trovare dispositivi connessi",
-                        caution: "OK",
-                        link: "https://www.advanced-ip-scanner.com/",
-                    },
-                    {
-                        name: "TCPView",
-                        desc: "Connessioni attive live",
-                        use: "Debug connessioni",
-                        caution: "Sysinternals",
-                        link: "https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview",
-                    },
-                    {
-                        name: "Putty",
-                        desc: "Client SSH/Telnet",
-                        use: "Connessioni remote terminale",
-                        caution: "Standard",
-                        link: "https://www.putty.org/",
-                    },
-                ],
-            },
-            {
-                category: "Driver & Aggiornamenti",
-                items: [
-                    {
-                        name: "Snappy Driver Origin",
-                        desc: "Utility Driver open source",
-                        use: "Aggiornamento driver offline",
-                        caution: "Scarica solo INDICI (Lite)",
-                        link: "https://www.snappy-driver-installer.org/",
-                    },
-                    {
-                        name: "DDU",
-                        desc: "Display Driver Uninstaller",
-                        use: "Pulizia driver video corrotti",
-                        caution: "Usare in Safe Mode",
-                        link: "https://www.wagnardsoft.com/",
-                    },
-                    {
-                        name: "WingetUI",
-                        desc: "GUI per Winget",
-                        use: "Gestione pacchetti visuale",
-                        caution: "Moderno",
-                        link: "https://github.com/marticliment/WingetUI",
-                    },
                 ],
             },
             {
@@ -1035,13 +798,6 @@ import Navigation from "../components/Navigation.astro";
                         link: "https://www.pdfgear.com/",
                     },
                     {
-                        name: "Obsidian",
-                        desc: "Note e Conoscenza",
-                        use: "Appunti personali",
-                        caution: "Markdown",
-                        link: "https://obsidian.md/",
-                    },
-                    {
                         name: "AnyDesk",
                         desc: "Desktop Remoto",
                         use: "Assistenza remota",
@@ -1050,84 +806,10 @@ import Navigation from "../components/Navigation.astro";
                     },
                 ],
             },
-            {
-                category: "Multimedia & Grafica",
-                items: [
-                    {
-                        name: "VLC Media Player",
-                        desc: "Player Video universale",
-                        use: "Riproduzione file video/audio",
-                        caution: "Immancabile",
-                        link: "https://www.videolan.org/vlc/",
-                    },
-                    {
-                        name: "HandBrake",
-                        desc: "Convertitore Video",
-                        use: "Comprimere/Convertire video",
-                        caution: "Potente",
-                        link: "https://handbrake.fr/",
-                    },
-                    {
-                        name: "OBS Studio",
-                        desc: "Registrazione schermo/Stream",
-                        use: "Rec schermo",
-                        caution: "Standard",
-                        link: "https://obsproject.com/",
-                    },
-                    {
-                        name: "GIMP",
-                        desc: "Editor Immagini (tipo PS)",
-                        use: "Fotoritocco avanzato",
-                        caution: "Curva appr. ripida",
-                        link: "https://www.gimp.org/",
-                    },
-                ],
-            },
-            {
-                category: "Dev & SysAdmin",
-                items: [
-                    {
-                        name: "VS Code",
-                        desc: "Editor Codice",
-                        use: "Sviluppo",
-                        caution: "Standard",
-                        link: "https://code.visualstudio.com/",
-                    },
-                    {
-                        name: "Notepad++",
-                        desc: "Editor testo avanzato",
-                        use: "Editing testo/config",
-                        caution: "Veloce",
-                        link: "https://notepad-plus-plus.org/",
-                    },
-                    {
-                        name: "7-Zip",
-                        desc: "Gestione Archivi",
-                        use: "Aprire Zip/Rar/7z",
-                        caution: "Il migliore",
-                        link: "https://www.7-zip.org/",
-                    },
-                    {
-                        name: "PowerToys",
-                        desc: "Utility Microsoft",
-                        use: "Produttività avanzata",
-                        caution: "FancyZones, Rename, etc",
-                        link: "https://learn.microsoft.com/en-us/windows/powertoys/",
-                    },
-                    {
-                        name: "Rufus",
-                        desc: "Crea USB avviabili",
-                        use: "ISO to USB",
-                        caution: "Formatta la chiavetta!",
-                        link: "https://rufus.ie/",
-                    },
-                ],
-            },
         ];
 
         // --- LOGIC ---
 
-        // Tabs
         function switchTab(tabId) {
             document
                 .querySelectorAll(".tab-content")
@@ -1137,22 +819,33 @@ import Navigation from "../components/Navigation.astro";
                 .classList.remove("hidden");
 
             document.querySelectorAll(".tab-btn").forEach((el) => {
-                el.classList.remove("bg-ink", "text-white");
-                el.classList.add("bg-white", "text-ink");
+                el.classList.remove("bg-blue-600", "text-white");
+                el.classList.add(
+                    "bg-white",
+                    "text-slate-600",
+                    "border-slate-200",
+                );
             });
             const activeBtn = document.getElementById("tab-" + tabId);
-            activeBtn.classList.remove("bg-white", "text-ink");
-            activeBtn.classList.add("bg-ink", "text-white");
+            activeBtn.classList.remove(
+                "bg-white",
+                "text-slate-600",
+                "border-slate-200",
+            );
+            activeBtn.classList.add(
+                "bg-blue-600",
+                "text-white",
+                "border-transparent",
+            );
         }
 
-        // Diagnostica init
         function initDiagnostica() {
             const list = document.getElementById("problem-list");
             list.innerHTML = "";
             diagnosticData.forEach((item) => {
                 const btn = document.createElement("button");
                 btn.className =
-                    "w-full text-left p-3 hover:bg-gray-100 border-l-4 border-transparent hover:border-accent transition-all text-sm font-medium";
+                    "w-full text-left p-3 hover:bg-slate-50 border-l-4 border-transparent hover:border-blue-600 transition-all text-sm font-medium text-slate-700 hover:text-blue-900 rounded-r-lg";
                 btn.innerText = item.label;
                 btn.onclick = () => loadWizard(item);
                 list.appendChild(btn);
@@ -1172,11 +865,11 @@ import Navigation from "../components/Navigation.astro";
             const badge = document.getElementById("wizard-severity");
             badge.innerText = "Priorità: " + item.severity;
             badge.className =
-                "px-3 py-1 rounded-full text-xs font-bold uppercase border border-ink text-white " +
+                "px-3 py-1 rounded-full text-xs font-bold uppercase text-white " +
                 (item.severity === "Alta"
                     ? "bg-red-600"
                     : item.severity === "Media"
-                      ? "bg-yellow-500 text-ink"
+                      ? "bg-amber-500"
                       : "bg-green-600");
 
             const form = document.getElementById("wizard-form");
@@ -1184,18 +877,19 @@ import Navigation from "../components/Navigation.astro";
 
             item.questions.forEach((q, idx) => {
                 const div = document.createElement("div");
-                div.className = "bg-gray-50 p-4 rounded border border-gray-200";
+                div.className =
+                    "bg-slate-50 p-4 rounded-lg border border-slate-200";
                 div.innerHTML = `
-                <p class="font-bold mb-2 text-sm">${idx + 1}. ${q.text}</p>
+                <p class="font-bold mb-3 text-sm text-slate-800">${idx + 1}. ${q.text}</p>
                 <div class="flex gap-4">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="radio" name="${q.id}" value="Sì" onchange="updateOutput()" class="accent-ink"> Sì
+                    <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 bg-white px-3 py-1.5 rounded border border-slate-200 hover:border-blue-400 transition-colors">
+                        <input type="radio" name="${q.id}" value="Sì" onchange="updateOutput()" class="accent-blue-600"> Sì
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="radio" name="${q.id}" value="No" onchange="updateOutput()" class="accent-ink"> No
+                    <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 bg-white px-3 py-1.5 rounded border border-slate-200 hover:border-blue-400 transition-colors">
+                        <input type="radio" name="${q.id}" value="No" onchange="updateOutput()" class="accent-blue-600"> No
                     </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="radio" name="${q.id}" value="Non so" onchange="updateOutput()" class="accent-ink"> Non so
+                    <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-slate-700 bg-white px-3 py-1.5 rounded border border-slate-200 hover:border-blue-400 transition-colors">
+                        <input type="radio" name="${q.id}" value="Non so" onchange="updateOutput()" class="accent-blue-600"> Non so
                     </label>
                 </div>
             `;
@@ -1222,7 +916,6 @@ import Navigation from "../components/Navigation.astro";
             });
 
             text += `\nCONSIGLIO AUTOMATICO:\n`;
-            // Logica molto semplice per demo
             const yesCount = Array.from(inputs).filter(
                 (i) => i.value === "Sì",
             ).length;
@@ -1254,21 +947,20 @@ import Navigation from "../components/Navigation.astro";
             a.click();
         }
 
-        // Comandi init
         function initComandi() {
             const list = document.getElementById("commands-list");
             list.innerHTML = "";
             commandsData.forEach((cmd) => {
                 const div = document.createElement("div");
                 div.className =
-                    "bg-gray-50 p-4 border-l-4 border-ink hover:bg-gray-100 transition-colors group";
+                    "bg-slate-50 p-4 border-l-4 border-blue-600 hover:bg-slate-100 transition-colors group rounded-r-lg shadow-sm";
                 div.innerHTML = `
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div class="font-mono font-bold text-lg bg-gray-200 px-2 py-1 select-all">${cmd.cmd}</div>
-                    <button onclick="copyCommand('${cmd.cmd}')" class="text-xs uppercase font-bold bg-white border border-gray-400 px-2 py-1 hover:bg-ink hover:text-white transition-colors">Copia</button>
+                    <div class="font-mono font-bold text-sm bg-white border border-slate-200 px-3 py-1.5 select-all rounded text-slate-800">${cmd.cmd}</div>
+                    <button onclick="copyCommand('${cmd.cmd}')" class="text-xs uppercase font-bold bg-white border border-slate-300 px-3 py-1.5 rounded hover:bg-slate-800 hover:text-white transition-colors text-slate-600">Copia</button>
                 </div>
-                <p class="text-sm font-bold mt-2 text-ink">${cmd.desc}</p>
-                <p class="text-xs text-gray-500 italic mt-1 font-serif">${cmd.usage}</p>
+                <p class="text-sm font-bold mt-3 text-slate-800">${cmd.desc}</p>
+                <p class="text-xs text-slate-500 italic mt-1 font-serif">${cmd.usage}</p>
             `;
                 list.appendChild(div);
             });
@@ -1276,7 +968,6 @@ import Navigation from "../components/Navigation.astro";
 
         function copyCommand(text) {
             navigator.clipboard.writeText(text);
-            // Feedback visivo rapido pulsante/ui opzionale
         }
 
         function copyTerminal() {
@@ -1286,28 +977,27 @@ import Navigation from "../components/Navigation.astro";
             alert("Contenuto terminale copiato!");
         }
 
-        // Kit init
         function initKit() {
             const grid = document.getElementById("kit-grid");
             grid.innerHTML = "";
             kitData.forEach((cat) => {
                 const col = document.createElement("div");
                 col.className = "space-y-4";
-                col.innerHTML = `<h3 class="font-black text-xl uppercase border-b-2 border-gray-300 pb-2">${cat.category}</h3>`;
+                col.innerHTML = `<h3 class="font-bold text-lg uppercase border-b border-slate-200 pb-2 text-slate-700">${cat.category}</h3>`;
 
                 cat.items.forEach((tool) => {
                     const card = document.createElement("div");
                     card.className =
-                        "bg-gray-50 p-4 border border-gray-200 hover:shadow-md transition-shadow relative";
+                        "bg-white p-4 border border-slate-200 rounded-lg hover:shadow-md transition-all shadow-sm relative group";
                     card.innerHTML = `
-                    <h4 class="font-bold text-lg text-ink mb-1 flex justify-between">
+                    <h4 class="font-bold text-base text-slate-800 mb-1 flex justify-between items-center">
                         ${tool.name}
-                        <a href="${tool.link}" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded hover:bg-blue-200">WEB ↗</a>
+                        <a href="${tool.link}" target="_blank" class="text-[10px] bg-blue-50 text-blue-700 px-2 py-1 rounded hover:bg-blue-100 font-bold uppercase tracking-wider">Scarica</a>
                     </h4>
-                    <p class="text-sm font-medium mb-2">${tool.desc}</p>
-                    <div class="text-xs text-gray-600 space-y-1 bg-white p-2 border border-gray-100">
-                        <p><span class="font-bold text-green-700">✓ QUANDO:</span> ${tool.use}</p>
-                        ${tool.caution !== "Nessuna." ? `<p><span class="font-bold text-red-600">⚠ CAUTELA:</span> ${tool.caution}</p>` : ""}
+                    <p class="text-xs font-medium mb-3 text-slate-600 leading-relaxed">${tool.desc}</p>
+                    <div class="text-[10px] text-slate-500 space-y-1 bg-slate-50 p-2 rounded border border-slate-100">
+                        <p><span class="font-bold text-green-700">✓ UTILIZZO:</span> ${tool.use}</p>
+                        ${tool.caution !== "OK" && tool.caution !== "Nessuna." ? `<p><span class="font-bold text-red-600">⚠ ATTENZIONE:</span> ${tool.caution}</p>` : ""}
                     </div>
                 `;
                     col.appendChild(card);
@@ -1316,7 +1006,6 @@ import Navigation from "../components/Navigation.astro";
             });
         }
 
-        // Start
         initDiagnostica();
         initComandi();
         initKit();
