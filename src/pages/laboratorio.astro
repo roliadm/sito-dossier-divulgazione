@@ -5,99 +5,405 @@ import BSODSimulator from "../components/simulators/BSODSimulator.astro";
 import RansomwareSimulator from "../components/simulators/RansomwareSimulator.astro";
 ---
 
-<Layout title="Laboratorio Simulazioni">
+<Layout title="Laboratorio SIM - Strumenti e Demo">
     <div class="min-h-screen">
         <Navigation />
 
         <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
-            <header class="mb-16">
+            <!-- 1) HERO -->
+            <header class="mb-20">
                 <span
                     class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block"
-                    >/// Area Addestramento</span
+                    >/// Area Test & Demo</span
                 >
                 <h1
                     class="font-sans font-black text-5xl md:text-7xl uppercase leading-none mb-6"
                 >
-                    Laboratorio<br /><span class="text-accent"
-                        >Simulazioni</span>
+                    Laboratorio <span class="text-accent">SIM</span>
                 </h1>
-                <p
-                    class="font-serif text-xl border-l-4 border-accent pl-6 max-w-2xl text-gray-600"
+                <h2
+                    class="font-sans font-bold text-xl md:text-2xl text-ink uppercase tracking-wide mb-8 bg-gray-100 inline-block px-4 py-2"
                 >
-                    Non aspettare che succeda per la prima volta.<br />
-                    Qui puoi "rompere" tutto in sicurezza per capire come aggiustarlo.
-                </p>
+                    Strumenti pratici e demo reali. Niente teoria inutile.
+                </h2>
+                <a
+                    href="#demo-section"
+                    class="inline-block bg-ink text-white font-sans font-black uppercase text-xl px-8 py-4 hover:bg-accent hover:text-ink hover:shadow-neo transition-all transform hover:-translate-y-1"
+                >
+                    Parliamone
+                </a>
             </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Card Simulazione BSOD -->
-                <div
-                    class="bg-white border-4 border-ink p-8 shadow-neo hover:translate-y-[-4px] transition-transform"
+            <!-- 2) SEZIONE TOOL PER UTENTI -->
+            <section class="mb-24">
+                <h3
+                    class="font-mono font-bold text-2xl uppercase border-b-4 border-ink pb-2 mb-12 inline-block"
                 >
+                    Strumenti Pratici
+                </h3>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    <!-- Tool 1 -->
                     <div
-                        class="h-12 w-12 bg-blue-700 text-white font-mono flex items-center justify-center text-xs font-bold mb-6"
+                        class="bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
                     >
-                        :(
+                        <div
+                            class="text-4xl mb-4 group-hover:scale-110 transition-transform"
+                        >
+                            🩺
+                        </div>
+                        <h4 class="font-bold text-lg uppercase mb-2">
+                            Diagnostica Guidata
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-4">
+                            PC lento? Wi-Fi che salta? Una checklist interattiva
+                            per trovare il problema da solo.
+                        </p>
+                        <span
+                            class="font-mono text-xs font-bold text-accent uppercase"
+                            >Coming Soon</span
+                        >
                     </div>
-                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
-                        Blue Screen of Death
-                    </h3>
-                    <p class="font-serif text-gray-600 mb-6">
-                        Il terrore di ogni utente Windows. Schermo blu, scritte
-                        bianche incomprensibili. Cosa è successo veramente?
-                    </p>
-                    <button
-                        onclick="window.triggerBSOD()"
-                        class="w-full bg-ink text-white font-mono font-bold uppercase py-3 hover:bg-accent hover:text-ink transition-colors"
+
+                    <!-- Tool 2 -->
+                    <div
+                        class="bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
                     >
-                        Simula Crash Sistema
-                    </button>
-                    <!-- Container Simulatore (Injected via Astro Component) -->
-                    <div class="mt-8">
-                        <BSODSimulator />
+                        <div
+                            class="text-4xl mb-4 group-hover:scale-110 transition-transform"
+                        >
+                            💻
+                        </div>
+                        <h4 class="font-bold text-lg uppercase mb-2">
+                            Generatore Comandi
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Quei comandi da terminale che non ricordi mai.
+                            Clicca, copia, incolla. Fatto.
+                        </p>
+                        <span
+                            class="font-mono text-xs font-bold text-accent uppercase"
+                            >Coming Soon</span
+                        >
+                    </div>
+
+                    <!-- Tool 3 -->
+                    <div
+                        class="bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
+                    >
+                        <div
+                            class="text-4xl mb-4 group-hover:scale-110 transition-transform"
+                        >
+                            🧮
+                        </div>
+                        <h4 class="font-bold text-lg uppercase mb-2">
+                            Calcolatori Pratici
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Quanto tempo ci vuole per il backup? Quanto ti costa
+                            un'ora di fermo? Calcolalo qui.
+                        </p>
+                        <span
+                            class="font-mono text-xs font-bold text-accent uppercase"
+                            >Coming Soon</span
+                        >
+                    </div>
+
+                    <!-- Tool 4 -->
+                    <div
+                        class="bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
+                    >
+                        <div
+                            class="text-4xl mb-4 group-hover:scale-110 transition-transform"
+                        >
+                            💊
+                        </div>
+                        <h4 class="font-bold text-lg uppercase mb-2">
+                            Kit Primo Soccorso
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Una selezione di software gratuiti e sicuri per le
+                            emergenze più comuni.
+                        </p>
+                        <span
+                            class="font-mono text-xs font-bold text-accent uppercase"
+                            >Download</span
+                        >
                     </div>
                 </div>
+            </section>
 
-                <!-- Card Simulazione Ransomware -->
-                <div
-                    class="bg-white border-4 border-ink p-8 shadow-neo hover:translate-y-[-4px] transition-transform"
+            <!-- 3) SEZIONE DEMO WEB APP -->
+            <section id="demo-section" class="mb-24">
+                <h3
+                    class="font-mono font-bold text-2xl uppercase border-b-4 border-ink pb-2 mb-12 inline-block"
                 >
+                    Demo Web App Reali
+                </h3>
+                <div class="space-y-12">
+                    <!-- Demo 1 -->
                     <div
-                        class="h-12 w-12 bg-red-600 text-white font-mono flex items-center justify-center text-2xl mb-6"
+                        class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-accent"
                     >
-                        🔒
+                        <div
+                            class="w-full md:w-1/3 aspect-video bg-gray-200 flex items-center justify-center font-mono text-xs text-gray-400 border-2 border-dashed border-gray-400"
+                        >
+                            [SCREENSHOT INTERFACCIA]
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <h4 class="font-black text-2xl uppercase mb-2">
+                                Tracker Interventi
+                            </h4>
+                            <p class="font-serif text-lg text-gray-600 mb-4">
+                                Tieni traccia di chi fa cosa. Ideale per piccoli
+                                team che si perdono i fogli di carta.
+                            </p>
+                            <ul
+                                class="font-mono text-sm space-y-2 mb-6 text-gray-500"
+                            >
+                                <li>
+                                    <strong>Cosa fa:</strong> Registra attività, tempi
+                                    e note tecniche.
+                                </li>
+                                <li>
+                                    <strong>A chi serve:</strong> Artigiani, tecnici,
+                                    piccole squadre.
+                                </li>
+                                <li>
+                                    <strong>Vantaggio:</strong> Sai sempre cosa è
+                                    stato fatto e quando. Niente "non me lo ricordo".
+                                </li>
+                            </ul>
+                            <button
+                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
+                                >Vedi Demo</button
+                            >
+                        </div>
                     </div>
-                    <h3 class="font-sans font-black text-2xl uppercase mb-4">
-                        Attacco Ransomware
-                    </h3>
-                    <p class="font-serif text-gray-600 mb-6">
-                        I tuoi file sono criptati. Un timer scorre. Ti chiedono
-                        Bitcoin. E ora? Impariamo a gestire il panico.
-                    </p>
-                    <button
-                        onclick="window.triggerRansomware()"
-                        class="w-full bg-ink text-white font-mono font-bold uppercase py-3 hover:bg-alert transition-colors"
+
+                    <!-- Demo 2 -->
+                    <div
+                        class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-ink"
                     >
-                        Infetta il Sistema
-                    </button>
-                    <!-- Container Simulatore -->
-                    <div class="mt-8 z-50 relative">
-                        <RansomwareSimulator />
+                        <div
+                            class="w-full md:w-1/3 aspect-video bg-gray-200 flex items-center justify-center font-mono text-xs text-gray-400 border-2 border-dashed border-gray-400"
+                        >
+                            [SCREENSHOT GESTIONALE]
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <h4 class="font-black text-2xl uppercase mb-2">
+                                Gestione Asset IT (Light)
+                            </h4>
+                            <p class="font-serif text-lg text-gray-600 mb-4">
+                                Sai quanti computer hai? E quando scadono le
+                                garanzie? Se la risposta è "forse", ti serve
+                                questo.
+                            </p>
+                            <ul
+                                class="font-mono text-sm space-y-2 mb-6 text-gray-500"
+                            >
+                                <li>
+                                    <strong>Cosa fa:</strong> Cataloga hardware e
+                                    software in modo semplice.
+                                </li>
+                                <li>
+                                    <strong>A chi serve:</strong> Uffici con più di
+                                    3 PC.
+                                </li>
+                                <li>
+                                    <strong>Vantaggio:</strong> Smetti di comprare
+                                    toner per stampanti che hai buttato due anni fa.
+                                </li>
+                            </ul>
+                            <button
+                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
+                                >Vedi Demo</button
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Demo 3 -->
+                    <div
+                        class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-blue-500"
+                    >
+                        <div
+                            class="w-full md:w-1/3 aspect-video bg-gray-200 flex items-center justify-center font-mono text-xs text-gray-400 border-2 border-dashed border-gray-400"
+                        >
+                            [SCREENSHOT DATA]
+                        </div>
+                        <div class="w-full md:w-2/3">
+                            <h4 class="font-black text-2xl uppercase mb-2">
+                                Raccolta Dati + Export CSV
+                            </h4>
+                            <p class="font-serif text-lg text-gray-600 mb-4">
+                                Raccogli dati sul campo da tablet/telefono e
+                                scaricali in Excel. Basta foglietti volanti
+                                illeggibili.
+                            </p>
+                            <ul
+                                class="font-mono text-sm space-y-2 mb-6 text-gray-500"
+                            >
+                                <li>
+                                    <strong>Cosa fa:</strong> Form digitali personalizzati
+                                    con export immediato.
+                                </li>
+                                <li>
+                                    <strong>A chi serve:</strong> Chi fa sopralluoghi,
+                                    sondaggi, controlli qualità.
+                                </li>
+                                <li>
+                                    <strong>Vantaggio:</strong> I dati passano dal
+                                    campo al tuo PC senza doverli riscrivere.
+                                </li>
+                            </ul>
+                            <button
+                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
+                                >Vedi Demo</button
+                            >
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div
-                class="mt-16 bg-gray-100 p-8 border-2 border-dashed border-gray-400 text-center"
+            <!-- 4) COME NASCE UNA WEB APP -->
+            <section
+                class="mb-24 bg-ink text-white p-8 md:p-16 relative overflow-hidden"
             >
-                <span
-                    class="font-mono text-sm text-gray-500 uppercase tracking-widest block mb-2"
-                    >Prossimamente nel Laboratorio</span
+                <div class="relative z-10">
+                    <h3
+                        class="font-sans font-black text-3xl md:text-5xl uppercase mb-8"
+                    >
+                        Come nasce una Web App?
+                    </h3>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
+                    >
+                        <div class="relative">
+                            <div class="text-6xl mb-2 opacity-20 font-black">
+                                1
+                            </div>
+                            <h4
+                                class="text-xl font-bold uppercase text-accent mb-2"
+                            >
+                                Problema
+                            </h4>
+                            <p class="font-serif text-gray-300">
+                                "Perdo troppo tempo a fare questa cosa
+                                ripetitiva."
+                            </p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="text-6xl mb-2 opacity-20 font-black">
+                                2
+                            </div>
+                            <h4
+                                class="text-xl font-bold uppercase text-accent mb-2"
+                            >
+                                Semplificazione
+                            </h4>
+                            <p class="font-serif text-gray-300">
+                                Tolgo tutto quello che non serve. Teniamo solo
+                                l'essenziale.
+                            </p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="text-6xl mb-2 opacity-20 font-black">
+                                3
+                            </div>
+                            <h4
+                                class="text-xl font-bold uppercase text-accent mb-2"
+                            >
+                                Sviluppo
+                            </h4>
+                            <p class="font-serif text-gray-300">
+                                Scrivo il codice. Niente piattaforme lente, solo
+                                codice pulito.
+                            </p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="text-6xl mb-2 opacity-20 font-black">
+                                4
+                            </div>
+                            <h4
+                                class="text-xl font-bold uppercase text-accent mb-2"
+                            >
+                                Consegna
+                            </h4>
+                            <p class="font-serif text-gray-300">
+                                Ti consegno lo strumento. Te lo spiego. Inizi a
+                                usarlo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5) TRASPARENZA PREZZI -->
+            <section class="mb-12">
+                <h3
+                    class="font-mono font-bold text-2xl uppercase border-b-4 border-ink pb-2 mb-12 inline-block"
                 >
-                <p class="font-bold text-gray-400 text-lg">
-                    Phishing Email Trainer // Wi-Fi Hacker Experience
+                    Idee Chiare, Prezzi Chiari
+                </h3>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    <div
+                        class="border-2 border-gray-200 p-6 text-center hover:border-ink transition-colors"
+                    >
+                        <h5
+                            class="text-sm font-bold uppercase text-gray-500 mb-2"
+                        >
+                            Supporto Remoto
+                        </h5>
+                        <div class="text-2xl font-black text-ink">
+                            da 35 €/ora
+                        </div>
+                    </div>
+                    <div
+                        class="border-2 border-gray-200 p-6 text-center hover:border-ink transition-colors"
+                    >
+                        <h5
+                            class="text-sm font-bold uppercase text-gray-500 mb-2"
+                        >
+                            Siti Internet
+                        </h5>
+                        <div class="text-2xl font-black text-ink">da 600 €</div>
+                    </div>
+                    <div
+                        class="border-2 border-gray-200 p-6 text-center hover:border-ink transition-colors"
+                    >
+                        <h5
+                            class="text-sm font-bold uppercase text-gray-500 mb-2"
+                        >
+                            Web App su misura
+                        </h5>
+                        <div class="text-2xl font-black text-ink">da 900 €</div>
+                    </div>
+                    <div
+                        class="border-2 border-gray-200 p-6 text-center hover:border-ink transition-colors"
+                    >
+                        <h5
+                            class="text-sm font-bold uppercase text-gray-500 mb-2"
+                        >
+                            Help Desk
+                        </h5>
+                        <div class="text-2xl font-black text-ink">
+                            da 120 €/mese
+                        </div>
+                    </div>
+                </div>
+                <p
+                    class="text-center text-xs font-mono text-gray-400 mt-8 italic"
+                >
+                    I prezzi sono indicativi e dipendono dalla complessità reale
+                    (come è giusto che sia).
                 </p>
-            </div>
+            </section>
         </main>
     </div>
 </Layout>
