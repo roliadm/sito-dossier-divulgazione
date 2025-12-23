@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
 import { getCollection } from "astro:content";
 
 const posts = (
@@ -14,64 +15,82 @@ const posts = (
 ---
 
 <Layout title="Archivio Protocolli">
-    <div class="min-h-screen">
-        <Navigation />
+    <Navigation />
 
-        <main
-            class="p-6 md:p-12 relative z-10 w-full max-w-5xl mx-auto items-center flex flex-col lg:ml-64"
-        >
-            <header class="mb-12 text-center">
-                <h1
-                    class="font-sans font-black text-4xl md:text-6xl uppercase leading-none mb-4 tracking-tighter text-chrome"
+    <div class="min-h-screen bg-slate-50 flex flex-col">
+        <main class="flex-grow w-full max-w-5xl mx-auto px-4 py-12 md:py-20">
+            <header class="mb-16 text-center max-w-3xl mx-auto">
+                <span
+                    class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 block"
                 >
-                    Archivio Protocolli
+                    /// Archivio Digitale
+                </span>
+                <h1
+                    class="font-bold text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight"
+                >
+                    Articoli & Guide
                 </h1>
-                <div class="w-24 h-1 bg-ink mx-auto"></div>
+                <p class="text-xl text-slate-600 leading-relaxed">
+                    Procedure operative, analisi tecniche e soluzioni a problemi
+                    comuni, spiegate senza filtri.
+                </p>
             </header>
 
-            <div class="grid gap-16 max-w-5xl">
+            <div class="grid gap-8">
                 {
                     posts.length === 0 && (
-                        <div class="p-8 border-2 border-dashed border-ink bg-yellow-50 font-serif text-xl">
-                            Nessun fascicolo trovato in archivio. Il sistema è
-                            pulito.
+                        <div class="p-8 text-center bg-white border border-dashed border-slate-300 rounded-xl text-slate-500">
+                            Nessun articolo trovato in archivio.
                         </div>
                     )
                 }
+
                 {
                     posts.map((post) => (
-                        <article class="group grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 items-baseline border-b-4 border-gray-200 pb-12 hover:border-ink transition-colors">
-                            <div class="font-mono text-sm font-bold uppercase text-gray-400 group-hover:text-ink pt-1 transition-colors">
-                                {post.data.date.toLocaleDateString("it-IT", {
-                                    year: "numeric",
-                                    month: "2-digit",
-                                    day: "2-digit",
-                                })}
-                                <br />
-                                <span class="text-accent block mt-1">
-                                    / {post.data.category}
-                                </span>
-                            </div>
-                            <div>
-                                <h2 class="font-sans font-black text-3xl md:text-5xl uppercase mb-6 leading-[0.9] group-hover:text-accent transition-colors">
-                                    <a href={`/articoli/${post.slug}`}>
-                                        {post.data.title}
+                        <article class="bg-white rounded-xl border border-slate-200 p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                            <div class="flex flex-col md:flex-row gap-6 md:items-baseline">
+                                <div class="md:w-48 flex-shrink-0">
+                                    <span class="text-sm font-bold text-slate-400 uppercase tracking-wide">
+                                        {post.data.date.toLocaleDateString(
+                                            "it-IT",
+                                            {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "numeric",
+                                            },
+                                        )}
+                                    </span>
+                                    <span class="block text-xs font-bold text-blue-600 uppercase mt-1">
+                                        {post.data.category}
+                                    </span>
+                                </div>
+
+                                <div class="flex-grow">
+                                    <h2 class="font-bold text-2xl md:text-3xl text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
+                                        <a
+                                            href={`/articoli/${post.slug}`}
+                                            class="block"
+                                        >
+                                            {post.data.title}
+                                        </a>
+                                    </h2>
+                                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                                        {post.data.description}
+                                    </p>
+                                    <a
+                                        href={`/articoli/${post.slug}`}
+                                        class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-800 uppercase tracking-wide"
+                                    >
+                                        Leggi Tutto <span class="ml-1">→</span>
                                     </a>
-                                </h2>
-                                <p class="font-serif text-xl text-gray-600 max-w-2xl leading-relaxed mb-6">
-                                    {post.data.description}
-                                </p>
-                                <a
-                                    href={`/articoli/${post.slug}`}
-                                    class="inline-block font-mono text-xs font-bold uppercase tracking-widest border-b-2 border-transparent hover:border-ink transition-all"
-                                >
-                                    Leggi Fascicolo →
-                                </a>
+                                </div>
                             </div>
                         </article>
                     ))
                 }
             </div>
         </main>
+
+        <Footer />
     </div>
 </Layout>
