@@ -1,62 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  /* Ceramic & Chrome Palette */
-  --color-paper: #f4f4f5;
-  /* Zinc-100 Matte White */
-  --color-ink: #18181b;
-  /* Zinc-900 Dark Metal */
+  --color-paper: #ffffff;
+  --color-ink: #0f172a;
+  /* Slate-900 */
   --color-accent: #2563eb;
-  /* Royal Blue Chrome */
-  --color-alert: #ef4444;
-  /* Red-500 */
-  --color-highlight: #e4e4e7;
-  /* Zinc-200 Silver */
+  /* Blue-600 */
+  --color-muted: #64748b;
+  /* Slate-500 */
+  --color-border: #e2e8f0;
+  /* Slate-200 */
 
-  --font-sans: 'Space Grotesk', sans-serif;
-  --font-serif: 'Libre Baskerville', serif;
-  --font-mono: 'Fira Code', monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Georgia', serif;
+  --font-mono: 'ui-monospace', 'SFMono-Regular', monospace;
 
-  /* Ceramic Soft Shadows - Replacing Hard Edge Neo Shadows */
-  --shadow-neo: 12px 12px 24px #d1d1d6, -12px -12px 24px #ffffff;
-  --shadow-neo-sm: 5px 5px 10px #d1d1d6, -5px -5px 10px #ffffff;
-  --shadow-neo-lg: 20px 20px 40px #d1d1d6, -20px -20px 40px #ffffff;
-
-  --shadow-inner: inset 5px 5px 10px #d1d1d6, inset -5px -5px 10px #ffffff;
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-card-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
 }
 
 @layer utilities {
   .text-chrome {
-    background: linear-gradient(to bottom, #9ca3af 0%, #374151 50%, #1f2937 51%, #4b5563 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow:
-      0px 1px 0px rgba(255, 255, 255, 0.5),
-      0px -1px 0px rgba(0, 0, 0, 0.2);
-    font-weight: 900;
-    letter-spacing: 0.05em;
+    @apply text-slate-900;
+    text-shadow: none;
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    color: inherit;
   }
 
   .card-ceramic {
-    border-radius: 2rem;
-    /* More rounded */
-    background: #f4f4f5;
-    /* Match bg-paper */
-    /* The trick for Ceramic Debossed/Embossed look */
-    box-shadow:
-      20px 20px 60px #cfcfd1,
-      -20px -20px 60px #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    transition: all 0.4s ease;
+    @apply bg-white border border-slate-200 rounded-xl shadow-sm transition-all duration-300;
   }
 
   .card-ceramic:hover {
-    box-shadow:
-      10px 10px 30px #cfcfd1,
-      -10px -10px 30px #ffffff;
-    transform: scale(0.98);
-    /* Press down effect */
+    @apply shadow-md -translate-y-1;
+    transform: translateY(-4px);
+  }
+
+  /* Utility classes for buttons to ensure consistency */
+  .btn-primary {
+    @apply bg-blue-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-sm inline-flex items-center justify-center gap-2 text-base;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-slate-700 font-medium px-6 py-3 rounded-lg border border-slate-300 hover:bg-slate-50 text-base transition-colors shadow-sm inline-flex items-center justify-center gap-2;
   }
 }
 
@@ -67,7 +55,8 @@
   }
 
   body {
-    @apply font-sans antialiased min-h-screen flex flex-col;
+    @apply font-sans antialiased min-h-screen flex flex-col pt-20;
+    /* Added padding for fixed topbar */
   }
 
   h1,
@@ -76,14 +65,18 @@
   h4,
   h5,
   h6 {
-    @apply font-sans font-bold tracking-tight text-ink;
+    @apply font-sans font-bold tracking-tight text-slate-900;
+  }
+
+  p {
+    @apply text-slate-600 leading-relaxed;
   }
 
   a {
-    @apply no-underline text-accent hover:text-ink transition-all duration-300;
+    @apply no-underline text-blue-600 hover:text-blue-800 transition-colors duration-200;
   }
 
   code {
-    @apply font-mono text-sm bg-white px-2 py-1 rounded-md shadow-inner text-ink/80;
+    @apply font-mono text-sm bg-slate-100 px-2 py-1 rounded text-slate-700 border border-slate-200;
   }
 }
