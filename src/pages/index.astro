@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
 import NewsTicker from "../components/NewsTicker.astro";
-import TerminalSOS from "../components/TerminalSOS.astro";
+import NewsTicker from "../components/NewsTicker.astro";
 import BullshitDetector from "../components/BullshitDetector.astro";
 import Footer from "../components/Footer.astro";
 
@@ -44,9 +44,24 @@ const latestArticle = {
                 >
                     RoLiADM Tech
                 </h1>
-                <p class="font-medium text-slate-500 text-lg md:text-xl tracking-wide uppercase">
+                <p class="font-medium text-slate-500 text-lg md:text-xl tracking-wide uppercase mb-10">
                     By Rocco A. Ligorio
                 </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a
+                        href="/contatti"
+                        class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-lg uppercase tracking-wide flex items-center gap-2"
+                    >
+                        <span>✉️</span> Richiedi Assistenza
+                    </a>
+                    <a
+                        href="/chi-sono"
+                        class="px-8 py-4 bg-white text-slate-700 font-bold border border-slate-200 rounded-xl hover:bg-slate-50 transition-all text-lg uppercase tracking-wide"
+                    >
+                        Chi Sono
+                    </a>
+                </div>
             </header>
 
             <!-- 3. CARDS: Clean Grid -->
@@ -94,5 +109,4 @@ const latestArticle = {
              </div>
         </main>
     </div>
-    <TerminalSOS />
 </Layout>
