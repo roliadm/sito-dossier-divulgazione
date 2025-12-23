@@ -523,34 +523,83 @@
             kit: [
                 {
                     cat: "Diagnostica HW", items: [
-                        { n: "CrystalDiskInfo", d: "Salute Disco", c: "OK" },
-                        { n: "HWMonitor", d: "Temperature", c: "OK" },
-                        { n: "CPU-Z", d: "Info CPU/RAM", c: "OK" }
+                        { n: "CrystalDiskInfo", d: "Salute Disco (SMART)", c: "OK", u: "https://crystalmark.info/en/software/crystaldiskinfo/" },
+                        { n: "HWMonitor", d: "Temperature e Volt", c: "OK", u: "https://www.cpuid.com/softwares/hwmonitor.html" },
+                        { n: "CPU-Z", d: "Dettagli PROCESSORE/RAM", c: "OK", u: "https://www.cpuid.com/softwares/cpu-z.html" },
+                        { n: "GPU-Z", d: "Dettagli Scheda Video", c: "OK", u: "https://www.techpowerup.com/gpuz/" },
+                        { n: "MemTest86", d: "Test RAM Bootable", c: "Richiede USB", u: "https://www.memtest86.com/" },
+                        { n: "BatteryInfoView", d: "Cicli Batteria Laptop", c: "OK", u: "https://www.nirsoft.net/utils/battery_information_view.html" },
+                        { n: "BlueScreenView", d: "Analisi file DMP (BSOD)", c: "OK", u: "https://www.nirsoft.net/utils/blue_screen_view.html" }
                     ]
                 },
                 {
-                    cat: "Pulizia", items: [
-                        { n: "BleachBit", d: "Pulizia file inutili", c: "Attento alle password salvate" },
-                        { n: "Autoruns", d: "Gestione avvio", c: "NON toccare se non sai cos'è" }
+                    cat: "Sicurezza & Malware", items: [
+                        { n: "Malwarebytes", d: "Best-in-class Scanner", c: "Versione Free Manuale", u: "https://www.malwarebytes.com/" },
+                        { n: "AdwCleaner", d: "Rimuovi Adware/Toolbar", c: "Portable", u: "https://www.malwarebytes.com/adwcleaner" },
+                        { n: "HitmanPro", d: "Second Opinion Scanner", c: "Trial 30gg", u: "https://www.hitmanpro.com/" },
+                        { n: "Bitdefender Free", d: "Antivirus leggero", c: "Richiede Account", u: "https://www.bitdefender.com/solutions/free.html" },
+                        { n: "VirusTotal (Web)", d: "Analisi file online", c: "Web Tool", u: "https://www.virustotal.com/" }
                     ]
                 },
                 {
-                    cat: "Sicurezza", items: [
-                        { n: "Malwarebytes", d: "Scan Malware", c: "Versione Free basta" },
-                        { n: "AdwCleaner", d: "Rimuovi Adware", c: "OK" }
+                    cat: "Pulizia & Manutenzione", items: [
+                        { n: "BleachBit", d: "Pulizia file inutili", c: "Attento alle opzioni!", u: "https://www.bleachbit.org/" },
+                        { n: "WizTree", d: "Mappa spazio disco", c: "Molto veloce", u: "https://diskanalyzer.com/" },
+                        { n: "Revo Uninstaller Free", d: "Disinstallazione pulita", c: "OK", u: "https://www.revouninstaller.com/revo-uninstaller-free-download/" },
+                        { n: "AutoRuns", d: "Gestione avvio avanzata", c: "Per esperti", u: "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns" },
+                        { n: "Ninite", d: "Install/Update automatico", c: "Sicurissimo", u: "https://ninite.com/" }
                     ]
                 },
                 {
-                    cat: "Rete", items: [
-                        { n: "WiFi Analyzer", d: "Canali Wi-Fi", c: "App Store" },
-                        { n: "Ookla Speedtest", d: "Velocità linea", c: "CLI version" }
+                    cat: "Backup & Recovery", items: [
+                        { n: "Veeam Agent Free", d: "Backup intero sistema", c: "Richiede account", u: "https://www.veeam.com/agent-for-windows-community-edition.html" },
+                        { n: "Hasleo Backup Suite", d: "Clonazione/Backup Free", c: "Ottimo per migrare OS", u: "https://www.easyuefi.com/backup-software/backup-suite-free.html" },
+                        { n: "Recuva", d: "Recupero file cancellati", c: "Non installare su disco dati persi", u: "https://www.ccleaner.com/recuva" },
+                        { n: "TestDisk / PhotoRec", d: "Recupero partizioni", c: "Riga di comando (Difficile)", u: "https://www.cgsecurity.org/wiki/TestDisk_Download" }
                     ]
                 },
                 {
-                    cat: "Utility", items: [
-                        { n: "7-Zip", d: "Archivi compressi", c: "OK" },
-                        { n: "Notepad++", d: "Editor testo", c: "OK" },
-                        { n: "Everything", d: "Ricerca file istantanea", c: "Trova tutto, occhio" }
+                    cat: "Rete & Internet", items: [
+                        { n: "WiFi Analyzer (Store)", d: "Analisi canali Wi-Fi", c: "Windows App", u: "https://apps.microsoft.com/detail/9nblggh33n0n" },
+                        { n: "Advanced IP Scanner", d: "Chi è connesso alla rete?", c: "OK", u: "https://www.advanced-ip-scanner.com/" },
+                        { n: "TCPView", d: "Connessioni attive live", c: "Sysinternals", u: "https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview" },
+                        { n: "GlassWire", d: "Monitor traffico visivo", c: "Versione Free limitata", u: "https://www.glasswire.com/" },
+                        { n: "Putty", d: "Client SSH/Telnet", c: "Standard", u: "https://www.putty.org/" }
+                    ]
+                },
+                {
+                    cat: "Driver & Aggiornamenti", items: [
+                        { n: "Snappy Driver Origin", d: "Utility Driver open source", c: "Scarica solo INDICI (Lite)", u: "https://www.snappy-driver-installer.org/" },
+                        { n: "DDU", d: "Display Driver Uninstaller", c: "Usare in Safe Mode", u: "https://www.wagnardsoft.com/" },
+                        { n: "WingetUI", d: "GUI per Winget", c: "Gestore pacchetti moderno", u: "https://github.com/marticliment/WingetUI" }
+                    ]
+                },
+                {
+                    cat: "Ufficio & Produttività", items: [
+                        { n: "LibreOffice", d: "Alternativa Office completa", c: "Open Source", u: "https://www.libreoffice.org/" },
+                        { n: "PDFGear", d: "Editor PDF Gratuito", c: "Davvero free, con AI", u: "https://www.pdfgear.com/" },
+                        { n: "Obsidian", d: "Note e Conoscenza", c: "Markdown", u: "https://obsidian.md/" },
+                        { n: "AnyDesk", d: "Desktop Remoto", c: "Uso privato", u: "https://anydesk.com/" },
+                        { n: "RustDesk", d: "Desktop Remoto Open", c: "Self-hostable", u: "https://rustdesk.com/" }
+                    ]
+                },
+                {
+                    cat: "Multimedia & Grafica", items: [
+                        { n: "VLC Media Player", d: "Legge ogni video", c: "Immancabile", u: "https://www.videolan.org/vlc/" },
+                        { n: "HandBrake", d: "Convertitore Video", c: "Potente", u: "https://handbrake.fr/" },
+                        { n: "OBS Studio", d: "Registrazione schermo/Stream", c: "Standard", u: "https://obsproject.com/" },
+                        { n: "GIMP", d: "Editor Immagini (tipo PS)", c: "Curva appr. ripida", u: "https://www.gimp.org/" },
+                        { n: "Paint.NET", d: "Editor Immagini semplice", c: "Windows Only", u: "https://www.getpaint.net/" },
+                        { n: "Audacity", d: "Editor Audio", c: "Open Source", u: "https://www.audacityteam.org/" }
+                    ]
+                },
+                {
+                    cat: "Dev & SysAdmin", items: [
+                        { n: "VS Code", d: "Editor Codice", c: "Standard", u: "https://code.visualstudio.com/" },
+                        { n: "Notepad++", d: "Editor testo leggero", c: "Veloce", u: "https://notepad-plus-plus.org/" },
+                        { n: "7-Zip", d: "Gestione Archivi", c: "Il migliore", u: "https://www.7-zip.org/" },
+                        { n: "PowerToys", d: "Utility Microsoft", c: "FancyZones, Rename, etc", u: "https://learn.microsoft.com/en-us/windows/powertoys/" },
+                        { n: "Rufus", d: "Crea USB avviabili", c: "ISO to USB", u: "https://rufus.ie/" }
                     ]
                 }
             ]
@@ -599,13 +648,18 @@
                 card.className = 'card';
                 let itemsHtml = '';
                 cat.items.forEach(i => {
+                    const linkHtml = i.u ? `<a href="${i.u}" target="_blank" style="font-size:0.7rem; text-decoration:none; background:#eee; padding:2px 6px; border-radius:4px; color:#333; margin-left:auto;">⬇ DL</a>` : '';
                     itemsHtml += `
-                    <li style="margin-bottom:0.5rem;">
-                        <strong>${i.n}</strong>: ${i.d} <br>
-                        <span style="font-size:0.75rem; color:${i.c === 'OK' ? 'green' : 'red'}; border:1px solid #ccc; padding:1px 4px; border-radius:3px;">${i.c}</span>
+                    <li style="margin-bottom:0.8rem; border-bottom:1px dashed #eee; padding-bottom:0.5rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.2rem;">
+                            <strong style="font-size:0.95rem;">${i.n}</strong>
+                            ${linkHtml}
+                        </div>
+                        <div style="font-size:0.85rem; color:#555; line-height:1.2; margin-bottom:4px;">${i.d}</div>
+                        <span style="font-size:0.7rem; color:${i.c === 'OK' ? 'green' : '#d97706'}; background:${i.c === 'OK' ? '#ecfdf5' : '#fffbeb'}; padding:1px 4px; border-radius:3px; border:1px solid ${i.c === 'OK' ? '#a7f3d0' : '#fde68a'}; display:inline-block;">${i.c}</span>
                     </li>`;
                 });
-                card.innerHTML = `<h3>${cat.cat}</h3><ul style="padding-left:1.2rem; font-size:0.9rem;">${itemsHtml}</ul>`;
+                card.innerHTML = `<h3 style="border-bottom:2px solid #eee; padding-bottom:0.5rem; margin-bottom:1rem;">${cat.cat}</h3><ul style="padding-left:0; list-style:none;">${itemsHtml}</ul>`;
                 kContainer.appendChild(card);
             });
         }
