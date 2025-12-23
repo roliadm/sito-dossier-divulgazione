@@ -1,0 +1,137 @@
+---
+interface Props {
+    color?: "blue" | "emerald" | "violet";
+    class?: string;
+}
+
+const { color = "blue", class: className = "" } = Astro.props;
+
+const colors = {
+    blue: {
+        text: "text-blue-500",
+        fill: "fill-blue-400",
+        stroke: "stroke-blue-600",
+    },
+    emerald: {
+        text: "text-emerald-500",
+        fill: "fill-emerald-400",
+        stroke: "stroke-emerald-600",
+    },
+    violet: {
+        text: "text-violet-500",
+        fill: "fill-violet-400",
+        stroke: "stroke-violet-600",
+    },
+};
+
+const selectedColor = colors[color];
+---
+
+<div class={`flask-container relative ${className} ${selectedColor.text}`}>
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-full h-full overflow-visible"
+    >
+        <!-- DEFINITIONS -->
+        <defs>
+            <!-- Clip Path matching the inside of the flask -->
+            <clipPath id={`flaskClip-${color}`}>
+                <path
+                    d="M8.5 2h7v6.5l4.5 6.5a6 6 0 0 1-5 9.5H9a6 6 0 0 1-5-9.5l4.5-6.5V2z"
+                ></path>
+            </clipPath>
+        </defs>
+
+        <!-- LIQUID GROUP -->
+        <g clip-path={`url(#flaskClip-${color})`} class="liquid-group">
+            <!-- Liquid Background -->
+            <rect
+                x="0"
+                y="0"
+                width="24"
+                height="24"
+                class={`opacity-20 ${selectedColor.fill}`}></rect>
+
+            <!-- Animated Waves -->
+            <g class="waves">
+                <!-- Back Wave -->
+                <path
+                    d="M-24 14 Q-18 12 -12 14 T0 14 T12 14 T24 14 V24 H-24 Z"
+                    class={`opacity-40 ${selectedColor.fill} animate-wave-slow`}
+                ></path>
+                <!-- Front Wave -->
+                <path
+                    d="M-24 15 Q-18 17 -12 15 T0 15 T12 15 T24 15 V24 H-24 Z"
+                    class={`opacity-60 ${selectedColor.fill} animate-wave-fast`}
+                ></path>
+            </g>
+        </g>
+
+        <!-- GLASS REFLECTION / SHINE (Optional, keeps it minimal) -->
+        <path
+            d="M15 4V7L16 8.5"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            class="opacity-30"></path>
+
+        <!-- FLASK OUTLINE (On top) -->
+        <path
+            d="M8.5 2h7v6.5l4.5 6.5a6 6 0 0 1-5 9.5H9a6 6 0 0 1-5-9.5l4.5-6.5V2z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="z-10 relative"></path>
+    </svg>
+</div>
+
+<style>
+    /* --- ANIMATIONS --- */
+
+    /* Horizontal Wave Motion */
+    @keyframes wave {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(24px);
+        } /* Assuming wave pattern repeats every 24px */
+    }
+
+    /* Vertical Bobbing Motion */
+    @keyframes bob {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-1px);
+        }
+    }
+
+    /* --- CLASSES --- */
+
+    .animate-wave-slow {
+        animation:
+            wave 4s linear infinite,
+            bob 5s ease-in-out infinite;
+    }
+
+    .animate-wave-fast {
+        animation:
+            wave 3s linear infinite reverse,
+            bob 4s ease-in-out infinite alternate;
+    }
+
+    /* --- ACCESSIBILITY --- */
+
+    @media (prefers-reduced-motion: reduce) {
+        .animate-wave-slow,
+        .animate-wave-fast {
+            animation: none;
+        }
+    }
+</style>
