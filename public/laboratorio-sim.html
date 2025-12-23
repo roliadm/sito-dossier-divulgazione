@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio SIM - Rocco Andrea Ligorio</title>
+    <style>
+        :root {
+            --color-ink: #1a1a1a;
+            --color-paper: #f9f9f9;
+            /* Off-white */
+            --color-white: #ffffff;
+            --color-accent: #f0db4f;
+            /* Yellowish accent similar to previous */
+            --color-accent-hover: #e0c000;
+            --color-border: #e5e5e5;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --shadow-neo: 4px 4px 0px var(--color-ink);
+            --shadow-neo-sm: 2px 2px 0px var(--color-ink);
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: "Courier New", Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-main);
+            background-color: var(--color-paper);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* LAYOUT */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR (Sticky) */
+        .sidebar {
+            width: 280px;
+            background-color: var(--color-ink);
+            color: var(--color-white);
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 1rem;
+            flex-shrink: 0;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 1rem;
+        }
+
+        .sidebar-title span {
+            color: var(--color-accent);
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            text-align: left;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            border-left: 4px solid transparent;
+        }
+
+        .nav-btn:hover {
+            color: var(--color-white);
+            background-color: #333;
+        }
+
+        .nav-btn.active {
+            color: var(--color-ink);
+            background-color: var(--color-white);
+            border-left: 4px solid var(--color-accent);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            padding: 3rem;
+            overflow-y: auto;
+        }
+
+        header {
+            border-bottom: 4px solid var(--color-ink);
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            line-height: 1.1;
+            color: var(--color-ink);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            border-left: 8px solid var(--color-accent);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-ink);
+            color: var(--color-white);
+            border: 2px solid var(--color-ink);
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.1s;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-ink);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-neo-sm);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-ink);
+        }
+
+        .btn-outline:hover {
+            background-color: #eee;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        /* CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--color-white);
+            border: 2px solid var(--color-ink);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-neo-sm);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-neo);
+        }
+
+        /* SECTION: DIAGNOSTICA */
+        .wizard-container {
+            display: flex;
+            gap: 2rem;
+            height: 600px;
+            border: 2px solid var(--color-ink);
+            box-shadow: var(--shadow-neo);
+        }
+
+        .wizard-sidebar {
+            width: 30%;
+            background: #fff;
+            overflow-y: auto;
+            border-right: 2px solid #eee;
+        }
+
+        .wizard-btn {
+            width: 100%;
+            text-align: left;
+            padding: 1rem;
+            border: none;
+            background: #fff;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .wizard-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .wizard-btn.active {
+            background: var(--color-ink);
+            color: #fff;
+        }
+
+        .wizard-main {
+            width: 70%;
+            padding: 2rem;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .question-block {
+            background: #f9f9f9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .severity-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .sev-bassa {
+            background-color: #10b981;
+        }
+
+        .sev-media {
+            background-color: #f59e0b;
+            color: black;
+        }
+
+        .sev-alta {
+            background-color: #ef4444;
+        }
+
+        /* SECTION: COMANDI */
+        .cmd-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f4f4f4;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            font-family: var(--font-mono);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cmd-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        textarea.terminal-area {
+            width: 100%;
+            height: 200px;
+            background: #1e1e1e;
+            color: #00ff00;
+            font-family: var(--font-mono);
+            padding: 1rem;
+            border: 4px solid #333;
+            margin-top: 1rem;
+            resize: none;
+        }
+
+        /* UTILS */
+        .hidden {
+            display: none !important;
+        }
+
+        .pill {
+            display: inline-block;
+            background: #ddd;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* FOOTER PRICING */
+        .pricing-bar {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px dashed #ccc;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .pricing-list {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .price-item strong {
+            color: var(--color-ink);
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 1rem;
+                position: relative;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .wizard-container {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .wizard-sidebar {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 2px solid #ccc;
+            }
+
+            .wizard-main {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-title">Rocco Ligorio <span>LAB</span></div>
+            <button class="nav-btn active" onclick="showSection('diagnositica')">🩺 Diagnostica Guidata</button>
+            <button class="nav-btn" onclick="showSection('comandi')">💻 Generatore Comandi</button>
+            <button class="nav-btn" onclick="showSection('kit')">💊 Kit Pronto Soccorso</button>
+        </aside>
+
+        <!-- CONTENT -->
+        <main class="main-content">
+            <header>
+                <h1 id="page-title">Diagnostica Guidata</h1>
+                <p>Target: Privati, Freelance, Piccole Aziende. Strumenti pratici per problemi reali.</p>
+            </header>
+
+            <!-- 1. DIAGNOSTICA -->
+            <section id="sec-diagnositica">
+                <div class="wizard-container">
+                    <div class="wizard-sidebar" id="diag-list">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="wizard-main">
+                        <div id="diag-intro" style="text-align: center; margin-top: 4rem; color: #888;">
+                            <p>← Seleziona un problema dal menu a sinistra per iniziare.</p>
+                        </div>
+                        <div id="diag-content" class="hidden">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 id="diag-title">Titolo Problema</h3>
+                                <span id="diag-badge" class="severity-badge">MEDIA</span>
+                            </div>
+                            <p class="mb-6 text-sm text-gray-600 italic">Rispondi alle domande per generare la
+                                checklist.</p>
+                            <form id="diag-form">
+                                <!-- Questions go here -->
+                            </form>
+                            <div class="mt-8 pt-4 border-t border-gray-200">
+                                <h4>Riepilogo & Azioni:</h4>
+                                <textarea id="diag-report" class="w-full p-2 border bg-gray-50 text-xs font-mono mb-4"
+                                    style="width:100%; height:150px;" readonly></textarea>
+                                <div style="display:flex; gap: 10px; flex-wrap:wrap;">
+                                    <button class="btn btn-sm" onclick="copyReport()">Copia Report</button>
+                                    <button class="btn btn-sm btn-outline" onclick="downloadReport()">Esporta
+                                        .txt</button>
+                                    <button class="btn btn-sm btn-outline" onclick="resetDiag()"
+                                        style="margin-left:auto; color:red; border-color:red;">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. COMANDI -->
+            <section id="sec-comandi" class="hidden">
+                <h2 class="section-title">Comandi Rapidi</h2>
+                <div class="grid" id="cmd-grid" style="grid-template-columns: 1fr;">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3>Area di Lavoro (Output)</h3>
+                    <p class="text-sm text-gray-500">Incolla qui l'output del terminale per analizzarlo meglio o
+                        includerlo nel report.</p>
+                    <textarea id="term-area" class="terminal-area"
+                        placeholder="C:\Users\Utente> Incolla qui l'output..."></textarea>
+                    <div style="margin-top: 1rem; text-align: right;">
+                        <button class="btn" onclick="copyTerminalAll()">Copia Tutto l'Output</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. KIT -->
+            <section id="sec-kit" class="hidden">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h2 class="section-title" style="margin-bottom:0;">Kit Digitale</h2>
+                    <button class="btn btn-sm" onclick="downloadKitList()">Esporta Lista .txt</button>
+                </div>
+                <p class="mb-8 mt-4">Lista essenziale di software gratuiti e sicuri.</p>
+                <div id="kit-container" class="grid">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- FOOTER PRICING -->
+            <div class="pricing-bar">
+                <p><strong>Note sui servizi e costi (a partire da):</strong><br>
+                    Prezzi indicativi. Ogni intervento richiede valutazione specifica.</p>
+                <div class="pricing-list">
+                    <div class="price-item">Supporto: <strong>35 €/ora</strong></div>
+                    <div class="price-item">Siti Web: <strong>600 €</strong></div>
+                    <div class="price-item">Web App: <strong>900 €</strong></div>
+                    <div class="price-item">Help Desk: <strong>120 €/mese</strong></div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- DATABASE ---
+        const DB = {
+            diagnostics: [
+                { id: 1, title: "PC Lento", sev: "Bassa", q: ["Riavviato nelle ultime 24h?", "Disco C pieno?", "Troppe app all'avvio?", "Antivirus sta scansionando?"] },
+                { id: 2, title: "PC Blocchi / Riavvii", sev: "Alta", q: ["Schermata Blu (BSOD)?", "Il PC scotta?", "Succede sotto sforzo?", "Driver aggiornati?"] },
+                { id: 3, title: "Problemi post-update Win", sev: "Media", q: ["Aggiornamento fatto oggi?", "Vedi codici errore?", "Riavviato 2 volte?", "Funziona Mod. Provvisoria?"] },
+                { id: 4, title: "Wi-Fi Instabile", sev: "Media", q: ["Router riavviato (60s spegnimento)?", "Succede vicino al router?", "Solo questo PC?", "Driver Wi-Fi aggiornati?"] },
+                { id: 5, title: "Internet Lento / DNS", sev: "Bassa", q: ["Speedtest lento?", "Alcuni siti non vanno?", "DNS cambiati?", "Provato cavo LAN?"] },
+                { id: 6, title: "Email (Spazio/Invio)", sev: "Media", q: ["Webmail funziona?", "Allegati >10MB?", "Casella piena?", "Password cambiata?"] },
+                { id: 7, title: "Backup Mai Verificato", sev: "Alta", q: ["Hai un disco esterno?", "C'è copia cloud?", "Provato a ripristinare un file oggi?", "Backup automatico attivo?"] },
+                { id: 8, title: "Spazio Disco Insuff.", sev: "Media", q: ["Cestino svuotato?", "Cartella Download pulita?", "Usato Pulizia Disco?", "Disinstallato app vecchie?"] },
+                { id: 9, title: "Accesso / Password", sev: "Alta", q: ["Bloc Maiusc attivo?", "Tastiera scrive giusto?", "Password scaduta?", "Account bloccato?"] },
+                { id: 10, title: "Stampante KO", sev: "Bassa", q: ["Accesa e collegata?", "Carta/Inchiostro OK?", "Coda di stampa vuota?", "Restart spooler?"] },
+                { id: 11, title: "Cloud Sync (OneDrive)", sev: "Media", q: ["Icona grigia/croce?", "Spazio cloud pieno?", "File in uso aperti?", "Login effettuato?"] },
+                { id: 12, title: "Software non parte", sev: "Media", q: ["Licenza valida?", "Messaggio errore preciso?", "Reinstallato?", "Eseguito come Admin?"] },
+                { id: 13, title: "App Lenta Specifica", sev: "Bassa", q: ["Solo questa app?", "Aggiornata?", "Database grande?", "Plugin attivi?"] },
+                { id: 14, title: "Sicurezza Base", sev: "Alta", q: ["Antivirus attivo?", "Scansione fatta?", "Password complesse?", "Backup isolato?"] },
+                { id: 15, title: "PC Aziendale (Policy)", sev: "Alta", q: ["Sei Admin?", "VPN connessa?", "Policy bloccante?", "Contattato IT interno?"] }
+            ],
+            commands: [
+                { cmd: "systeminfo", desc: "Info complete sistema (OS, RAM, Uptime)", usage: "Per inventario o verifica specifiche." },
+                { cmd: "ipconfig /all", desc: "Configurazione Rete completa", usage: "Debug problemi IP, DNS, Gateway." },
+                { cmd: "ping 8.8.8.8", desc: "Test connettività Google", usage: "Verifica se internet 'esce' dal router." },
+                { cmd: "tracert google.com", desc: "Tracciamento percorso rete", usage: "Dove si blocca la connessione? (Casa/ISP)" },
+                { cmd: "nslookup google.com", desc: "Test risoluzione nomi (DNS)", usage: "Se navighi per IP ma non per nome sito." },
+                { cmd: "netstat -an | findstr ESTABLISHED", desc: "Connessioni attive ora", usage: "Rileva connessioni sospette o app attive." },
+                { cmd: "tasklist", desc: "Lista processi attivi", usage: "Come Task Manager ma testuale (esportabile)." },
+                { cmd: "wmic diskdrive get status", desc: "Stato salute disco (SMART)", usage: "Verifica rapida se il disco sta morendo." },
+                { cmd: "chkdsk C: /scan", desc: "Controllo file system", usage: "Verifica integrità disco senza riavvio." },
+                { cmd: "sfc /scannow", desc: "Riparazione file Windows", usage: "Primo step se Windows da errori strani." },
+                { cmd: "dism /online /cleanup-image /restorehealth", desc: "Riparazione Immagine OS", usage: "Se sfc fallisce, usa questo." },
+                { cmd: "powercfg /batteryreport", desc: "Report batteria laptop", usage: "Genera HTML con salute batteria." },
+                { cmd: "netsh wlan show interfaces", desc: "Dettagli segnale Wi-Fi", usage: "Vedi potenza segnale e velocità link." },
+                { cmd: "gpresult /r", desc: "Policy applicate (GPO)", usage: "Per PC aziendali, vedi restrizioni." },
+                { cmd: "whoami /all", desc: "Info utente e permessi", usage: "Verifica se sei veramente Admin." }
+            ],
+            kit: [
+                {
+                    cat: "Diagnostica HW", items: [
+                        { n: "CrystalDiskInfo", d: "Salute Disco", c: "OK" },
+                        { n: "HWMonitor", d: "Temperature", c: "OK" },
+                        { n: "CPU-Z", d: "Info CPU/RAM", c: "OK" }
+                    ]
+                },
+                {
+                    cat: "Pulizia", items: [
+                        { n: "BleachBit", d: "Pulizia file inutili", c: "Attento alle password salvate" },
+                        { n: "Autoruns", d: "Gestione avvio", c: "NON toccare se non sai cos'è" }
+                    ]
+                },
+                {
+                    cat: "Sicurezza", items: [
+                        { n: "Malwarebytes", d: "Scan Malware", c: "Versione Free basta" },
+                        { n: "AdwCleaner", d: "Rimuovi Adware", c: "OK" }
+                    ]
+                },
+                {
+                    cat: "Rete", items: [
+                        { n: "WiFi Analyzer", d: "Canali Wi-Fi", c: "App Store" },
+                        { n: "Ookla Speedtest", d: "Velocità linea", c: "CLI version" }
+                    ]
+                },
+                {
+                    cat: "Utility", items: [
+                        { n: "7-Zip", d: "Archivi compressi", c: "OK" },
+                        { n: "Notepad++", d: "Editor testo", c: "OK" },
+                        { n: "Everything", d: "Ricerca file istantanea", c: "Trova tutto, occhio" }
+                    ]
+                }
+            ]
+        };
+
+        // --- STATE ---
+        let currentDiagId = null;
+
+        // --- INIT ---
+        function init() {
+            // Init Sidebar Diag
+            const dList = document.getElementById('diag-list');
+            DB.diagnostics.forEach(d => {
+                const btn = document.createElement('button');
+                btn.className = 'wizard-btn';
+                btn.textContent = d.title;
+                btn.onclick = () => loadDiag(d.id);
+                dList.appendChild(btn);
+            });
+
+            // Init Commands
+            const cGrid = document.getElementById('cmd-grid');
+            DB.commands.forEach(c => {
+                const row = document.createElement('div');
+                row.style.background = '#fff';
+                row.style.border = '1px solid #ddd';
+                row.style.padding = '1rem';
+                row.style.marginBottom = '1rem';
+                row.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div>
+                        <div style="font-family:monospace; background:#eee; display:inline-block; padding:2px 6px; font-weight:bold; font-size:1.1rem;">${c.cmd}</div>
+                        <div style="margin-top:0.5rem; font-weight:bold;">${c.desc}</div>
+                        <div style="font-size:0.85rem; color:#666; margin-top:0.2rem;">Quando: ${c.usage}</div>
+                    </div>
+                    <button class="btn btn-sm" onclick="copyText('${c.cmd.replace(/\\/g, '\\\\')}')">Copia</button>
+                </div>
+            `;
+                cGrid.appendChild(row);
+            });
+
+            // Init Kit
+            const kContainer = document.getElementById('kit-container');
+            DB.kit.forEach(cat => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                let itemsHtml = '';
+                cat.items.forEach(i => {
+                    itemsHtml += `
+                    <li style="margin-bottom:0.5rem;">
+                        <strong>${i.n}</strong>: ${i.d} <br>
+                        <span style="font-size:0.75rem; color:${i.c === 'OK' ? 'green' : 'red'}; border:1px solid #ccc; padding:1px 4px; border-radius:3px;">${i.c}</span>
+                    </li>`;
+                });
+                card.innerHTML = `<h3>${cat.cat}</h3><ul style="padding-left:1.2rem; font-size:0.9rem;">${itemsHtml}</ul>`;
+                kContainer.appendChild(card);
+            });
+        }
+
+        // --- NAVIGATION ---
+        function showSection(id) {
+            document.querySelectorAll('section').forEach(el => el.classList.add('hidden'));
+            document.getElementById('sec-' + id).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const titleMap = {
+                'diagnositica': 'Diagnostica Guidata',
+                'comandi': 'Generatore Comandi',
+                'kit': 'Kit Pronto Soccorso'
+            };
+            document.getElementById('page-title').textContent = titleMap[id];
+        }
+
+        // --- DIAGNOSTICS LOGIC ---
+        function loadDiag(id) {
+            currentDiagId = id;
+            const data = DB.diagnostics.find(d => d.id === id);
+
+            document.getElementById('diag-intro').classList.add('hidden');
+            document.getElementById('diag-content').classList.remove('hidden');
+
+            document.getElementById('diag-title').textContent = data.title;
+            const badge = document.getElementById('diag-badge');
+            badge.textContent = data.sev;
+            badge.className = 'severity-badge sev-' + data.sev.toLowerCase();
+
+            // Build Form
+            const form = document.getElementById('diag-form');
+            form.innerHTML = '';
+            data.q.forEach((q, idx) => {
+                const div = document.createElement('div');
+                div.className = 'question-block';
+                div.innerHTML = `
+                <p style="font-weight:bold; margin:0 0 0.5rem 0;">${idx + 1}. ${q}</p>
+                <div class="radio-group">
+                    <label><input type="radio" name="q${idx}" value="SI" onchange="updateReport()"> Sì</label>
+                    <label><input type="radio" name="q${idx}" value="NO" onchange="updateReport()"> No</label>
+                    <label><input type="radio" name="q${idx}" value="NON SO" onchange="updateReport()"> Non so</label>
+                </div>
+            `;
+                form.appendChild(div);
+            });
+
+            // Highlight Sidebar
+            document.querySelectorAll('.wizard-btn').forEach(b => b.classList.remove('active'));
+            // Find the button (a bit hacky without IDs but works for this scale)
+            const buttons = document.querySelectorAll('.wizard-btn');
+            // We know the order matches array order
+            const index = DB.diagnostics.findIndex(d => d.id === id);
+            if (buttons[index]) buttons[index].classList.add('active');
+
+            updateReport();
+        }
+
+        function updateReport() {
+            if (!currentDiagId) return;
+            const data = DB.diagnostics.find(d => d.id === currentDiagId);
+            const inputs = document.querySelectorAll('#diag-form input:checked');
+
+            let report = `REPORT DIAGNOSTICA SIM\n`;
+            report += `Problema: ${data.title} [Severità: ${data.sev}]\n`;
+            report += `Data: ${new Date().toLocaleString()}\n\n`;
+
+            let yesCount = 0;
+            inputs.forEach(inp => {
+                const qTxt = inp.closest('.question-block').querySelector('p').textContent;
+                report += `[${inp.value}] ${qTxt}\n`;
+                if (inp.value === 'SI') yesCount++;
+            });
+
+            report += `\nRIEPILOGO: ${yesCount} risposte 'SI' su ${data.q.length}.\n`;
+            if (yesCount > 0) report += "CONSIDERA INTERVENTO TECNICO.\n";
+            else report += "Verifica completata. Monitorare situazione.\n";
+
+            report += `\nContatto: Rocco Andrea Ligorio - info@roccoandrealigorio.it`;
+
+            document.getElementById('diag-report').value = report;
+        }
+
+        function copyReport() {
+            const txt = document.getElementById('diag-report').value;
+            copyText(txt);
+        }
+
+        function downloadReport() {
+            const txt = document.getElementById('diag-report').value;
+            downloadString(txt, 'report-diagnosi.txt');
+        }
+
+        function resetDiag() {
+            if (currentDiagId) loadDiag(currentDiagId);
+        }
+
+        // --- UTILS ---
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copiato!');
+            });
+        }
+
+        function copyTerminalAll() {
+            copyText(document.getElementById('term-area').value);
+        }
+
+        function downloadKitList() {
+            let txt = "KIT PRONTO SOCCORSO DIGITALE - SIM\n\n";
+            DB.kit.forEach(cat => {
+                txt += `--- ${cat.cat} ---\n`;
+                cat.items.forEach(i => {
+                    txt += `${i.n}: ${i.d} [Attenzione: ${i.c}]\n`;
+                });
+                txt += "\n";
+            });
+            downloadString(txt, 'kit-software.txt');
+        }
+
+        function downloadString(text, filename) {
+            const blob = new Blob([text], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            a.click();
+        }
+
+        // Run
+        init();
+
+    </script>
+</body>
+
+</html>
