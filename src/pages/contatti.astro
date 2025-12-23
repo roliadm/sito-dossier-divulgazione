@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Canale SOS">
@@ -20,36 +21,34 @@ import Navigation from "../components/Navigation.astro";
             }
         }
     </script>
-    <div class="min-h-screen">
-        <Navigation />
+    <Navigation />
 
-        <main
-            class="relative z-10 w-full max-w-7xl mx-auto p-6 md:p-12 items-center flex flex-col lg:ml-64"
-        >
-            <header class="mb-16 text-center max-w-3xl">
+    <div class="min-h-screen bg-slate-50 flex flex-col">
+        <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
+            <header class="mb-16 text-center max-w-3xl mx-auto">
                 <h1
-                    class="font-sans font-black text-4xl md:text-6xl uppercase leading-none mb-6 text-chrome"
+                    class="font-bold text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight"
                 >
-                    Canale<br />Ufficiale<br />SoS<span class="text-accent"
+                    Canale<br />Ufficiale<br />SoS<span class="text-blue-600"
                         >.</span
                     >
                 </h1>
-                <p
-                    class="font-serif text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto"
-                >
+                <p class="text-xl text-slate-600 leading-relaxed font-medium">
                     Non uso chatbot. Rispondo personalmente.<br />
                     Usa questo modulo per richieste di aiuto, suggerimenti o per segnalare
                     errori nella matrice.
                 </p>
             </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 max-w-6xl mx-auto"
+            >
                 <!-- Contact Form -->
                 <div
-                    class="bg-paper border-4 border-ink p-8 shadow-neo-lg relative"
+                    class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm relative overflow-hidden"
                 >
                     <div
-                        class="absolute -top-4 -left-4 bg-ink text-white font-mono text-sm px-4 py-1 uppercase tracking-widest font-bold"
+                        class="absolute top-0 left-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-br-lg uppercase tracking-wider"
                     >
                         Modulo Trasmissione
                     </div>
@@ -61,7 +60,7 @@ import Navigation from "../components/Navigation.astro";
                         data-netlify="true"
                         netlify-honeypot="bot-field"
                         action="/messaggio-inviato"
-                        class="space-y-6 mt-4"
+                        class="space-y-6 mt-8"
                     >
                         <p class="hidden">
                             <label>
@@ -75,10 +74,11 @@ import Navigation from "../components/Navigation.astro";
                             name="form-name"
                             value="modulo-contatti"
                         />
+
                         <div>
                             <label
                                 for="nome"
-                                class="block font-mono font-bold uppercase text-xs mb-2"
+                                class="block text-sm font-bold text-slate-700 uppercase mb-2"
                                 >Identificativo (Nome)</label
                             >
                             <input
@@ -86,14 +86,15 @@ import Navigation from "../components/Navigation.astro";
                                 name="nome"
                                 id="nome"
                                 required
-                                class="w-full bg-white border-2 border-ink p-3 font-serif focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                                class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                placeholder="Mario Rossi"
                             />
                         </div>
 
                         <div>
                             <label
                                 for="email"
-                                class="block font-mono font-bold uppercase text-xs mb-2"
+                                class="block text-sm font-bold text-slate-700 uppercase mb-2"
                                 >Punto di Contatto (Email)</label
                             >
                             <input
@@ -101,14 +102,15 @@ import Navigation from "../components/Navigation.astro";
                                 name="email"
                                 id="email"
                                 required
-                                class="w-full bg-white border-2 border-ink p-3 font-serif focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                                class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                placeholder="mario@email.com"
                             />
                         </div>
 
                         <div>
                             <label
                                 for="messaggio"
-                                class="block font-mono font-bold uppercase text-xs mb-2"
+                                class="block text-sm font-bold text-slate-700 uppercase mb-2"
                                 >Messaggio in Chiaro</label
                             >
                             <input
@@ -121,13 +123,14 @@ import Navigation from "../components/Navigation.astro";
                                 id="messaggio"
                                 rows="5"
                                 required
-                                class="w-full bg-white border-2 border-ink p-3 font-serif focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                                class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                placeholder="Descrivi il problema..."
                             ></textarea>
                         </div>
 
                         <button
                             type="submit"
-                            class="w-full bg-ink text-white font-sans font-black uppercase text-xl py-4 hover:bg-accent hover:shadow-[4px_4px_0px_0px_white,8px_8px_0px_0px_#111] transition-all transform hover:-translate-y-1"
+                            class="w-full bg-slate-900 text-white font-bold uppercase text-lg py-4 rounded-lg hover:bg-blue-600 hover:shadow-lg transition-all transform hover:-translate-y-1"
                         >
                             Invia Trasmissione
                         </button>
@@ -136,10 +139,8 @@ import Navigation from "../components/Navigation.astro";
                     <script>
                         const handleSubmit = (event) => {
                             event.preventDefault();
-
                             const myForm = event.target;
                             const formData = new FormData(myForm);
-
                             fetch("/", {
                                 method: "POST",
                                 headers: {
@@ -155,7 +156,6 @@ import Navigation from "../components/Navigation.astro";
                                     alert("Errore di trasmissione: " + error);
                                 });
                         };
-
                         document
                             .querySelector("#contact-form")
                             .addEventListener("submit", handleSubmit);
@@ -163,19 +163,19 @@ import Navigation from "../components/Navigation.astro";
                 </div>
 
                 <!-- Alternative Contact Info -->
-                <div class="space-y-12">
+                <div class="space-y-12 py-8">
                     <div>
                         <h3
-                            class="font-mono font-bold uppercase text-sm mb-4 text-gray-500"
+                            class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4"
                         >
                             /// Contatto Diretto
                         </h3>
-                        <p class="font-serif text-lg">
+                        <p class="text-lg text-slate-600">
                             Se il modulo non funziona o preferisci i metodi
                             tradizionali:<br />
                             <a
                                 href="mailto:info@roccoandrealigorio.it"
-                                class="font-sans font-bold text-2xl underline decoration-accent decoration-4 hover:bg-black hover:text-white transition-all px-1"
+                                class="font-bold text-2xl text-slate-900 underline decoration-blue-500/30 decoration-4 hover:decoration-blue-600 transition-all hover:text-blue-600"
                                 >info@roccoandrealigorio.it</a
                             >
                         </p>
@@ -183,12 +183,12 @@ import Navigation from "../components/Navigation.astro";
 
                     <div>
                         <h3
-                            class="font-mono font-bold uppercase text-sm mb-4 text-gray-500"
+                            class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4"
                         >
                             /// Policy di Risposta
                         </h3>
                         <ul
-                            class="list-disc list-inside font-serif text-gray-600 space-y-2"
+                            class="list-disc list-inside text-slate-600 space-y-3 leading-relaxed"
                         >
                             <li>Leggo tutto.</li>
                             <li>
@@ -204,5 +204,6 @@ import Navigation from "../components/Navigation.astro";
                 </div>
             </div>
         </main>
+        <Footer />
     </div>
 </Layout>

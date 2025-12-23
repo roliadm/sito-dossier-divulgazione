@@ -1,29 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Identità Autore">
-    <div class="min-h-screen">
-        <Navigation />
+    <Navigation />
 
-        <main
-            class="relative z-10 w-full max-w-7xl mx-auto p-6 md:p-12 items-center flex flex-col lg:ml-64"
-        >
+    <div class="min-h-screen bg-slate-50 flex flex-col">
+        <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
             <div class="w-full max-w-4xl mx-auto">
                 <span
-                    class="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 block text-center lg:text-left"
-                    >/// Profilo Operatore</span
+                    class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4 block"
                 >
+                    /// Profilo Operatore
+                </span>
                 <h1
-                    class="font-sans font-black text-4xl md:text-6xl lg:text-7xl uppercase leading-none mb-8 text-chrome text-center lg:text-left"
+                    class="font-bold text-4xl md:text-6xl text-slate-900 mb-8 tracking-tight"
                 >
-                    Rocco<br />Andrea<br />Ligorio<span class="text-accent"
+                    Rocco<br />Andrea<br />Ligorio<span class="text-blue-600"
                         >.</span
                     >
                 </h1>
 
-                <div class="prose prose-xl prose-stone font-serif max-w-none">
+                <div
+                    class="prose prose-lg prose-slate leading-relaxed text-slate-600"
+                >
                     <p>
                         Mi chiamo Rocco Andrea Ligorio e lavoro come tecnico
                         informatico da oltre 10 anni. In questo tempo ho
@@ -39,7 +41,9 @@ import Navigation from "../components/Navigation.astro";
                         funzionano molto male.
                     </p>
 
-                    <p class="font-bold text-ink">
+                    <p
+                        class="font-bold text-slate-800 border-l-4 border-blue-600 pl-4 bg-white p-4 rounded-r-lg shadow-sm"
+                    >
                         Il mio superpotere?
                         <br />👉 Tradurre concetti tecnici complessi in italiano
                         comprensibile.
@@ -53,28 +57,34 @@ import Navigation from "../components/Navigation.astro";
                         richiedere un dizionario per essere capita.
                     </p>
 
-                    <h3
-                        class="font-sans font-black uppercase text-xl mt-8 mb-4"
-                    >
+                    <h3 class="font-bold uppercase text-slate-900 mt-12 mb-6">
                         Qui non troverai:
                     </h3>
-                    <ul class="list-none pl-0 space-y-2">
-                        <li class="flex items-center gap-2">
-                            <span class="text-red-500 font-bold">✕</span> linguaggio
-                            costruito per impressionare
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 flex items-center justify-center bg-red-100 text-red-600 rounded-full font-bold text-xs"
+                                >✕</span
+                            >
+                            <span>Linguaggio costruito per impressionare</span>
                         </li>
-                        <li class="flex items-center gap-2">
-                            <span class="text-red-500 font-bold">✕</span> promesse
-                            irrealistiche
+                        <li class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 flex items-center justify-center bg-red-100 text-red-600 rounded-full font-bold text-xs"
+                                >✕</span
+                            >
+                            <span>Promesse irrealistiche</span>
                         </li>
-                        <li class="flex items-center gap-2">
-                            <span class="text-red-500 font-bold">✕</span> toni paternalistici
+                        <li class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 flex items-center justify-center bg-red-100 text-red-600 rounded-full font-bold text-xs"
+                                >✕</span
+                            >
+                            <span>Toni paternalistici</span>
                         </li>
                     </ul>
 
-                    <h3
-                        class="font-sans font-black uppercase text-xl mt-8 mb-4"
-                    >
+                    <h3 class="font-bold uppercase text-slate-900 mt-12 mb-6">
                         Qui si parla in modo diretto.
                     </h3>
                     <p>
@@ -82,7 +92,7 @@ import Navigation from "../components/Navigation.astro";
                         Quando funziona, si spiega perché.
                     </p>
 
-                    <p class="border-l-4 border-accent pl-4 italic">
+                    <p class="italic text-slate-500 mt-8">
                         Se cerchi slogan o scorciatoie miracolose, questo non è
                         il posto giusto. Se invece vuoi capire davvero come
                         stanno le cose, sei nel posto corretto.
@@ -90,42 +100,48 @@ import Navigation from "../components/Navigation.astro";
                 </div>
 
                 <div
-                    class="mt-12 border-t-2 border-ink pt-8 grid grid-cols-2 gap-8 font-mono text-sm"
+                    class="mt-16 border-t border-slate-200 pt-12 grid grid-cols-2 lg:grid-cols-4 gap-8 text-sm"
                 >
                     <div>
-                        <span class="block text-gray-500 uppercase text-xs mb-1"
+                        <span
+                            class="block text-slate-400 uppercase text-xs font-bold mb-2 tracking-wider"
                             >Esperienza</span
                         >
-                        <span class="font-bold uppercase"
+                        <span class="font-bold text-slate-900 block"
                             >10+ Anni (Active Duty)</span
                         >
                     </div>
                     <div>
-                        <span class="block text-gray-500 uppercase text-xs mb-1"
+                        <span
+                            class="block text-slate-400 uppercase text-xs font-bold mb-2 tracking-wider"
                             >Filosofia</span
                         >
-                        <span class="font-bold uppercase"
+                        <span class="font-bold text-slate-900 block"
                             >Zero Fuffa / 100% Pratica</span
                         >
                     </div>
                     <div>
-                        <span class="block text-gray-500 uppercase text-xs mb-1"
+                        <span
+                            class="block text-slate-400 uppercase text-xs font-bold mb-2 tracking-wider"
                             >Località</span
                         >
-                        <span class="font-bold uppercase">Italia</span>
+                        <span class="font-bold text-slate-900 block"
+                            >Italia</span
+                        >
                     </div>
                     <div>
-                        <span class="block text-gray-500 uppercase text-xs mb-1"
+                        <span
+                            class="block text-slate-400 uppercase text-xs font-bold mb-2 tracking-wider"
                             >Stato</span
                         >
-                        <span class="font-bold uppercase text-green-600"
+                        <span
+                            class="font-bold text-green-600 bg-green-50 px-2 py-1 rounded inline-block"
                             >Disponibile</span
                         >
                     </div>
                 </div>
             </div>
-
-            <!-- Photo removed as requested -->
         </main>
+        <Footer />
     </div>
 </Layout>
