@@ -1,163 +1,295 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
-import BSODSimulator from "../components/simulators/BSODSimulator.astro";
-import RansomwareSimulator from "../components/simulators/RansomwareSimulator.astro";
 ---
 
-<Layout title="Laboratorio SIM - Strumenti e Demo">
-    <div class="min-h-screen">
+<Layout title="Laboratorio SIM - Strumenti Avanzati">
+    <div class="min-h-screen bg-gray-50 text-ink">
         <Navigation />
 
-        <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
-            <!-- 1) HERO -->
-            <header class="mb-20">
+        <main class="lg:ml-64 p-4 md:p-8 lg:p-12">
+            <!-- Header -->
+            <header class="mb-12 border-b-4 border-ink pb-8">
                 <span
                     class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block"
-                    >/// Area Test & Demo</span
+                    >/// Strumenti Pratici e Reali</span
                 >
                 <h1
-                    class="font-sans font-black text-5xl md:text-7xl uppercase leading-none mb-6"
+                    class="font-sans font-black text-4xl md:text-6xl uppercase leading-none mb-4"
                 >
                     Laboratorio <span class="text-accent">SIM</span>
                 </h1>
-                <h2
-                    class="font-sans font-bold text-xl md:text-2xl text-ink uppercase tracking-wide mb-8 bg-gray-100 inline-block px-4 py-2"
+                <p
+                    class="font-serif text-xl md:text-2xl text-gray-600 max-w-3xl"
                 >
-                    Strumenti pratici e demo reali. Niente teoria inutile.
-                </h2>
-                <a
-                    href="#demo-section"
-                    class="inline-block bg-ink text-white font-sans font-black uppercase text-xl px-8 py-4 hover:bg-accent hover:text-ink hover:shadow-neo transition-all transform hover:-translate-y-1"
-                >
-                    Parliamone
-                </a>
+                    Nessuna magia. Solo strumenti giusti per capire cosa non va.
+                    <br />Usa questi tool, copia i risultati e avremo una base
+                    solida su cui lavorare.
+                </p>
             </header>
 
-            <!-- 2) SEZIONE TOOL PER UTENTI -->
-            <section class="mb-24">
-                <h3
-                    class="font-mono font-bold text-2xl uppercase border-b-4 border-ink pb-2 mb-12 inline-block"
+            <!-- TABS NAVIGATION -->
+            <div class="mb-8 flex flex-wrap gap-4" role="tablist">
+                <button
+                    onclick="switchTab('diagnostica')"
+                    id="tab-diagnostica"
+                    class="tab-btn px-6 py-3 font-mono font-bold uppercase border-2 border-ink bg-ink text-white shadow-neo hover:translate-y-[-2px] transition-transform active:bg-accent active:text-ink"
                 >
-                    Strumenti Pratici
-                </h3>
+                    Diagnostica Guidata
+                </button>
+                <button
+                    onclick="switchTab('comandi')"
+                    id="tab-comandi"
+                    class="tab-btn px-6 py-3 font-mono font-bold uppercase border-2 border-ink bg-white text-ink shadow-neo hover:translate-y-[-2px] transition-transform hover:bg-gray-100"
+                >
+                    Generatore Comandi
+                </button>
+                <button
+                    onclick="switchTab('kit')"
+                    id="tab-kit"
+                    class="tab-btn px-6 py-3 font-mono font-bold uppercase border-2 border-ink bg-white text-ink shadow-neo hover:translate-y-[-2px] transition-transform hover:bg-gray-100"
+                >
+                    Kit Pronto Soccorso
+                </button>
+                <button
+                    onclick="switchTab('demo')"
+                    id="tab-demo"
+                    class="tab-btn px-6 py-3 font-mono font-bold uppercase border-2 border-ink bg-white text-ink shadow-neo hover:translate-y-[-2px] transition-transform hover:bg-gray-100"
+                >
+                    Demo Web App
+                </button>
+            </div>
+
+            <!-- SECTION 1: DIAGNOSTICA GUIDATA -->
+            <section id="section-diagnostica" class="tab-content block">
                 <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                    class="bg-white border-2 border-ink p-6 md:p-8 shadow-neo-lg relative"
                 >
-                    <!-- Tool 1: Diagnostica -->
                     <div
-                        onclick="openDiagnosticModal()"
-                        class="cursor-pointer bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
+                        class="absolute top-0 right-0 bg-accent text-ink px-3 py-1 font-mono text-xs font-bold uppercase border-l-2 border-b-2 border-ink"
                     >
-                        <div
-                            class="text-4xl mb-4 group-hover:scale-110 transition-transform"
-                        >
-                            🩺
-                        </div>
-                        <h4 class="font-bold text-lg uppercase mb-2">
-                            Diagnostica Guidata
-                        </h4>
-                        <p class="text-sm text-gray-600 mb-4">
-                            PC lento? Wi-Fi che salta? Una checklist interattiva
-                            per trovare il problema da solo.
-                        </p>
-                        <span
-                            class="font-mono text-xs font-bold text-accent uppercase"
-                            >Avvia ></span
-                        >
+                        Wizard v1.0
                     </div>
 
-                    <!-- Tool 2: Comandi -->
-                    <div
-                        onclick="openCommandsModal()"
-                        class="cursor-pointer bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
+                    <h2
+                        class="font-black text-3xl uppercase mb-6 flex items-center gap-3"
                     >
-                        <div
-                            class="text-4xl mb-4 group-hover:scale-110 transition-transform"
-                        >
-                            💻
-                        </div>
-                        <h4 class="font-bold text-lg uppercase mb-2">
-                            Generatore Comandi
-                        </h4>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Quei comandi da terminale che non ricordi mai.
-                            Clicca, copia, incolla. Fatto.
-                        </p>
-                        <span
-                            class="font-mono text-xs font-bold text-accent uppercase"
-                            >Apri ></span
-                        >
-                    </div>
+                        <span class="text-4xl">🩺</span> Diagnostica Rapida
+                    </h2>
 
-                    <!-- Tool 3: Calcolatore -->
-                    <div
-                        onclick="openCalculatorModal()"
-                        class="cursor-pointer bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
-                    >
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Sidebar Scelta Problema -->
                         <div
-                            class="text-4xl mb-4 group-hover:scale-110 transition-transform"
+                            class="md:col-span-1 border-r-2 border-gray-200 pr-4 h-[600px] overflow-y-auto"
                         >
-                            🧮
+                            <h3
+                                class="font-mono text-sm font-bold uppercase text-gray-500 mb-4"
+                            >
+                                Seleziona il problema:
+                            </h3>
+                            <div class="space-y-2" id="problem-list">
+                                <!-- Populated via JS -->
+                            </div>
                         </div>
-                        <h4 class="font-bold text-lg uppercase mb-2">
-                            Calcolatori Pratici
-                        </h4>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Quanto ti costa un'ora di fermo aziendale? Calcolalo
-                            subito qui.
-                        </p>
-                        <span
-                            class="font-mono text-xs font-bold text-accent uppercase"
-                            >Calcola ></span
-                        >
-                    </div>
 
-                    <!-- Tool 4: Kit -->
-                    <div
-                        onclick="openKitModal()"
-                        class="cursor-pointer bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
-                    >
-                        <div
-                            class="text-4xl mb-4 group-hover:scale-110 transition-transform"
-                        >
-                            💊
+                        <!-- Area Wizard -->
+                        <div class="md:col-span-2 pl-4">
+                            <div id="wizard-start" class="text-center py-20">
+                                <p
+                                    class="text-gray-400 text-xl font-serif italic"
+                                >
+                                    ← Seleziona un problema dalla lista per
+                                    iniziare.
+                                </p>
+                            </div>
+
+                            <div id="wizard-content" class="hidden">
+                                <div
+                                    class="flex justify-between items-center mb-6"
+                                >
+                                    <h3
+                                        id="wizard-title"
+                                        class="font-black text-2xl uppercase text-ink"
+                                    >
+                                    </h3>
+                                    <span
+                                        id="wizard-severity"
+                                        class="px-3 py-1 rounded-full text-xs font-bold uppercase border border-ink"
+                                    ></span>
+                                </div>
+
+                                <form id="wizard-form" class="space-y-6 mb-8">
+                                    <!-- Questions injected here -->
+                                </form>
+
+                                <div
+                                    class="bg-gray-50 p-6 border-2 border-dashed border-gray-300 rounded"
+                                >
+                                    <h4
+                                        class="font-bold uppercase text-sm mb-2"
+                                    >
+                                        Risultato Diagnostico:
+                                    </h4>
+                                    <div
+                                        id="wizard-output"
+                                        class="font-mono text-sm bg-white p-4 border border-gray-200 mb-4 whitespace-pre-wrap min-h-[100px]"
+                                    >
+                                        In attesa di risposte...
+                                    </div>
+                                    <div class="flex flex-wrap gap-4">
+                                        <button
+                                            onclick="copyDiagnostic()"
+                                            class="bg-ink text-white px-4 py-2 font-bold hover:bg-accent hover:text-ink transition-colors uppercase text-sm"
+                                            >Copia Risultato</button
+                                        >
+                                        <button
+                                            onclick="downloadDiagnostic()"
+                                            class="bg-white border border-ink text-ink px-4 py-2 font-bold hover:bg-gray-100 transition-colors uppercase text-sm"
+                                            >Scarica .txt</button
+                                        >
+                                    </div>
+                                    <p
+                                        class="mt-4 text-xs text-gray-500 italic"
+                                    >
+                                        💡 Suggerimento: Copia questo testo e
+                                        mandamelo via email per un preventivo
+                                        mirato.
+                                        <a
+                                            href="mailto:info@roccoandrealigorio.it"
+                                            class="underline text-blue-600 font-bold ml-1"
+                                            >info@roccoandrealigorio.it</a
+                                        >
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-lg uppercase mb-2">
-                            Kit Primo Soccorso
-                        </h4>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Una selezione curata di software gratuiti e sicuri
-                            per le emergenze.
-                        </p>
-                        <span
-                            class="font-mono text-xs font-bold text-accent uppercase"
-                            >Vedi Lista ></span
-                        >
                     </div>
                 </div>
             </section>
 
-            <!-- 3) SEZIONE DEMO WEB APP -->
-            <section id="demo-section" class="mb-24">
-                <h3
-                    class="font-mono font-bold text-2xl uppercase border-b-4 border-ink pb-2 mb-12 inline-block"
+            <!-- SECTION 2: GENERATORE COMANDI -->
+            <section id="section-comandi" class="tab-content hidden">
+                <div
+                    class="bg-white border-2 border-ink p-6 md:p-8 shadow-neo-lg"
                 >
-                    Demo Web App Reali
-                </h3>
+                    <h2
+                        class="font-black text-3xl uppercase mb-2 flex items-center gap-3"
+                    >
+                        <span class="text-4xl">💻</span> Generatore Comandi
+                    </h2>
+                    <p class="font-serif text-gray-600 mb-8 max-w-2xl">
+                        Non ricordi mai la sintassi esatta? Ecco i comandi
+                        pronti. Clicca "Copia", incollali nel terminale (CMD o
+                        PowerShell) e guarda cosa succede.
+                    </p>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <!-- Lista Comandi -->
+                        <div
+                            class="space-y-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar"
+                        >
+                            <!-- Commands injected via JS -->
+                            <div id="commands-list" class="space-y-4"></div>
+                        </div>
+
+                        <!-- Output Area (Opzionale per l'utente) -->
+                        <div
+                            class="bg-gray-900 p-6 rounded-lg text-green-400 font-mono text-sm relative border-4 border-gray-800 shadow-inner h-full min-h-[400px]"
+                        >
+                            <div
+                                class="absolute top-0 left-0 w-full bg-gray-800 text-gray-400 px-4 py-2 text-xs flex justify-between items-center rounded-t-lg"
+                            >
+                                <span
+                                    >TERMINALE (Preview / Incolla qui l'output
+                                    se vuoi)</span
+                                >
+                                <div class="flex gap-2">
+                                    <div
+                                        class="w-3 h-3 rounded-full bg-red-500"
+                                    >
+                                    </div>
+                                    <div
+                                        class="w-3 h-3 rounded-full bg-yellow-500"
+                                    >
+                                    </div>
+                                    <div
+                                        class="w-3 h-3 rounded-full bg-green-500"
+                                    >
+                                    </div>
+                                </div>
+                            </div>
+                            <textarea
+                                id="terminal-paste-area"
+                                class="w-full h-full bg-transparent border-none resize-none focus:outline-none mt-6 custom-scrollbar placeholder-gray-700"
+                                placeholder="> Incolla qui l'output del comando per pulirlo o controllarlo..."
+                            ></textarea>
+                            <button
+                                onclick="copyTerminal()"
+                                class="absolute bottom-4 right-4 bg-green-600 text-white px-3 py-1 font-bold text-xs hover:bg-green-500 rounded uppercase"
+                                >Copia Tutto</button
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: KIT PRONTO SOCCORSO -->
+            <section id="section-kit" class="tab-content hidden">
+                <div
+                    class="bg-white border-2 border-ink p-6 md:p-8 shadow-neo-lg border-t-8 border-t-red-500"
+                >
+                    <h2
+                        class="font-black text-3xl uppercase mb-6 flex items-center gap-3"
+                    >
+                        <span class="text-4xl">💊</span> Kit Pronto Soccorso Digitale
+                    </h2>
+                    <p
+                        class="font-serif text-gray-600 mb-8 max-w-2xl bg-yellow-50 p-4 border-l-4 border-yellow-400"
+                    >
+                        <strong>Disclaimer:</strong> Questi sono software di terze
+                        parti, gratuiti e standard del settore. Usali a tuo rischio.
+                        Se non sai cosa stai facendo, fermati e chiedi.
+                    </p>
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                        id="kit-grid"
+                    >
+                        <!-- Kit items injected via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: DEMO WEB APP (Restored) -->
+            <section id="section-demo" class="tab-content hidden">
                 <div class="space-y-12">
+                    <div
+                        class="bg-gray-50 border-2 border-dashed border-gray-300 p-8 text-center mb-12"
+                    >
+                        <h2 class="font-black text-3xl uppercase mb-4">
+                            Demo Web App
+                        </h2>
+                        <p
+                            class="font-serif text-lg text-gray-600 max-w-2xl mx-auto"
+                        >
+                            Oltre ai tool di diagnostica, sviluppo applicazioni
+                            web su misura per risolvere problemi aziendali
+                            specifici. Ecco alcuni esempi di interfacce reali.
+                        </p>
+                    </div>
+
                     <!-- Demo 1 -->
                     <div
-                        class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-accent"
+                        class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 border-l-8 border-accent shadow-sm hover:shadow-md transition-shadow"
                     >
                         <div
-                            class="w-full md:w-1/3 aspect-video bg-white border-2 border-ink overflow-hidden cursor-pointer"
-                            onclick="openImageModal('/tracker-demo.png')"
+                            class="w-full md:w-1/3 aspect-video bg-gray-100 border-2 border-ink overflow-hidden cursor-pointer group"
+                            onclick="window.open('/tracker-demo.png', '_blank')"
                         >
                             <img
                                 src="/tracker-demo.png"
                                 alt="Tracker Interventi Dashboard"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
                             />
                         </div>
                         <div class="w-full md:w-2/3">
@@ -181,29 +313,29 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                                 </li>
                                 <li>
                                     <strong>Vantaggio:</strong> Sai sempre cosa è
-                                    stato fatto e quando. Niente "non me lo ricordo".
+                                    stato fatto e quando.
                                 </li>
                             </ul>
                             <button
-                                onclick="openImageModal('/tracker-demo.png')"
-                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
-                                >Ingrandisci Demo</button
+                                onclick="window.open('/tracker-demo.png', '_blank')"
+                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors text-xs"
+                                >Vedi Screenshot Full</button
                             >
                         </div>
                     </div>
 
                     <!-- Demo 2 -->
                     <div
-                        class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-ink"
+                        class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 border-l-8 border-ink shadow-sm hover:shadow-md transition-shadow"
                     >
                         <div
-                            class="w-full md:w-1/3 aspect-video bg-white border-2 border-ink overflow-hidden cursor-pointer"
-                            onclick="openImageModal('/asset-demo.png')"
+                            class="w-full md:w-1/3 aspect-video bg-gray-100 border-2 border-ink overflow-hidden cursor-pointer group"
+                            onclick="window.open('/asset-demo.png', '_blank')"
                         >
                             <img
                                 src="/asset-demo.png"
                                 alt="Asset Manager Inventory"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
                             />
                         </div>
                         <div class="w-full md:w-2/3">
@@ -211,9 +343,9 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                                 Gestione Asset IT (Light)
                             </h4>
                             <p class="font-serif text-lg text-gray-600 mb-4">
-                                Sai quanti computer hai? E quando scadono le
-                                garanzie? Se la risposta è "forse", ti serve
-                                questo.
+                                Sai quanti computer hai? Ti serve questo per
+                                smettere di comprare toner per stampanti buttate
+                                anni fa.
                             </p>
                             <ul
                                 class="font-mono text-sm space-y-2 mb-6 text-gray-500"
@@ -226,31 +358,27 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                                     <strong>A chi serve:</strong> Uffici con più di
                                     3 PC.
                                 </li>
-                                <li>
-                                    <strong>Vantaggio:</strong> Smetti di comprare
-                                    toner per stampanti che hai buttato due anni fa.
-                                </li>
                             </ul>
                             <button
-                                onclick="openImageModal('/asset-demo.png')"
-                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
-                                >Ingrandisci Demo</button
+                                onclick="window.open('/asset-demo.png', '_blank')"
+                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors text-xs"
+                                >Vedi Screenshot Full</button
                             >
                         </div>
                     </div>
 
                     <!-- Demo 3 -->
                     <div
-                        class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-blue-500"
+                        class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 border-l-8 border-blue-500 shadow-sm hover:shadow-md transition-shadow"
                     >
                         <div
-                            class="w-full md:w-1/3 aspect-video bg-white border-2 border-ink overflow-hidden cursor-pointer"
-                            onclick="openImageModal('/data-demo.png')"
+                            class="w-full md:w-1/3 aspect-video bg-gray-100 border-2 border-ink overflow-hidden cursor-pointer group"
+                            onclick="window.open('/data-demo.png', '_blank')"
                         >
                             <img
                                 src="/data-demo.png"
                                 alt="Data Collection Form"
-                                class="w-full h-full object-cover hover:scale-105 transition-transform"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
                             />
                         </div>
                         <div class="w-full md:w-2/3">
@@ -259,8 +387,7 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                             </h4>
                             <p class="font-serif text-lg text-gray-600 mb-4">
                                 Raccogli dati sul campo da tablet/telefono e
-                                scaricali in Excel. Basta foglietti volanti
-                                illeggibili.
+                                scaricali in Excel. Basta foglietti volanti.
                             </p>
                             <ul
                                 class="font-mono text-sm space-y-2 mb-6 text-gray-500"
@@ -271,509 +398,674 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                                 </li>
                                 <li>
                                     <strong>A chi serve:</strong> Chi fa sopralluoghi,
-                                    sondaggi, controlli qualità.
-                                </li>
-                                <li>
-                                    <strong>Vantaggio:</strong> I dati passano dal
-                                    campo al tuo PC senza doverli riscrivere.
+                                    sondaggi o controlli qualità.
                                 </li>
                             </ul>
                             <button
-                                onclick="openImageModal('/data-demo.png')"
-                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
-                                >Ingrandisci Demo</button
+                                onclick="window.open('/data-demo.png', '_blank')"
+                                class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors text-xs"
+                                >Vedi Screenshot Full</button
                             >
                         </div>
                     </div>
                 </div>
             </section>
-
-            <!-- 4) COME NASCE UNA WEB APP -->
-            <section
-                class="mb-24 bg-ink text-white p-8 md:p-16 relative overflow-hidden"
-            >
-                <div class="relative z-10">
-                    <h3
-                        class="font-sans font-black text-3xl md:text-5xl uppercase mb-8"
-                    >
-                        Come nasce una Web App?
-                    </h3>
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
-                    >
-                        <div class="relative">
-                            <div class="text-6xl mb-2 opacity-20 font-black">
-                                1
-                            </div>
-                            <h4
-                                class="text-xl font-bold uppercase text-accent mb-2"
-                            >
-                                Problema
-                            </h4>
-                            <p class="font-serif text-gray-300">
-                                "Perdo troppo tempo a fare questa cosa
-                                ripetitiva."
-                            </p>
-                        </div>
-
-                        <div class="relative">
-                            <div class="text-6xl mb-2 opacity-20 font-black">
-                                2
-                            </div>
-                            <h4
-                                class="text-xl font-bold uppercase text-accent mb-2"
-                            >
-                                Semplificazione
-                            </h4>
-                            <p class="font-serif text-gray-300">
-                                Tolgo tutto quello che non serve. Teniamo solo
-                                l'essenziale.
-                            </p>
-                        </div>
-
-                        <div class="relative">
-                            <div class="text-6xl mb-2 opacity-20 font-black">
-                                3
-                            </div>
-                            <h4
-                                class="text-xl font-bold uppercase text-accent mb-2"
-                            >
-                                Sviluppo
-                            </h4>
-                            <p class="font-serif text-gray-300">
-                                Scrivo il codice. Niente piattaforme lente, solo
-                                codice pulito.
-                            </p>
-                        </div>
-
-                        <div class="relative">
-                            <div class="text-6xl mb-2 opacity-20 font-black">
-                                4
-                            </div>
-                            <h4
-                                class="text-xl font-bold uppercase text-accent mb-2"
-                            >
-                                Consegna
-                            </h4>
-                            <p class="font-serif text-gray-300">
-                                Ti consegno lo strumento. Te lo spiego. Inizi a
-                                usarlo.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5) TRASPARENZA PREZZI -->
-            <section class="mb-12">
-                <h3
-                    class="font-mono font-bold text-2xl uppercase border-b-4 border-ink pb-2 mb-12 inline-block"
-                >
-                    Idee Chiare, Prezzi Chiari
-                </h3>
-                <div
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-                >
-                    <div
-                        class="border-2 border-gray-200 p-6 text-center hover:border-ink transition-colors"
-                    >
-                        <h5
-                            class="text-sm font-bold uppercase text-gray-500 mb-2"
-                        >
-                            Supporto Remoto
-                        </h5>
-                        <div class="text-2xl font-black text-ink">
-                            da 35 €/ora
-                        </div>
-                    </div>
-                    <div
-                        class="border-2 border-gray-200 p-6 text-center hover:border-ink transition-colors"
-                    >
-                        <h5
-                            class="text-sm font-bold uppercase text-gray-500 mb-2"
-                        >
-                            Siti Internet
-                        </h5>
-                        <div class="text-2xl font-black text-ink">da 600 €</div>
-                    </div>
-                    <div
-                        class="border-2 border-gray-200 p-6 text-center hover:border-ink transition-colors"
-                    >
-                        <h5
-                            class="text-sm font-bold uppercase text-gray-500 mb-2"
-                        >
-                            Web App su misura
-                        </h5>
-                        <div class="text-2xl font-black text-ink">da 900 €</div>
-                    </div>
-                    <div
-                        class="border-2 border-gray-200 p-6 text-center hover:border-ink transition-colors"
-                    >
-                        <h5
-                            class="text-sm font-bold uppercase text-gray-500 mb-2"
-                        >
-                            Help Desk
-                        </h5>
-                        <div class="text-2xl font-black text-ink">
-                            da 120 €/mese
-                        </div>
-                    </div>
-                </div>
-                <p
-                    class="text-center text-xs font-mono text-gray-400 mt-8 italic"
-                >
-                    I prezzi sono indicativi e dipendono dalla complessità reale
-                    (come è giusto che sia).
-                </p>
-            </section>
-
-            <!-- MODALS -->
-            <!-- 1. Diagnostic Modal -->
-            <div
-                id="diagnostic-modal"
-                class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4"
-            >
-                <div
-                    class="bg-white border-4 border-ink p-8 max-w-lg w-full shadow-neo relative"
-                >
-                    <button
-                        onclick="closeModals()"
-                        class="absolute top-2 right-2 font-black text-xl hover:text-accent"
-                        >X</button
-                    >
-                    <h4 class="font-black text-2xl uppercase mb-4">
-                        Diagnostica Rapida
-                    </h4>
-                    <div id="diag-step-1">
-                        <p class="mb-4 text-lg">
-                            Qual è il problema principale?
-                        </p>
-                        <div class="space-y-2">
-                            <button
-                                onclick="nextDiag('slow')"
-                                class="block w-full text-left p-3 border-2 border-gray-300 hover:border-ink font-mono font-bold"
-                                >1. Il PC è lento</button
-                            >
-                            <button
-                                onclick="nextDiag('wifi')"
-                                class="block w-full text-left p-3 border-2 border-gray-300 hover:border-ink font-mono font-bold"
-                                >2. Internet non va</button
-                            >
-                            <button
-                                onclick="nextDiag('other')"
-                                class="block w-full text-left p-3 border-2 border-gray-300 hover:border-ink font-mono font-bold"
-                                >3. Altro</button
-                            >
-                        </div>
-                    </div>
-                    <div id="diag-result" class="hidden">
-                        <p
-                            id="diag-message"
-                            class="mb-4 text-lg font-bold text-ink"
-                        >
-                        </p>
-                        <p class="text-sm text-gray-600 italic">
-                            Se non risolve, contattami.
-                        </p>
-                        <button
-                            onclick="resetDiag()"
-                            class="mt-4 text-sm underline">Ricomincia</button
-                        >
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2. Commands Modal -->
-            <div
-                id="commands-modal"
-                class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4"
-            >
-                <div
-                    class="bg-white border-4 border-ink p-8 max-w-lg w-full shadow-neo relative"
-                >
-                    <button
-                        onclick="closeModals()"
-                        class="absolute top-2 right-2 font-black text-xl hover:text-accent"
-                        >X</button
-                    >
-                    <h4 class="font-black text-2xl uppercase mb-4">
-                        Comandi Utili
-                    </h4>
-                    <p class="mb-4 text-sm text-gray-600">
-                        Clicca per copiare.
-                    </p>
-                    <div class="space-y-2 font-mono text-sm">
-                        <div
-                            onclick="copyCmd('sfc /scannow')"
-                            class="p-3 bg-gray-100 border border-gray-300 hover:bg-accent cursor-pointer flex justify-between"
-                        >
-                            <span>sfc /scannow</span>
-                            <span>📋</span>
-                        </div>
-                        <div
-                            onclick="copyCmd('ipconfig /flushdns')"
-                            class="p-3 bg-gray-100 border border-gray-300 hover:bg-accent cursor-pointer flex justify-between"
-                        >
-                            <span>ipconfig /flushdns</span>
-                            <span>📋</span>
-                        </div>
-                        <div
-                            onclick="copyCmd('shutdown /r /t 0')"
-                            class="p-3 bg-gray-100 border border-gray-300 hover:bg-accent cursor-pointer flex justify-between"
-                        >
-                            <span>shutdown /r /t 0</span>
-                            <span>📋</span>
-                        </div>
-                        <div
-                            onclick="copyCmd('ping 8.8.8.8 -t')"
-                            class="p-3 bg-gray-100 border border-gray-300 hover:bg-accent cursor-pointer flex justify-between"
-                        >
-                            <span>ping 8.8.8.8 -t</span>
-                            <span>📋</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. Calculator Modal -->
-            <div
-                id="calc-modal"
-                class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4"
-            >
-                <div
-                    class="bg-white border-4 border-ink p-8 max-w-lg w-full shadow-neo relative"
-                >
-                    <button
-                        onclick="closeModals()"
-                        class="absolute top-2 right-2 font-black text-xl hover:text-accent"
-                        >X</button
-                    >
-                    <h4 class="font-black text-2xl uppercase mb-4">
-                        Costo Downtime
-                    </h4>
-                    <div class="space-y-4">
-                        <div>
-                            <label
-                                class="block font-mono text-xs uppercase font-bold mb-1"
-                                >Numero Dipendenti Fermi</label
-                            >
-                            <input
-                                type="number"
-                                id="calc-emp"
-                                class="w-full border-2 border-ink p-2"
-                                value="1"
-                            />
-                        </div>
-                        <div>
-                            <label
-                                class="block font-mono text-xs uppercase font-bold mb-1"
-                                >Costo Orario Medio (€)</label
-                            >
-                            <input
-                                type="number"
-                                id="calc-rate"
-                                class="w-full border-2 border-ink p-2"
-                                value="30"
-                            />
-                        </div>
-                        <div>
-                            <label
-                                class="block font-mono text-xs uppercase font-bold mb-1"
-                                >Ore di Fermo</label
-                            >
-                            <input
-                                type="number"
-                                id="calc-hours"
-                                class="w-full border-2 border-ink p-2"
-                                value="4"
-                            />
-                        </div>
-                        <button
-                            onclick="calculateDowntime()"
-                            class="w-full bg-ink text-white font-bold py-2 uppercase hover:bg-accent hover:text-ink"
-                            >Calcola Perdita</button
-                        >
-                        <div
-                            id="calc-result"
-                            class="hidden text-center border-t-2 border-dashed border-gray-300 pt-4"
-                        >
-                            <span class="block text-sm text-gray-500"
-                                >Stai perdendo circa:</span
-                            >
-                            <span
-                                class="text-4xl font-black text-red-600"
-                                id="calc-total">€ 0</span
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. Kit Modal -->
-            <div
-                id="kit-modal"
-                class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4"
-            >
-                <div
-                    class="bg-white border-4 border-ink p-8 max-w-lg w-full shadow-neo relative"
-                >
-                    <button
-                        onclick="closeModals()"
-                        class="absolute top-2 right-2 font-black text-xl hover:text-accent"
-                        >X</button
-                    >
-                    <h4 class="font-black text-2xl uppercase mb-4">
-                        Kit Primo Soccorso
-                    </h4>
-                    <p class="mb-4 text-sm text-gray-600">
-                        Strumenti gratuiti e portatili indispensabili.
-                    </p>
-                    <ul class="list-disc pl-5 space-y-2 font-mono text-sm mb-6">
-                        <li>
-                            <a
-                                href="https://ninite.com/"
-                                target="_blank"
-                                class="text-blue-600 underline hover:text-ink"
-                                ><strong>Ninite.com</strong></a
-                            > (Installer multiplo sicuro)
-                        </li>
-                        <li>
-                            <a
-                                href="https://crystalmark.info/en/software/crystaldiskinfo/"
-                                target="_blank"
-                                class="text-blue-600 underline hover:text-ink"
-                                ><strong>CrystalDiskInfo</strong></a
-                            > (Stato di salute dischi)
-                        </li>
-                        <li>
-                            <a
-                                href="https://www.malwarebytes.com/"
-                                target="_blank"
-                                class="text-blue-600 underline hover:text-ink"
-                                ><strong>Malwarebytes</strong></a
-                            > (Scansione virus on-demand)
-                        </li>
-                    </ul>
-                    <p
-                        class="text-xs text-center border-t border-gray-200 pt-2 text-gray-500"
-                    >
-                        Link esterni a siti ufficiali.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Image Modal -->
-            <div
-                id="image-modal"
-                class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4"
-                onclick="closeModals()"
-            >
-                <div
-                    class="relative max-w-6xl w-full h-full max-h-[90vh] flex items-center justify-center"
-                >
-                    <img
-                        id="modal-img-target"
-                        src=""
-                        alt="Demo Fullscreen"
-                        class="max-w-full max-h-full object-contain border-4 border-white shadow-2xl"
-                    />
-                    <p
-                        class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white font-mono bg-black px-4 py-1"
-                    >
-                        Clicca ovunque per chiudere
-                    </p>
-                </div>
-            </div>
         </main>
-        <script is:inline>
-            // Modal Logic
-            function closeModals() {
-                document
-                    .querySelectorAll(".fixed")
-                    .forEach((el) => el.classList.add("hidden"));
-            }
-
-            function openDiagnosticModal() {
-                closeModals();
-                document
-                    .getElementById("diagnostic-modal")
-                    .classList.remove("hidden");
-                resetDiag();
-            }
-
-            function openCommandsModal() {
-                closeModals();
-                document
-                    .getElementById("commands-modal")
-                    .classList.remove("hidden");
-            }
-
-            function openCalculatorModal() {
-                closeModals();
-                document
-                    .getElementById("calc-modal")
-                    .classList.remove("hidden");
-            }
-
-            function openKitModal() {
-                closeModals();
-                document.getElementById("kit-modal").classList.remove("hidden");
-            }
-
-            function openImageModal(src) {
-                closeModals();
-                document.getElementById("modal-img-target").src = src;
-                document
-                    .getElementById("image-modal")
-                    .classList.remove("hidden");
-            }
-
-            // Diagnostic Logic
-            function nextDiag(type) {
-                document.getElementById("diag-step-1").classList.add("hidden");
-                document
-                    .getElementById("diag-result")
-                    .classList.remove("hidden");
-                const msg = document.getElementById("diag-message");
-
-                if (type === "slow") {
-                    msg.innerHTML =
-                        "Hai provato a riavviare? Sembra banale, ma risolve l'80% dei problemi di memoria o aggiornamenti pendenti.<br><br>Se persiste, controlla lo spazio su disco.";
-                } else if (type === "wifi") {
-                    msg.innerHTML =
-                        "Spegni e riaccendi il router. Aspetta 60 secondi reali prima di riaccenderlo. No, 10 secondi non bastano.";
-                } else {
-                    msg.innerHTML =
-                        "Per problemi complessi serve un'analisi. Scrivimi i dettagli via email o prenota una chiamata.";
-                }
-            }
-
-            function resetDiag() {
-                document
-                    .getElementById("diag-step-1")
-                    .classList.remove("hidden");
-                document.getElementById("diag-result").classList.add("hidden");
-            }
-
-            // Command Logic
-            function copyCmd(text) {
-                navigator.clipboard.writeText(text);
-                alert("Comando copiato: " + text);
-            }
-
-            // Calculator Logic
-            function calculateDowntime() {
-                const emp = document.getElementById("calc-emp").value;
-                const rate = document.getElementById("calc-rate").value;
-                const hours = document.getElementById("calc-hours").value;
-                const total = emp * rate * hours;
-
-                document
-                    .getElementById("calc-result")
-                    .classList.remove("hidden");
-                document.getElementById("calc-total").innerText =
-                    "€ " + total.toLocaleString();
-            }
-        </script>
     </div>
+
+    <script is:inline>
+        // --- DATA: DIAGNOSTICA ---
+        const diagnosticData = [
+            {
+                id: "slow-pc",
+                label: "PC Lento / Rallentato",
+                severity: "Bassa",
+                questions: [
+                    {
+                        id: "restart",
+                        text: "Hai riavviato il PC nelle ultime 24 ore?",
+                        type: "radio",
+                    },
+                    {
+                        id: "updates",
+                        text: "Ci sono aggiornamenti di Windows in sospeso?",
+                        type: "radio",
+                    },
+                    {
+                        id: "disk",
+                        text: "Il disco C: è quasi pieno (barra rossa)?",
+                        type: "radio",
+                    },
+                    {
+                        id: "startup",
+                        text: "Hai molte app che si avviano da sole?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "crash",
+                label: "PC si blocca o riavvia (BSOD)",
+                severity: "Alta",
+                questions: [
+                    {
+                        id: "bsod",
+                        text: "Vedi una schermata blu con scritte bianche?",
+                        type: "radio",
+                    },
+                    {
+                        id: "heat",
+                        text: "Il PC scotta al tatto o le ventole girano al massimo?",
+                        type: "radio",
+                    },
+                    {
+                        id: "new-hw",
+                        text: "Hai collegato nuovi dispositivi USB recentemente?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "wifi",
+                label: "Wi-Fi Instabile / Cade",
+                severity: "Media",
+                questions: [
+                    {
+                        id: "router",
+                        text: "Hai riavviato il modem/router (spento per 60s)?",
+                        type: "radio",
+                    },
+                    {
+                        id: "distance",
+                        text: "Il problema persiste anche stando vicino al router?",
+                        type: "radio",
+                    },
+                    {
+                        id: "device",
+                        text: "Succede su tutti i dispositivi o solo su questo?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "updates",
+                label: "Problemi post-aggiornamento Windows",
+                severity: "Media",
+                questions: [
+                    {
+                        id: "kb",
+                        text: "Il PC si è aggiornato oggi o ieri?",
+                        type: "radio",
+                    },
+                    {
+                        id: "error-msg",
+                        text: "Vedi messaggi di errore specifici all'avvio?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "internet",
+                label: "Internet Lento / DNS",
+                severity: "Bassa",
+                questions: [
+                    {
+                        id: "speedtest",
+                        text: "Lo speedtest è molto più basso del solito?",
+                        type: "radio",
+                    },
+                    {
+                        id: "websites",
+                        text: "Alcuni siti non si aprono proprio?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "email",
+                label: "Email (Invio/Ricezione/Spazio)",
+                severity: "Media",
+                questions: [
+                    {
+                        id: "webmail",
+                        text: "Dalla webmail (browser) funziona tutto?",
+                        type: "radio",
+                    },
+                    {
+                        id: "attachment",
+                        text: "Stai inviando allegati pesanti (>10MB)?",
+                        type: "radio",
+                    },
+                    {
+                        id: "full",
+                        text: "Hai ricevuto avvisi di casella piena?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "backup",
+                label: "Backup Dati (Mai verificato)",
+                severity: "Alta",
+                questions: [
+                    {
+                        id: "external",
+                        text: "Hai un disco esterno collegato?",
+                        type: "radio",
+                    },
+                    {
+                        id: "cloud",
+                        text: "Usi un sistema cloud (Drive/Dropbox)?",
+                        type: "radio",
+                    },
+                    {
+                        id: "test",
+                        text: "Hai mai provato ad aprire un file dal backup?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "disk-space",
+                label: "Spazio Disco Insufficiente",
+                severity: "Media",
+                questions: [
+                    {
+                        id: "trash",
+                        text: "Hai svuotato il cestino?",
+                        type: "radio",
+                    },
+                    {
+                        id: "downloads",
+                        text: "La cartella Download è piena di file vecchi?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "account",
+                label: "Accesso / Password / Account",
+                severity: "Alta",
+                questions: [
+                    {
+                        id: "caps",
+                        text: "Il tasto Bloc Maiusc è attivo?",
+                        type: "radio",
+                    },
+                    {
+                        id: "keyboard",
+                        text: "La tastiera scrive i caratteri giusti (prova su note)?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "printer",
+                label: "Stampante non funziona",
+                severity: "Bassa",
+                questions: [
+                    {
+                        id: "cable",
+                        text: "È collegata (USB o Wi-Fi) e accesa?",
+                        type: "radio",
+                    },
+                    {
+                        id: "paper",
+                        text: "C'è carta e inchiostro?",
+                        type: "radio",
+                    },
+                    {
+                        id: "queue",
+                        text: "C'è una coda di stampa bloccata?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "cloud-sync",
+                label: "Cloud Sync (OneDrive/Drive)",
+                severity: "Media",
+                questions: [
+                    {
+                        id: "icon",
+                        text: "L'icona del cloud è grigia o ha una X rossa?",
+                        type: "radio",
+                    },
+                    {
+                        id: "space",
+                        text: "Lo spazio online è esaurito?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "sw-license",
+                label: "Software non parte / Licenze",
+                severity: "Media",
+                questions: [
+                    {
+                        id: "error",
+                        text: "C'è un messaggio di errore specifico?",
+                        type: "radio",
+                    },
+                    {
+                        id: "sub",
+                        text: "L'abbonamento è scaduto?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "app-slow",
+                label: "Lentezza App Specifica",
+                severity: "Bassa",
+                questions: [
+                    {
+                        id: "update",
+                        text: "L'app è aggiornata all'ultima versione?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "security",
+                label: "Sicurezza Base",
+                severity: "Alta",
+                questions: [
+                    {
+                        id: "antivirus",
+                        text: "L'antivirus è attivo e aggiornato?",
+                        type: "radio",
+                    },
+                    {
+                        id: "scan",
+                        text: "Hai fatto una scansione completa recentemente?",
+                        type: "radio",
+                    },
+                ],
+            },
+            {
+                id: "corp-pc",
+                label: "PC Aziendale (Permessi)",
+                severity: "Alta",
+                questions: [
+                    {
+                        id: "admin",
+                        text: "Hai i permessi di amministratore?",
+                        type: "radio",
+                    },
+                    {
+                        id: "vpn",
+                        text: "Sei connesso alla VPN aziendale?",
+                        type: "radio",
+                    },
+                ],
+            },
+        ];
+
+        // --- DATA: COMANDI ---
+        const commandsData = [
+            {
+                cmd: "systeminfo",
+                desc: "Mostra tutto sul tuo PC: data installazione Windows, modello, RAM, e uptime.",
+                usage: "Utile per sapere esattamente che macchina hai davanti.",
+            },
+            {
+                cmd: "ipconfig /all",
+                desc: "Dettagli completi della rete. IP, MAC address, DNS.",
+                usage: "Fondamentale per problemi di rete e Wi-Fi.",
+            },
+            {
+                cmd: "ping 8.8.8.8",
+                desc: "Controlla se raggiungi Google. Se fallisce, non hai internet.",
+                usage: "Il test base di connettività.",
+            },
+            {
+                cmd: "tracert google.com",
+                desc: "Mostra la strada che fanno i tuoi dati. Vedi dove si bloccano.",
+                usage: "Per capire se è colpa tua o del provider.",
+            },
+            {
+                cmd: "nslookup google.com",
+                desc: "Testa se il DNS funziona (traduce nomi in IP).",
+                usage: "Se internet va ma i siti non si aprono.",
+            },
+            {
+                cmd: "netstat -an",
+                desc: "Vedi tutte le connessioni attive del tuo PC.",
+                usage: "Per scovare spyware o connessioni sospette.",
+            },
+            {
+                cmd: "tasklist",
+                desc: "Elenco di tutti i processi attivi.",
+                usage: "Come Gestione Attività, ma testuale ed esportabile.",
+            },
+            {
+                cmd: "wmic diskdrive get status",
+                desc: "Chiede al disco fisso se sta bene (S.M.A.R.T.).",
+                usage: "Risposta rapida: OK o Pred Fail (corri a fare backup!).",
+            },
+            {
+                cmd: "chkdsk C: /scan",
+                desc: "Scansiona il disco per errori senza riavviare.",
+                usage: "Controllo salute file system.",
+            },
+            {
+                cmd: "sfc /scannow",
+                desc: "Ripara i file di sistema di Windows corrotti.",
+                usage: 'Il "paracetamolo" di Windows: risolve tanti piccoli guai. (Richiede Admin)',
+            },
+            {
+                cmd: "dism /online /cleanup-image /restorehealth",
+                desc: "Ripara l'immagine di Windows usando Windows Update.",
+                usage: "Se sfc fallisce, si usa questo. (Richiede Admin)",
+            },
+            {
+                cmd: "powercfg /energy",
+                desc: "Analizza l'efficienza energetica e la batteria.",
+                usage: "Genera un report HTML dettagliato sul consumo.",
+            },
+            {
+                cmd: 'wevtutil qe system /c:20 /f:text /q:"*[System[(Level=2)]]"',
+                desc: "Legge gli ultimi 20 errori critici dal registro eventi.",
+                usage: "Cosa è successo prima del crash?",
+            },
+            {
+                cmd: "net use",
+                desc: "Mostra le cartelle di rete connesse.",
+                usage: "Utile in azienda per problemi di accesso ai file condivisi.",
+            },
+            {
+                cmd: "driverquery",
+                desc: "Elenca tutti i driver installati.",
+                usage: "Per capire se un driver specifico manca o è vecchio.",
+            },
+        ];
+
+        // --- DATA: KIT ---
+        const kitData = [
+            {
+                category: "Hardware",
+                items: [
+                    {
+                        name: "CrystalDiskInfo",
+                        desc: "Controlla la salute del disco fisso (SMART).",
+                        use: "Se il PC è lento o fa rumori strani.",
+                        caution: "Nessuna.",
+                        link: "https://crystalmark.info/en/software/crystaldiskinfo/",
+                    },
+                    {
+                        name: "HWMonitor",
+                        desc: "Vedi temperature e voltaggi in tempo reale.",
+                        use: "Se il PC si spegne da solo o le ventole urlano.",
+                        caution: "Interpretare i dati richiede esperienza.",
+                        link: "https://www.cpuid.com/softwares/hwmonitor.html",
+                    },
+                    {
+                        name: "CPU-Z",
+                        desc: "Dettagli su Processore, RAM e Scheda Madre.",
+                        use: "Per sapere cosa comprare per l'upgrade.",
+                        caution: "Nessuna.",
+                        link: "https://www.cpuid.com/softwares/cpu-z.html",
+                    },
+                ],
+            },
+            {
+                category: "Pulizia",
+                items: [
+                    {
+                        name: "BleachBit",
+                        desc: "Pulisce file inutili e cache (alternativa open a CCleaner).",
+                        use: "Per liberare spazio disco.",
+                        caution:
+                            "Attento a non cancellare cookie/password salvate se ti servono.",
+                        link: "https://www.bleachbit.org/",
+                    },
+                    {
+                        name: "Autoruns",
+                        desc: "Gestione avanzata avvio automatico.",
+                        use: "Per rimuovere malware o bloatware che parte all'avvio.",
+                        caution:
+                            "PUOI ROMPERE WINDOWS. Disabilita solo ciò che conosci.",
+                        link: "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
+                    },
+                ],
+            },
+            {
+                category: "Sicurezza",
+                items: [
+                    {
+                        name: "Malwarebytes",
+                        desc: "Scanner anti-malware on-demand.",
+                        use: "Se pensi di avere un virus.",
+                        caution:
+                            "La versione free va benissimo per scansioni manuali.",
+                        link: "https://www.malwarebytes.com/",
+                    },
+                    {
+                        name: "AdwCleaner",
+                        desc: "Rimuove adware e toolbar fastidiose.",
+                        use: "Se il browser apre pagine strane.",
+                        caution: "Nessuna.",
+                        link: "https://www.malwarebytes.com/adwcleaner",
+                    },
+                ],
+            },
+            {
+                category: "Utility",
+                items: [
+                    {
+                        name: "7-Zip",
+                        desc: "Apre qualsiasi archivio compresso.",
+                        use: "Sempre.",
+                        caution: "Nessuna.",
+                        link: "https://www.7-zip.org/",
+                    },
+                    {
+                        name: "Everything",
+                        desc: "Cerca file istantaneamente.",
+                        use: "Quando Windows Search non trova nulla.",
+                        caution: "Trova ANCHE i file di sistema nascosti.",
+                        link: "https://www.voidtools.com/",
+                    },
+                ],
+            },
+        ];
+
+        // --- LOGIC ---
+
+        // Tabs
+        function switchTab(tabId) {
+            document
+                .querySelectorAll(".tab-content")
+                .forEach((el) => el.classList.add("hidden"));
+            document
+                .getElementById("section-" + tabId)
+                .classList.remove("hidden");
+
+            document.querySelectorAll(".tab-btn").forEach((el) => {
+                el.classList.remove("bg-ink", "text-white");
+                el.classList.add("bg-white", "text-ink");
+            });
+            const activeBtn = document.getElementById("tab-" + tabId);
+            activeBtn.classList.remove("bg-white", "text-ink");
+            activeBtn.classList.add("bg-ink", "text-white");
+        }
+
+        // Diagnostica init
+        function initDiagnostica() {
+            const list = document.getElementById("problem-list");
+            list.innerHTML = "";
+            diagnosticData.forEach((item) => {
+                const btn = document.createElement("button");
+                btn.className =
+                    "w-full text-left p-3 hover:bg-gray-100 border-l-4 border-transparent hover:border-accent transition-all text-sm font-medium";
+                btn.innerText = item.label;
+                btn.onclick = () => loadWizard(item);
+                list.appendChild(btn);
+            });
+        }
+
+        let currentDiag = null;
+
+        function loadWizard(item) {
+            currentDiag = item;
+            document.getElementById("wizard-start").classList.add("hidden");
+            document
+                .getElementById("wizard-content")
+                .classList.remove("hidden");
+
+            document.getElementById("wizard-title").innerText = item.label;
+            const badge = document.getElementById("wizard-severity");
+            badge.innerText = "Priorità: " + item.severity;
+            badge.className =
+                "px-3 py-1 rounded-full text-xs font-bold uppercase border border-ink text-white " +
+                (item.severity === "Alta"
+                    ? "bg-red-600"
+                    : item.severity === "Media"
+                      ? "bg-yellow-500 text-ink"
+                      : "bg-green-600");
+
+            const form = document.getElementById("wizard-form");
+            form.innerHTML = "";
+
+            item.questions.forEach((q, idx) => {
+                const div = document.createElement("div");
+                div.className = "bg-gray-50 p-4 rounded border border-gray-200";
+                div.innerHTML = `
+                <p class="font-bold mb-2 text-sm">${idx + 1}. ${q.text}</p>
+                <div class="flex gap-4">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="${q.id}" value="Sì" onchange="updateOutput()" class="accent-ink"> Sì
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="${q.id}" value="No" onchange="updateOutput()" class="accent-ink"> No
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="${q.id}" value="Non so" onchange="updateOutput()" class="accent-ink"> Non so
+                    </label>
+                </div>
+            `;
+                form.appendChild(div);
+            });
+            updateOutput();
+        }
+
+        function updateOutput() {
+            if (!currentDiag) return;
+            const inputs = document.querySelectorAll(
+                "#wizard-form input:checked",
+            );
+            let text = `DIAGNOSI GUIDATA - LABORATIORIO SIM\n`;
+            text += `Problema: ${currentDiag.label} (Priorità: ${currentDiag.severity})\n`;
+            text += `Data: ${new Date().toLocaleString()}\n\n`;
+            text += `RISPOSTE:\n`;
+
+            inputs.forEach((input) => {
+                const qText = input
+                    .closest("div")
+                    .parentElement.querySelector("p").innerText;
+                text += `- ${qText} -> ${input.value}\n`;
+            });
+
+            text += `\nCONSIGLIO AUTOMATICO:\n`;
+            // Logica molto semplice per demo
+            const yesCount = Array.from(inputs).filter(
+                (i) => i.value === "Sì",
+            ).length;
+            if (yesCount > 0) {
+                text += `Hai risposto 'Sì' ad alcune verifiche critiche. Questo indica un problema specifico già isolato. `;
+                if (currentDiag.severity === "Alta")
+                    text += `Ti consiglio di spegnere il dispositivo e contattare l'assistenza.`;
+                else
+                    text += `Potrebbe essere risolvibile con una manutenzione standard.`;
+            } else {
+                text += `Le verifiche di base non hanno evidenziato cause ovvie. Serve un'analisi più approfondita dei log.`;
+            }
+
+            document.getElementById("wizard-output").innerText = text;
+        }
+
+        function copyDiagnostic() {
+            const text = document.getElementById("wizard-output").innerText;
+            navigator.clipboard.writeText(text);
+            alert("Diagnosi copiata negli appunti!");
+        }
+
+        function downloadDiagnostic() {
+            const text = document.getElementById("wizard-output").innerText;
+            const blob = new Blob([text], { type: "text/plain" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = `Diagnosi_${currentDiag.id}.txt`;
+            a.click();
+        }
+
+        // Comandi init
+        function initComandi() {
+            const list = document.getElementById("commands-list");
+            list.innerHTML = "";
+            commandsData.forEach((cmd) => {
+                const div = document.createElement("div");
+                div.className =
+                    "bg-gray-50 p-4 border-l-4 border-ink hover:bg-gray-100 transition-colors group";
+                div.innerHTML = `
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div class="font-mono font-bold text-lg bg-gray-200 px-2 py-1 select-all">${cmd.cmd}</div>
+                    <button onclick="copyCommand('${cmd.cmd}')" class="text-xs uppercase font-bold bg-white border border-gray-400 px-2 py-1 hover:bg-ink hover:text-white transition-colors">Copia</button>
+                </div>
+                <p class="text-sm font-bold mt-2 text-ink">${cmd.desc}</p>
+                <p class="text-xs text-gray-500 italic mt-1 font-serif">${cmd.usage}</p>
+            `;
+                list.appendChild(div);
+            });
+        }
+
+        function copyCommand(text) {
+            navigator.clipboard.writeText(text);
+            // Feedback visivo rapido pulsante/ui opzionale
+        }
+
+        function copyTerminal() {
+            const text = document.getElementById("terminal-paste-area").value;
+            if (!text) return;
+            navigator.clipboard.writeText(text);
+            alert("Contenuto terminale copiato!");
+        }
+
+        // Kit init
+        function initKit() {
+            const grid = document.getElementById("kit-grid");
+            grid.innerHTML = "";
+            kitData.forEach((cat) => {
+                const col = document.createElement("div");
+                col.className = "space-y-4";
+                col.innerHTML = `<h3 class="font-black text-xl uppercase border-b-2 border-gray-300 pb-2">${cat.category}</h3>`;
+
+                cat.items.forEach((tool) => {
+                    const card = document.createElement("div");
+                    card.className =
+                        "bg-gray-50 p-4 border border-gray-200 hover:shadow-md transition-shadow relative";
+                    card.innerHTML = `
+                    <h4 class="font-bold text-lg text-ink mb-1 flex justify-between">
+                        ${tool.name}
+                        <a href="${tool.link}" target="_blank" class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded hover:bg-blue-200">WEB ↗</a>
+                    </h4>
+                    <p class="text-sm font-medium mb-2">${tool.desc}</p>
+                    <div class="text-xs text-gray-600 space-y-1 bg-white p-2 border border-gray-100">
+                        <p><span class="font-bold text-green-700">✓ QUANDO:</span> ${tool.use}</p>
+                        ${tool.caution !== "Nessuna." ? `<p><span class="font-bold text-red-600">⚠ CAUTELA:</span> ${tool.caution}</p>` : ""}
+                    </div>
+                `;
+                    col.appendChild(card);
+                });
+                grid.appendChild(col);
+            });
+        }
+
+        // Start
+        initDiagnostica();
+        initComandi();
+        initKit();
+    </script>
 </Layout>
