@@ -44,9 +44,10 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                 <div
                     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
                 >
-                    <!-- Tool 1 -->
+                    <!-- Tool 1: Diagnostica -->
                     <div
-                        class="bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
+                        onclick="openDiagnosticModal()"
+                        class="cursor-pointer bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
                     >
                         <div
                             class="text-4xl mb-4 group-hover:scale-110 transition-transform"
@@ -62,13 +63,14 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                         </p>
                         <span
                             class="font-mono text-xs font-bold text-accent uppercase"
-                            >Coming Soon</span
+                            >Avvia ></span
                         >
                     </div>
 
-                    <!-- Tool 2 -->
+                    <!-- Tool 2: Comandi -->
                     <div
-                        class="bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
+                        onclick="openCommandsModal()"
+                        class="cursor-pointer bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
                     >
                         <div
                             class="text-4xl mb-4 group-hover:scale-110 transition-transform"
@@ -84,13 +86,14 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                         </p>
                         <span
                             class="font-mono text-xs font-bold text-accent uppercase"
-                            >Coming Soon</span
+                            >Apri ></span
                         >
                     </div>
 
-                    <!-- Tool 3 -->
+                    <!-- Tool 3: Calcolatore -->
                     <div
-                        class="bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
+                        onclick="openCalculatorModal()"
+                        class="cursor-pointer bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
                     >
                         <div
                             class="text-4xl mb-4 group-hover:scale-110 transition-transform"
@@ -101,18 +104,19 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                             Calcolatori Pratici
                         </h4>
                         <p class="text-sm text-gray-600 mb-4">
-                            Quanto tempo ci vuole per il backup? Quanto ti costa
-                            un'ora di fermo? Calcolalo qui.
+                            Quanto ti costa un'ora di fermo aziendale? Calcolalo
+                            subito qui.
                         </p>
                         <span
                             class="font-mono text-xs font-bold text-accent uppercase"
-                            >Coming Soon</span
+                            >Calcola ></span
                         >
                     </div>
 
-                    <!-- Tool 4 -->
+                    <!-- Tool 4: Kit -->
                     <div
-                        class="bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
+                        onclick="openKitModal()"
+                        class="cursor-pointer bg-white border-2 border-ink p-6 shadow-neo-sm hover:shadow-neo transition-all group"
                     >
                         <div
                             class="text-4xl mb-4 group-hover:scale-110 transition-transform"
@@ -123,12 +127,12 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                             Kit Primo Soccorso
                         </h4>
                         <p class="text-sm text-gray-600 mb-4">
-                            Una selezione di software gratuiti e sicuri per le
-                            emergenze più comuni.
+                            Una selezione curata di software gratuiti e sicuri
+                            per le emergenze.
                         </p>
                         <span
                             class="font-mono text-xs font-bold text-accent uppercase"
-                            >Download</span
+                            >Vedi Lista ></span
                         >
                     </div>
                 </div>
@@ -147,9 +151,14 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                         class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-accent"
                     >
                         <div
-                            class="w-full md:w-1/3 aspect-video bg-gray-200 flex items-center justify-center font-mono text-xs text-gray-400 border-2 border-dashed border-gray-400"
+                            class="w-full md:w-1/3 aspect-video bg-white border-2 border-ink overflow-hidden cursor-pointer"
+                            onclick="openImageModal('/tracker-demo.png')"
                         >
-                            [SCREENSHOT INTERFACCIA]
+                            <img
+                                src="/tracker-demo.png"
+                                alt="Tracker Interventi Dashboard"
+                                class="w-full h-full object-cover hover:scale-105 transition-transform"
+                            />
                         </div>
                         <div class="w-full md:w-2/3">
                             <h4 class="font-black text-2xl uppercase mb-2">
@@ -176,8 +185,9 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                                 </li>
                             </ul>
                             <button
+                                onclick="openImageModal('/tracker-demo.png')"
                                 class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
-                                >Vedi Demo</button
+                                >Ingrandisci Demo</button
                             >
                         </div>
                     </div>
@@ -187,9 +197,14 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                         class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-ink"
                     >
                         <div
-                            class="w-full md:w-1/3 aspect-video bg-gray-200 flex items-center justify-center font-mono text-xs text-gray-400 border-2 border-dashed border-gray-400"
+                            class="w-full md:w-1/3 aspect-video bg-white border-2 border-ink overflow-hidden cursor-pointer"
+                            onclick="openImageModal('/asset-demo.png')"
                         >
-                            [SCREENSHOT GESTIONALE]
+                            <img
+                                src="/asset-demo.png"
+                                alt="Asset Manager Inventory"
+                                class="w-full h-full object-cover hover:scale-105 transition-transform"
+                            />
                         </div>
                         <div class="w-full md:w-2/3">
                             <h4 class="font-black text-2xl uppercase mb-2">
@@ -217,8 +232,9 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                                 </li>
                             </ul>
                             <button
+                                onclick="openImageModal('/asset-demo.png')"
                                 class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
-                                >Vedi Demo</button
+                                >Ingrandisci Demo</button
                             >
                         </div>
                     </div>
@@ -228,9 +244,14 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                         class="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-8 border-l-8 border-blue-500"
                     >
                         <div
-                            class="w-full md:w-1/3 aspect-video bg-gray-200 flex items-center justify-center font-mono text-xs text-gray-400 border-2 border-dashed border-gray-400"
+                            class="w-full md:w-1/3 aspect-video bg-white border-2 border-ink overflow-hidden cursor-pointer"
+                            onclick="openImageModal('/data-demo.png')"
                         >
-                            [SCREENSHOT DATA]
+                            <img
+                                src="/data-demo.png"
+                                alt="Data Collection Form"
+                                class="w-full h-full object-cover hover:scale-105 transition-transform"
+                            />
                         </div>
                         <div class="w-full md:w-2/3">
                             <h4 class="font-black text-2xl uppercase mb-2">
@@ -258,8 +279,9 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                                 </li>
                             </ul>
                             <button
+                                onclick="openImageModal('/data-demo.png')"
                                 class="bg-white border-2 border-ink px-4 py-2 font-bold uppercase hover:bg-ink hover:text-white transition-colors"
-                                >Vedi Demo</button
+                                >Ingrandisci Demo</button
                             >
                         </div>
                     </div>
@@ -404,6 +426,354 @@ import RansomwareSimulator from "../components/simulators/RansomwareSimulator.as
                     (come è giusto che sia).
                 </p>
             </section>
+
+            <!-- MODALS -->
+            <!-- 1. Diagnostic Modal -->
+            <div
+                id="diagnostic-modal"
+                class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4"
+            >
+                <div
+                    class="bg-white border-4 border-ink p-8 max-w-lg w-full shadow-neo relative"
+                >
+                    <button
+                        onclick="closeModals()"
+                        class="absolute top-2 right-2 font-black text-xl hover:text-accent"
+                        >X</button
+                    >
+                    <h4 class="font-black text-2xl uppercase mb-4">
+                        Diagnostica Rapida
+                    </h4>
+                    <div id="diag-step-1">
+                        <p class="mb-4 text-lg">
+                            Qual è il problema principale?
+                        </p>
+                        <div class="space-y-2">
+                            <button
+                                onclick="nextDiag('slow')"
+                                class="block w-full text-left p-3 border-2 border-gray-300 hover:border-ink font-mono font-bold"
+                                >1. Il PC è lento</button
+                            >
+                            <button
+                                onclick="nextDiag('wifi')"
+                                class="block w-full text-left p-3 border-2 border-gray-300 hover:border-ink font-mono font-bold"
+                                >2. Internet non va</button
+                            >
+                            <button
+                                onclick="nextDiag('other')"
+                                class="block w-full text-left p-3 border-2 border-gray-300 hover:border-ink font-mono font-bold"
+                                >3. Altro</button
+                            >
+                        </div>
+                    </div>
+                    <div id="diag-result" class="hidden">
+                        <p
+                            id="diag-message"
+                            class="mb-4 text-lg font-bold text-ink"
+                        >
+                        </p>
+                        <p class="text-sm text-gray-600 italic">
+                            Se non risolve, contattami.
+                        </p>
+                        <button
+                            onclick="resetDiag()"
+                            class="mt-4 text-sm underline">Ricomincia</button
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Commands Modal -->
+            <div
+                id="commands-modal"
+                class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4"
+            >
+                <div
+                    class="bg-white border-4 border-ink p-8 max-w-lg w-full shadow-neo relative"
+                >
+                    <button
+                        onclick="closeModals()"
+                        class="absolute top-2 right-2 font-black text-xl hover:text-accent"
+                        >X</button
+                    >
+                    <h4 class="font-black text-2xl uppercase mb-4">
+                        Comandi Utili
+                    </h4>
+                    <p class="mb-4 text-sm text-gray-600">
+                        Clicca per copiare.
+                    </p>
+                    <div class="space-y-2 font-mono text-sm">
+                        <div
+                            onclick="copyCmd('sfc /scannow')"
+                            class="p-3 bg-gray-100 border border-gray-300 hover:bg-accent cursor-pointer flex justify-between"
+                        >
+                            <span>sfc /scannow</span>
+                            <span>📋</span>
+                        </div>
+                        <div
+                            onclick="copyCmd('ipconfig /flushdns')"
+                            class="p-3 bg-gray-100 border border-gray-300 hover:bg-accent cursor-pointer flex justify-between"
+                        >
+                            <span>ipconfig /flushdns</span>
+                            <span>📋</span>
+                        </div>
+                        <div
+                            onclick="copyCmd('shutdown /r /t 0')"
+                            class="p-3 bg-gray-100 border border-gray-300 hover:bg-accent cursor-pointer flex justify-between"
+                        >
+                            <span>shutdown /r /t 0</span>
+                            <span>📋</span>
+                        </div>
+                        <div
+                            onclick="copyCmd('ping 8.8.8.8 -t')"
+                            class="p-3 bg-gray-100 border border-gray-300 hover:bg-accent cursor-pointer flex justify-between"
+                        >
+                            <span>ping 8.8.8.8 -t</span>
+                            <span>📋</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Calculator Modal -->
+            <div
+                id="calc-modal"
+                class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4"
+            >
+                <div
+                    class="bg-white border-4 border-ink p-8 max-w-lg w-full shadow-neo relative"
+                >
+                    <button
+                        onclick="closeModals()"
+                        class="absolute top-2 right-2 font-black text-xl hover:text-accent"
+                        >X</button
+                    >
+                    <h4 class="font-black text-2xl uppercase mb-4">
+                        Costo Downtime
+                    </h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label
+                                class="block font-mono text-xs uppercase font-bold mb-1"
+                                >Numero Dipendenti Fermi</label
+                            >
+                            <input
+                                type="number"
+                                id="calc-emp"
+                                class="w-full border-2 border-ink p-2"
+                                value="1"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block font-mono text-xs uppercase font-bold mb-1"
+                                >Costo Orario Medio (€)</label
+                            >
+                            <input
+                                type="number"
+                                id="calc-rate"
+                                class="w-full border-2 border-ink p-2"
+                                value="30"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block font-mono text-xs uppercase font-bold mb-1"
+                                >Ore di Fermo</label
+                            >
+                            <input
+                                type="number"
+                                id="calc-hours"
+                                class="w-full border-2 border-ink p-2"
+                                value="4"
+                            />
+                        </div>
+                        <button
+                            onclick="calculateDowntime()"
+                            class="w-full bg-ink text-white font-bold py-2 uppercase hover:bg-accent hover:text-ink"
+                            >Calcola Perdita</button
+                        >
+                        <div
+                            id="calc-result"
+                            class="hidden text-center border-t-2 border-dashed border-gray-300 pt-4"
+                        >
+                            <span class="block text-sm text-gray-500"
+                                >Stai perdendo circa:</span
+                            >
+                            <span
+                                class="text-4xl font-black text-red-600"
+                                id="calc-total">€ 0</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Kit Modal -->
+            <div
+                id="kit-modal"
+                class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4"
+            >
+                <div
+                    class="bg-white border-4 border-ink p-8 max-w-lg w-full shadow-neo relative"
+                >
+                    <button
+                        onclick="closeModals()"
+                        class="absolute top-2 right-2 font-black text-xl hover:text-accent"
+                        >X</button
+                    >
+                    <h4 class="font-black text-2xl uppercase mb-4">
+                        Kit Primo Soccorso
+                    </h4>
+                    <p class="mb-4 text-sm text-gray-600">
+                        Strumenti gratuiti e portatili indispensabili.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 font-mono text-sm mb-6">
+                        <li>
+                            <a
+                                href="https://ninite.com/"
+                                target="_blank"
+                                class="text-blue-600 underline hover:text-ink"
+                                ><strong>Ninite.com</strong></a
+                            > (Installer multiplo sicuro)
+                        </li>
+                        <li>
+                            <a
+                                href="https://crystalmark.info/en/software/crystaldiskinfo/"
+                                target="_blank"
+                                class="text-blue-600 underline hover:text-ink"
+                                ><strong>CrystalDiskInfo</strong></a
+                            > (Stato di salute dischi)
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.malwarebytes.com/"
+                                target="_blank"
+                                class="text-blue-600 underline hover:text-ink"
+                                ><strong>Malwarebytes</strong></a
+                            > (Scansione virus on-demand)
+                        </li>
+                    </ul>
+                    <p
+                        class="text-xs text-center border-t border-gray-200 pt-2 text-gray-500"
+                    >
+                        Link esterni a siti ufficiali.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Image Modal -->
+            <div
+                id="image-modal"
+                class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4"
+                onclick="closeModals()"
+            >
+                <div
+                    class="relative max-w-6xl w-full h-full max-h-[90vh] flex items-center justify-center"
+                >
+                    <img
+                        id="modal-img-target"
+                        src=""
+                        alt="Demo Fullscreen"
+                        class="max-w-full max-h-full object-contain border-4 border-white shadow-2xl"
+                    />
+                    <p
+                        class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white font-mono bg-black px-4 py-1"
+                    >
+                        Clicca ovunque per chiudere
+                    </p>
+                </div>
+            </div>
         </main>
+        <script is:inline>
+            // Modal Logic
+            function closeModals() {
+                document
+                    .querySelectorAll(".fixed")
+                    .forEach((el) => el.classList.add("hidden"));
+            }
+
+            function openDiagnosticModal() {
+                closeModals();
+                document
+                    .getElementById("diagnostic-modal")
+                    .classList.remove("hidden");
+                resetDiag();
+            }
+
+            function openCommandsModal() {
+                closeModals();
+                document
+                    .getElementById("commands-modal")
+                    .classList.remove("hidden");
+            }
+
+            function openCalculatorModal() {
+                closeModals();
+                document
+                    .getElementById("calc-modal")
+                    .classList.remove("hidden");
+            }
+
+            function openKitModal() {
+                closeModals();
+                document.getElementById("kit-modal").classList.remove("hidden");
+            }
+
+            function openImageModal(src) {
+                closeModals();
+                document.getElementById("modal-img-target").src = src;
+                document
+                    .getElementById("image-modal")
+                    .classList.remove("hidden");
+            }
+
+            // Diagnostic Logic
+            function nextDiag(type) {
+                document.getElementById("diag-step-1").classList.add("hidden");
+                document
+                    .getElementById("diag-result")
+                    .classList.remove("hidden");
+                const msg = document.getElementById("diag-message");
+
+                if (type === "slow") {
+                    msg.innerHTML =
+                        "Hai provato a riavviare? Sembra banale, ma risolve l'80% dei problemi di memoria o aggiornamenti pendenti.<br><br>Se persiste, controlla lo spazio su disco.";
+                } else if (type === "wifi") {
+                    msg.innerHTML =
+                        "Spegni e riaccendi il router. Aspetta 60 secondi reali prima di riaccenderlo. No, 10 secondi non bastano.";
+                } else {
+                    msg.innerHTML =
+                        "Per problemi complessi serve un'analisi. Scrivimi i dettagli via email o prenota una chiamata.";
+                }
+            }
+
+            function resetDiag() {
+                document
+                    .getElementById("diag-step-1")
+                    .classList.remove("hidden");
+                document.getElementById("diag-result").classList.add("hidden");
+            }
+
+            // Command Logic
+            function copyCmd(text) {
+                navigator.clipboard.writeText(text);
+                alert("Comando copiato: " + text);
+            }
+
+            // Calculator Logic
+            function calculateDowntime() {
+                const emp = document.getElementById("calc-emp").value;
+                const rate = document.getElementById("calc-rate").value;
+                const hours = document.getElementById("calc-hours").value;
+                const total = emp * rate * hours;
+
+                document
+                    .getElementById("calc-result")
+                    .classList.remove("hidden");
+                document.getElementById("calc-total").innerText =
+                    "€ " + total.toLocaleString();
+            }
+        </script>
     </div>
 </Layout>
