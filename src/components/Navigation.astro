@@ -4,13 +4,14 @@ const navItems = [
     { name: "Servizi", href: "/servizi" },
     { name: "Laboratorio", href: "/laboratorio" },
     { name: "Articoli", href: "/articoli" },
+    { name: "Risorse", href: "/risorse" }, // Added Risorse
     { name: "Chi Sono", href: "/chi-sono" },
     { name: "News", href: "/news" },
 ];
 ---
 
 <header
-    class="fixed top-0 w-full h-20 bg-white/95 backdrop-blur-sm border-b border-slate-200 z-50"
+    class="fixed top-0 w-full h-20 bg-white/95 backdrop-blur-md border-b border-slate-200 z-50 transition-all duration-300"
 >
     <div
         class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between"
@@ -23,19 +24,19 @@ const navItems = [
                 Rocco Andrea Ligorio<span class="text-blue-600">.</span>
             </span>
             <span
-                class="text-[0.65rem] font-medium text-slate-500 uppercase tracking-widest mt-0.5"
+                class="text-[0.65rem] font-bold text-slate-500 uppercase tracking-widest mt-0.5"
             >
                 Tecnico Informatico Roma
             </span>
         </a>
 
         <!-- Desktop Menu -->
-        <nav class="hidden md:flex items-center gap-8">
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
             {
                 navItems.map((item) => (
                     <a
                         href={item.href}
-                        class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors relative no-underline"
+                        class="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors relative no-underline hover:bg-slate-50 px-3 py-2 rounded-lg"
                     >
                         {item.name}
                     </a>
@@ -44,29 +45,29 @@ const navItems = [
         </nav>
 
         <!-- CTA & Mobile Toggle -->
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
             <a
                 href="/laboratorio-sim.html"
-                class="hidden lg:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-lg hover:bg-blue-100 transition-colors no-underline"
+                class="hidden xl:inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-indigo-600 bg-indigo-50 border border-indigo-100 rounded-lg hover:bg-indigo-100 transition-colors no-underline uppercase tracking-wide"
             >
-                App Diagnostica
+                <span class="mr-2 text-lg">🩺</span> Diagnostica
             </a>
             <a
                 href="/contatti"
-                class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white transition-all duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 shadow-sm hover:shadow no-underline"
+                class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white transition-all duration-200 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:outline-none shadow-md hover:shadow-lg hover:-translate-y-0.5 no-underline uppercase tracking-wide"
             >
-                Contattami
+                Richiedi SOS
             </a>
 
             <!-- Mobile Menu Button -->
             <button
                 id="mobile-menu-btn"
-                class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+                class="lg:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
                 aria-label="Menu"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
+                    class="h-7 w-7"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -85,11 +86,11 @@ const navItems = [
 <!-- Mobile Menu Overlay -->
 <div
     id="mobile-menu"
-    class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-6 pb-6 shadow-2xl"
+    class="fixed inset-0 bg-white/98 z-40 transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col pt-24 px-6 pb-6 shadow-2xl backdrop-blur-xl"
 >
     <button
         id="close-menu-btn"
-        class="absolute top-6 right-6 p-2 text-slate-500 hover:bg-slate-100 rounded-full"
+        class="absolute top-5 right-4 p-2 text-slate-500 hover:bg-slate-100 rounded-full"
     >
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -106,27 +107,31 @@ const navItems = [
         </svg>
     </button>
 
-    <nav class="flex flex-col gap-6 text-center">
+    <nav class="flex flex-col gap-4 text-center">
         {
             navItems.map((item) => (
                 <a
                     href={item.href}
-                    class="text-2xl font-semibold text-slate-800 hover:text-blue-600 no-underline"
+                    class="text-xl font-bold text-slate-800 hover:text-blue-600 no-underline py-3 border-b border-slate-100"
                 >
                     {item.name}
                 </a>
             ))
         }
-        <hr class="border-slate-100 my-2" />
-        <a
-            href="/laboratorio-sim.html"
-            class="text-lg font-medium text-blue-600 no-underline"
-            >App Diagnostica</a
-        >
-        <a
-            href="/contatti"
-            class="text-lg font-medium text-slate-800 no-underline">Contatti</a
-        >
+        <div class="mt-8 flex flex-col gap-4">
+            <a
+                href="/laboratorio-sim.html"
+                class="text-lg font-bold text-indigo-600 no-underline bg-indigo-50 py-4 rounded-xl"
+            >
+                App Diagnostica
+            </a>
+            <a
+                href="/contatti"
+                class="text-lg font-bold text-white no-underline bg-blue-600 py-4 rounded-xl"
+            >
+                Richiedi SOS
+            </a>
+        </div>
     </nav>
 </div>
 
@@ -134,6 +139,7 @@ const navItems = [
     const btn = document.getElementById("mobile-menu-btn");
     const closeBtn = document.getElementById("close-menu-btn");
     const menu = document.getElementById("mobile-menu");
+    const links = menu?.querySelectorAll("a");
 
     function toggleMenu() {
         menu?.classList.toggle("translate-x-full");
@@ -142,4 +148,9 @@ const navItems = [
 
     btn?.addEventListener("click", toggleMenu);
     closeBtn?.addEventListener("click", toggleMenu);
+
+    // Close menu when a link is clicked
+    links?.forEach((link) => {
+        link.addEventListener("click", toggleMenu);
+    });
 </script>

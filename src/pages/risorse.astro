@@ -1,52 +1,70 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 
 const risorse = [
     {
         titolo: "Divulgazione Libera",
         url: "https://www.divulgazionelibera.it/",
-        descrizione:
-            "Una fonte essenziale per capire il mondo digitale senza filtri commerciali.",
-        tags: ["Community", "Guide", "Libertà Digitale"],
+        descrizione: "Una fonte essenziale per capire il mondo digitale senza filtri commerciali. Articoli approfonditi e indipendenti.",
+        tags: ["Community", "Guide", "Libertà"],
+        color: "blue"
     },
     {
         titolo: "Gentiluomo Digitale",
         url: "https://www.gentiluomodigitale.it/",
-        descrizione:
-            "L'eleganza della competenza. Guide, riflessioni e un approccio 'human-centered' alla tecnologia.",
+        descrizione: "L'eleganza della competenza. Guide, riflessioni e un approccio 'human-centered' alla tecnologia.",
         tags: ["Blogging", "Etica", "Tutorial"],
+        color: "emerald"
     },
     {
         titolo: "Marco Nica",
         url: "https://marconica.it/",
-        descrizione:
-            "Sito ufficiale di Marco Nica, autore, poeta, attore e regista teatrale. Un portale che raccoglie biografia, opere letterarie, produzioni teatrali e cinematografiche, eventi culturali e progetti artistici, raccontando un percorso creativo che unisce scrittura, teatro e comunicazione.",
+        descrizione: "Sito ufficiale di Marco Nica. Un viaggio tra teatro, poesia e arte digitale. Un esempio di portfolio creativo eccellente.",
         tags: ["Teatro", "Poesia", "Arte"],
+        color: "violet"
+    },
+    {
+        titolo: "Mozilla Foundation",
+        url: "https://foundation.mozilla.org/",
+        descrizione: "L'organizzazione dietro Firefox. Paladini della privacy e di un internet sano e aperto a tutti.",
+        tags: ["Open Source", "Privacy", "Web"],
+        color: "orange"
+    },
+     {
+        titolo: "Electronic Frontier Foundation",
+        url: "https://www.eff.org/",
+        descrizione: "La principale organizzazione no-profit per la difesa delle libertà civili nel mondo digitale.",
+        tags: ["Diritti", "Legal", "Attivismo"],
+        color: "red"
     },
 ];
+
+const colorClasses = {
+    blue: "bg-blue-50 text-blue-700 border-blue-200 hover:border-blue-400",
+    emerald: "bg-emerald-50 text-emerald-700 border-emerald-200 hover:border-emerald-400",
+    violet: "bg-violet-50 text-violet-700 border-violet-200 hover:border-violet-400",
+    orange: "bg-orange-50 text-orange-700 border-orange-200 hover:border-orange-400",
+    red: "bg-red-50 text-red-700 border-red-200 hover:border-red-400",
+};
 ---
 
 <Layout title="Risorse Esterne">
-    <div class="min-h-screen">
-        <Navigation />
+    <Navigation />
 
-        <main class="lg:ml-64 p-6 md:p-12 lg:p-20 relative z-10">
-            <header class="mb-16">
-                <span
-                    class="font-mono text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 block"
-                    >/// Collegamenti Sicuri</span
-                >
-                <h1
-                    class="font-sans font-black text-5xl md:text-7xl uppercase leading-none mb-6"
-                >
-                    Risorse<br /><span class="text-accent">Esterne</span>
+    <div class="min-h-screen bg-slate-50 flex flex-col">
+        <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
+            <header class="mb-16 border-b border-slate-200 pb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 block">
+                    /// Siti Amici & Link Utili
+                </span>
+                <h1 class="font-bold text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight">
+                    Risorse<br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">Selezionate</span>.
                 </h1>
-                <p
-                    class="font-serif text-xl border-l-4 border-accent pl-6 max-w-2xl text-gray-600"
-                >
+                <p class="text-xl text-slate-600 leading-relaxed max-w-2xl">
                     Il web è pieno di rumore. Queste sono oasi di segnale.<br />
-                    Siti verificati, contenuti di qualità, zero clickbait.
+                    Siti verificati, contenuti di qualità e progetti che stimo.
                 </p>
             </header>
 
@@ -57,47 +75,51 @@ const risorse = [
                             href={item.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="group block bg-white border-4 border-ink p-6 hover:-translate-y-2 hover:shadow-neo transition-all relative overflow-hidden"
+                            class="group block bg-white border border-slate-200 rounded-xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
                         >
-                            <div class="absolute top-0 right-0 p-2 opacity-20 group-hover:opacity-100 transition-opacity">
-                                <span class="font-mono text-xl">↗</span>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex flex-wrap gap-2">
+                                     {item.tags.map((tag) => (
+                                        <span class={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${colorClasses[item.color].split(' ')[0]} ${colorClasses[item.color].split(' ')[1]}`}>
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <span class="text-slate-300 group-hover:text-blue-600 transition-colors">↗</span>
                             </div>
 
-                            <h2 class="font-sans font-black text-2xl uppercase mb-4 decoration-accent group-hover:underline decoration-4">
+                            <h2 class="font-bold text-2xl text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                                 {item.titolo}
                             </h2>
 
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                {item.tags.map((tag) => (
-                                    <span class="bg-gray-100 text-xs font-mono font-bold px-2 py-1 uppercase">
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <p class="font-serif text-gray-600 mb-6">
+                            <p class="text-slate-600 leading-relaxed text-sm mb-6 flex-grow">
                                 {item.descrizione}
                             </p>
 
-                            <div class="mt-auto">
-                                <span class="font-mono text-xs font-bold uppercase bg-ink text-white px-2 py-1 group-hover:bg-accent group-hover:text-ink transition-colors">
-                                    Visita Sito
+                            <div class="mt-auto border-t border-slate-100 pt-4">
+                                <span class="text-xs font-bold uppercase text-slate-400 group-hover:text-slate-900 transition-colors flex items-center gap-2">
+                                    Visita Risorsa <span class="group-hover:translate-x-1 transition-transform">→</span>
                                 </span>
                             </div>
+                            
+                            <!-- Decorative gradient line at bottom -->
+                            <div class={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-${item.color}-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity`}></div>
                         </a>
                     ))
                 }
             </div>
 
-            <div
-                class="mt-16 bg-yellow-50 border-2 border-dashed border-ink p-8 font-serif text-lg text-center max-w-3xl mx-auto"
-            >
-                <p>
-                    <strong>Nota di Integrità:</strong> Non sono affiliato a questi
-                    siti. Non ricevo compensi per questi link. Li segnalo solo perché,
-                    secondo il mio standard di qualità, meritano la tua attenzione.
-                </p>
+            <div class="mt-20 bg-amber-50 rounded-xl border border-amber-200 p-8 flex gap-6 items-start max-w-3xl mx-auto">
+                <span class="text-4xl">🤝</span>
+                <div>
+                     <h3 class="font-bold text-lg text-slate-900 mb-2">Nota di Integrità</h3>
+                     <p class="text-slate-700 leading-relaxed">
+                        Non sono affiliato a questi siti (salvo diversa indicazione) e non ricevo compensi per questi link. 
+                        Li segnalo esclusivamente perché ritengo che offrano valore reale e rispettino i miei standard di qualità e etica digitale.
+                    </p>
+                </div>
             </div>
         </main>
+        <Footer />
     </div>
 </Layout>
