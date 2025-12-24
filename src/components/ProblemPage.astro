@@ -1,0 +1,266 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "./Navigation.astro";
+import Footer from "./Footer.astro"; // Changed from Footer.astro in pages to correct relative path if in components
+
+interface FaqItem {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    title: string;
+    description: string;
+    h1: string;
+    intro: string; // HTML allowed? Let's assume string for now, or slot. Using props for structured data is safer for Schema.
+    symptoms: string[];
+    causes: string[];
+    solutions: { title: string; steps: string[] }[]; // Array of solutions
+    errors: string[];
+    whenToCall: string[];
+    faq: FaqItem[];
+}
+
+const {
+    title,
+    description,
+    h1,
+    intro,
+    symptoms,
+    causes,
+    solutions,
+    errors,
+    whenToCall,
+    faq,
+} = Astro.props;
+
+// Schema.org FAQPage
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+        },
+    })),
+};
+
+// Breadcrumb Schema
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://www.roccoandrealigorio.it",
+        },
+        {
+            "@type": "ListItem",
+            position: 2,
+            name: h1,
+            item: Astro.url.href,
+        },
+    ],
+};
+
+const schema = [faqSchema, breadcrumbSchema];
+---
+
+<Layout title={title} description={description} schema={schema}>
+    <Navigation />
+
+    <main class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+        <!-- H1 Header -->
+        <header class="mb-12 border-b border-slate-200 pb-8">
+            <h1
+                class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight"
+            >
+                {h1}
+            </h1>
+            <p class="text-xl text-slate-600 leading-relaxed">
+                {intro}
+            </p>
+        </header>
+
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-16">
+                <!-- Symptoms -->
+                <section>
+                    <h2
+                        class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"
+                    >
+                        <span class="text-amber-500">⚠️</span> Sintomi
+                    </h2>
+                    <div
+                        class="bg-amber-50 border border-amber-200 rounded-xl p-6"
+                    >
+                        <ul class="space-y-2">
+                            {
+                                symptoms.map((symptom) => (
+                                    <li class="flex gap-3 text-slate-800">
+                                        <span class="font-bold text-amber-600">
+                                            •
+                                        </span>
+                                        {symptom}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Causes -->
+                <section>
+                    <h2
+                        class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"
+                    >
+                        <span class="text-slate-400">🔍</span> Cause Tecniche
+                    </h2>
+                    <ul class="space-y-3">
+                        {
+                            causes.map((cause) => (
+                                <li class="flex gap-3 text-slate-700 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                    <span class="font-bold text-blue-600">
+                                        →
+                                    </span>
+                                    {cause}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </section>
+
+                <!-- Solutions -->
+                <section>
+                    <h2
+                        class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2"
+                    >
+                        <span class="text-green-600">🛠️</span> Soluzioni Pratiche
+                    </h2>
+
+                    <div class="space-y-8">
+                        {
+                            solutions.map((sol, index) => (
+                                <div class="border-l-4 border-blue-600 pl-6 py-2">
+                                    <h3 class="text-xl font-bold text-slate-900 mb-3">
+                                        {index + 1}. {sol.title}
+                                    </h3>
+                                    <div class="prose prose-slate max-w-none text-slate-600">
+                                        {sol.steps.map((step) => (
+                                            <p class="mb-2" set:html={step} />
+                                        ))}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </section>
+
+                <!-- Common Errors -->
+                <section>
+                    <h2
+                        class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2"
+                    >
+                        <span class="text-red-500">🚫</span> Errori Comuni da Evitare
+                    </h2>
+                    <div class="bg-red-50 border border-red-100 rounded-xl p-6">
+                        <ul class="space-y-3">
+                            {
+                                errors.map((err) => (
+                                    <li class="flex gap-3 text-red-900">
+                                        <span class="font-bold">×</span>
+                                        {err}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- FAQ -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">
+                        Domande Frequenti (FAQ)
+                    </h2>
+                    <div class="space-y-6">
+                        {
+                            faq.map((item) => (
+                                <details class="group bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer open:ring-2 open:ring-blue-100 transition-all">
+                                    <summary class="flex items-center justify-between p-6 font-bold text-slate-800 hover:bg-slate-50">
+                                        {item.question}
+                                        <span class="transform group-open:rotate-180 transition-transform text-blue-600">
+                                            ▼
+                                        </span>
+                                    </summary>
+                                    <div class="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100 mt-2 bg-slate-50/50">
+                                        {item.answer}
+                                    </div>
+                                </details>
+                            ))
+                        }
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar / CTA -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-24 space-y-8">
+                    <!-- When to Call -->
+                    <div
+                        class="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 shadow-sm"
+                    >
+                        <h3
+                            class="font-bold text-indigo-900 mb-4 flex items-center gap-2"
+                        >
+                            <span>👨‍💻</span> Quando serve un tecnico?
+                        </h3>
+                        <ul class="space-y-3 text-sm text-indigo-800 mb-6">
+                            {
+                                whenToCall.map((text) => (
+                                    <li class="flex gap-2">
+                                        <span class="font-bold text-indigo-500">
+                                            ✓
+                                        </span>
+                                        {text}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- CTA Card -->
+                    <div
+                        class="bg-blue-600 text-white rounded-2xl p-8 shadow-xl text-center"
+                    >
+                        <h3 class="font-bold text-2xl mb-2">
+                            Problema non risolto?
+                        </h3>
+                        <p class="text-blue-100 mb-6 text-sm">
+                            A volte le guide non bastano. Intervengo su Roma e
+                            da remoto.
+                        </p>
+                        <a
+                            href="/contatti"
+                            class="block w-full bg-white text-blue-700 font-bold py-3 rounded-lg hover:bg-blue-50 transition-colors uppercase tracking-wide text-sm"
+                        >
+                            Richiedi Assistenza
+                        </a>
+                        <p
+                            class="text-xs text-blue-200 mt-4 border-t border-blue-500 pt-4"
+                        >
+                            Intervento rapido • Nessuna sorpresa
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>

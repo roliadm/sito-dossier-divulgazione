@@ -1,0 +1,70 @@
+---
+import ProblemPage from "../components/ProblemPage.astro";
+---
+
+<ProblemPage
+    title="WiFi Lento Casa e Ufficio Roma | Analisi Reti e Copertura"
+    description="Problemi di WiFi lento o disconnessioni continue a Roma? Analisi interferenze, configurazione router e ottimizzazione rete per casa e ufficio."
+    h1="WiFi Lento e Disconnessioni: Diagnostica Avanzata e Copertura"
+    intro="Avere la fibra a 1 Gigabit non serve a nulla se il WiFi viaggia a 10 Mega. Mura spesse, interferenze dei vicini e router mal posizionati sono le cause principali. Risolvo problemi di copertura e stabilità di rete."
+    symptoms={[
+        "Segnale WiFi debole in alcune stanze",
+        "Videoconferenze (Zoom/Teams) che si bloccano o scattano",
+        "Disconnessione improvvisa dai dispositivi",
+        "Velocità drasticamente inferiore rispetto al cavo LAN",
+        "Impossibilità di connettere domotica o stampanti WiFi",
+    ]}
+    causes={[
+        "Interferenze sul canale radio (troppe reti vicine sullo stesso canale)",
+        "Utilizzo della banda 2.4GHz (lenta e affollata) invece della 5GHz",
+        "Posizionamento errato del router (dietro TV, in armadi metalici)",
+        "Router fornito dall'operatore di scarsa qualità",
+        "Extender WiFi economici che dimezzano la banda",
+    ]}
+    solutions={[
+        {
+            title: "Separazione delle Bande (Band Steering)",
+            steps: [
+                "Accedi al router (di solito 192.168.1.1).",
+                "Separa le reti 2.4GHz e 5GHz dando nomi diversi (es. WiFi-Casa e WiFi-Casa-5G).",
+                "Collega PC e Smart TV alla 5GHz per massima velocità, la domotica alla 2.4GHz.",
+            ],
+        },
+        {
+            title: "Analisi Spettro WiFi",
+            steps: [
+                "Usa app come 'WiFi Analyzer' su Android per vedere i canali affollati.",
+                "Imposta staticamente un canale meno usato sul router (es. 1, 6, 11 per la 2.4GHz).",
+            ],
+        },
+        {
+            title: "Cablaggio e Mesh (Soluzione Reale)",
+            steps: [
+                "Evita i 'Range Extender' da presa se vuoi stabilità.",
+                "La soluzione definitiva è portare un cavo LAN nell'altra stanza e mettere un Access Point, oppure usare un sistema Mesh di qualità (es. Fritz! o Ubiquiti).",
+            ],
+        },
+    ]}
+    errors={[
+        "Comprare ripetitori WiFi da 15€ pensando di coprire 200mq",
+        "Mettere il router in basso sul pavimento o in un angolo nascosto",
+        "Lasciare la rete aperta senza password (o WEP insicura)",
+        "Non aggiornare mai il firmware del router (rischio sicurezza)",
+    ]}
+    whenToCall={[
+        "Se devi coprire una casa grande o su più piani e i repeater non funzionano",
+        "Se sei un ufficio e la rete cade durante le call importanti",
+        "Se hai bisogno di configurare reti ospiti separate (Guest Network)",
+        "Se vuoi cablare casa (Ethernet) e ti serve un progetto",
+    ]}
+    faq={[
+        {
+            question: "Meglio Powerline o WiFi Extender?",
+            answer: "Laddove possibile, le Powerline (internet via rete elettrica) sono spesso più stabili dei WiFi Extender economici, ma dipendono dalla qualità dell'impianto elettrico. La soluzione migliore resta sempre il cavo LAN o un sistema Mesh triband.",
+        },
+        {
+            question: "Operi su tutta Roma per problemi WiFi?",
+            answer: "Sì, intervengo su Roma e provincia per analisi di copertura e installazione reti domestiche o per piccoli uffici (SOHO).",
+        },
+    ]}
+/>

@@ -1,0 +1,72 @@
+---
+import ProblemPage from "../components/ProblemPage.astro";
+---
+
+<ProblemPage
+    title="Errore Windows Update Bloccato | Assistenza Aggiornamenti Roma"
+    description="Windows Update non scarica gli aggiornamenti? Errori 0x8007 o blocco al 0%? Soluzioni tecniche per sbloccare gli aggiornamenti di Windows 10 e 11."
+    h1="Windows Update Bloccato o in Errore: Come Risolvere"
+    intro="Mantenere il PC aggiornato è fondamentale per la sicurezza, ma spesso Windows Update si inceppa. Aggiornamenti che restano allo 0%, codici errore criptici (0x800...) e riavvii infiniti. Ecco come sbloccare la situazione."
+    symptoms={[
+        "Download fermo allo 0% o 99% per ore",
+        "Messaggio 'Impossibile completare gli aggiornamenti, annullamento modifiche'",
+        "PC lento perché Windows Update continua a cercare aggiornamenti in background",
+        "Errore 0x80070002, 0x800f081f e simili",
+    ]}
+    causes={[
+        "Servizi di Windows Update corrotti",
+        "Cartella SoftwareDistribution corrotta (dove vengono scaricati i file)",
+        "Spazio su disco insufficiente nella partizione di sistema",
+        "File di sistema di Windows danneggiati",
+        "Connessione internet instabile o impostata come 'a consumo'",
+    ]}
+    solutions={[
+        {
+            title: "Reset Componenti Windows Update (CMD)",
+            steps: [
+                "Apri Prompt dei Comandi come Amministratore.",
+                "Ferma i servizi: <code>net stop wuauserv</code> e <code>net stop bits</code>.",
+                "Rinomina la cartella cache: <code>ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old</code>.",
+                "Riavvia i servizi: <code>net start wuauserv</code> e <code>net start bits</code>.",
+                "Riprova ad aggiornare.",
+            ],
+        },
+        {
+            title: "Riparazione Immagine Windows (DISM)",
+            steps: [
+                "Se il reset non basta, l'immagine di sistema potrebbe essere corrotta.",
+                "Da CMD Amministratore: <code>DISM.exe /Online /Cleanup-image /Restorehealth</code>.",
+                "Attendi il termine (può volerci molto) e poi riavvia.",
+            ],
+        },
+        {
+            title: "Risoluzione Problemi Automatica",
+            steps: [
+                "Impostazioni -> Aggiornamento e Sicurezza -> Risoluzione problemi.",
+                "Clicca su 'Windows Update' ed esegui lo strumento di risoluzione problemi.",
+            ],
+        },
+    ]}
+    errors={[
+        "Spegnere il PC mentre sta scrivendo 'Non spegnere il computer'",
+        "Scaricare aggiornamenti da siti terzi non ufficiali",
+        "Ignorare gli aggiornamenti per mesi (si accumulano e diventa più difficile installarli)",
+        "Lasciare poco spazio libero su C: (servono almeno 10-20GB liberi per gli update grossi)",
+    ]}
+    whenToCall={[
+        "Se il PC va in 'Boot Loop' (riavvio continuo) dopo un aggiornamento fallito",
+        "Se non riesci più ad accedere a Windows e serve un ripristino dati",
+        "Se devi aggiornare un parco macchine aziendale e serve una gestione centralizzata (WSUS/Policy)",
+        "Se l'errore è causato da conflitti driver complessi",
+    ]}
+    faq={[
+        {
+            question: "Posso disattivare Windows Update per sempre?",
+            answer: "Tecnicamente sì, ma è sconsigliatissimo. Senza patch di sicurezza il PC diventa vulnerabile a virus e ransomware in pochi giorni.",
+        },
+        {
+            question: "Perché l'aggiornamento ci mette ore?",
+            answer: "Può dipendere dalla velocità del disco (gli HDD meccanici sono lentissimi negli update) o dalla velocità della connessione internet.",
+        },
+    ]}
+/>

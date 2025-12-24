@@ -1,0 +1,72 @@
+---
+import ProblemPage from "../components/ProblemPage.astro";
+---
+
+<ProblemPage
+    title="PC Non Si Avvia Roma | Recupero Dati e Riparazione Computer"
+    description="Il PC non si accende, schermo nero o ventole al massimo? Assistenza hardware e recupero dati a Roma. Intervento rapido."
+    h1="PC che Non Si Avvia: Schermo Nero, Beep Code o Alimentazione"
+    intro="Il momento di panico: premi il tasto e non succede nulla, oppure senti le ventole ma lo schermo resta nero. Prima di buttare tutto, sappi che spesso è riparabile. Analizzo guasti hardware e problemi di boot."
+    symptoms={[
+        "Premendo il tasto accensione non accade nulla (nessun led, nessun rumore)",
+        "Il PC si accende, le ventole girano, ma lo schermo è nero (No Signal)",
+        "Serie di 'bip' all'avvio",
+        "Schermata Blu (BSOD) all'infinito (Boot loop)",
+        "Il PC si spegne da solo dopo pochi secondi",
+    ]}
+    causes={[
+        "Alimentatore guasto (o cavo alimentazione rotto)",
+        "RAM mal inserita o ossidata",
+        "Scheda video guasta o non alimentata",
+        "Surriscaldamento (pasta termica secca, dissipatore staccato)",
+        "Corruzione del Master Boot Record (MBR) o Boot Manager",
+    ]}
+    solutions={[
+        {
+            title: "Hard Reset Elettrico",
+            steps: [
+                "Stacca il cavo di alimentazione (e batteria se portatile estraibile).",
+                "Tieni premuto il tasto accensione per 30 secondi (scarica i condensatori).",
+                "Ricollega e prova ad accendere.",
+            ],
+        },
+        {
+            title: "Test RAM (Reseating)",
+            steps: [
+                "Spegni tutto e apri il case.",
+                "Sgancia i banchi di RAM e reinseriscili assicurandoti di sentire il 'click'.",
+                "Prova con un solo banco alla volta per individuare quello guasto.",
+            ],
+        },
+        {
+            title: "Recupero Boot di Windows",
+            steps: [
+                "Se Windows carica e va in errore, serve una chiavetta di installazione USB.",
+                "Avvia da USB, scegli 'Ripristina il computer' -> Risoluzione problemi -> Prompt dei comandi.",
+                "Digita: <code>bootrec /fixmbr</code> e <code>bootrec /rebuildbcd</code>.",
+            ],
+        },
+    ]}
+    errors={[
+        "Tentare di accendere e spegnere compulsivamente (può danneggiare il disco)",
+        "Aprire l'alimentatore (Pericolo di morte! Condensatori ad alto voltaggio)",
+        "Forzare cavi o connettori all'interno del PC",
+        "Dare colpi al case (non funziona come nei film, rompi l'Hard Disk)",
+    ]}
+    whenToCall={[
+        "Se senti odore di bruciato o hai visto fumo",
+        "Se hai dati vitali dentro e non hai backup (NON toccare nulla per non peggiorare il recupero)",
+        "Se il PC emette sequenze di bip specifici",
+        "Se è un problema di scheda madre che richiede diagnostica avanzata",
+    ]}
+    faq={[
+        {
+            question: "Se il PC non parte, i dati sono persi?",
+            answer: "Quasi mai. Se il problema è l'alimentatore, la scheda madre o la scheda video, l'Hard Disk con i tuoi dati è intatto e può essere letto collegandolo esternamente.",
+        },
+        {
+            question: "Fate assistenza a domicilio a Roma?",
+            answer: "Sì. Per i PC fissi spesso è diagnosticabile in loco. Per riparazioni complesse (scheda madre) ritiro il PC e lo riconsegno riparato.",
+        },
+    ]}
+/>

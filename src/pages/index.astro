@@ -1,13 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
-import NewsTicker from "../components/NewsTicker.astro";
-import AnimatedFlask from "../components/AnimatedFlask.astro";
-import BullshitDetector from "../components/BullshitDetector.astro";
 import Footer from "../components/Footer.astro";
-
+import AnimatedFlask from "../components/AnimatedFlask.astro"; // Keep for blog section aesthetic
 import { getCollection } from "astro:content";
 
+// Fetch latest articles for authority/blog section
 const allArticles = await getCollection("articoli", ({ data }) => {
     if (import.meta.env.PROD) {
         return data.draft !== true && data.date <= new Date();
@@ -17,92 +15,397 @@ const allArticles = await getCollection("articoli", ({ data }) => {
 const sortedArticles = allArticles.sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
-const latestArticleData = sortedArticles[0];
-
-const latestArticle = {
-    title: latestArticleData.data.title,
-    slug: latestArticleData.slug,
-    desc: latestArticleData.data.description,
-    date: latestArticleData.data.date.toLocaleDateString("it-IT", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-    }),
-};
 ---
 
-<Layout title="roccoandrealigorio">
-    <div class="min-h-screen">
-        <Navigation />
-        <!-- Navigation hidden on Home for specific layout, or we can keep it for mobile sidebar only? keeping clear for now -->
+<Layout
+    title="Tecnico Informatico a Roma | Assistenza PC e Supporto IT"
+    description="Assistenza informatica professionale a Roma e Lazio. Rocco Andrea Ligorio: tecnico IT per privati e piccole aziende. Risoluzione problemi PC, Reti, Sicurezza."
+>
+    <Navigation />
 
-        <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
-            <!-- 1. HEADER: Professional Studio Title -->
-            <header class="text-center mb-24 w-full max-w-4xl mx-auto flex flex-col items-center">
-                <img src="/logo.png" alt="RoLiADM Tech Logo" class="w-64 md:w-80 h-auto mb-8 drop-shadow-sm animate-fade-in" />
-                
-                <h1 class="sr-only">RoLiADM Tech - Tecnologia & Divulgazione Informatica</h1>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <main class="w-full">
+        <!-- HERO SECTION -->
+        <section
+            class="relative bg-slate-900 text-white py-20 md:py-32 overflow-hidden"
+        >
+            <div
+                class="absolute inset-0 z-0 opacity-20 bg-[url('/grid-pattern.svg')]"
+            >
+            </div>
+            <!-- Optional pattern -->
+            <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+                <p
+                    class="text-blue-400 font-bold uppercase tracking-widest mb-4 animate-fade-in-up"
+                >
+                    Supporto Tecnico · Roma & Remoto
+                </p>
+                <h1
+                    class="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-100"
+                >
+                    L'Informatica che <br />
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400"
+                        >Funziona Davvero</span
+                    >
+                </h1>
+                <p
+                    class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto animate-fade-in-up delay-200"
+                >
+                    Rocco Andrea Ligorio. Tecnico informatico enterprise al
+                    servizio di privati e aziende. Risolvo problemi che altri
+                    lasciano in sospeso.
+                </p>
+
+                <div
+                    class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-300"
+                >
+                    <a
+                        href="/assistenza-informatica-roma"
+                        class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transition-all text-lg flex items-center justify-center gap-2"
+                    >
+                        🛠️ Servizi di Assistenza
+                    </a>
                     <a
                         href="/contatti"
-                        class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all text-lg uppercase tracking-wide flex items-center gap-2"
+                        class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all text-lg flex items-center justify-center gap-2"
                     >
-                        <span>✉️</span> Richiedi Assistenza
-                    </a>
-                    <a
-                        href="/chi-sono"
-                        class="px-8 py-4 bg-white text-slate-700 font-bold border border-slate-200 rounded-xl hover:bg-slate-50 transition-all text-lg uppercase tracking-wide"
-                    >
-                        Chi Sono
+                        ✉️ Contattami
                     </a>
                 </div>
-            </header>
-
-            <!-- 3. CARDS: Clean Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mb-20">
-                
-                <!-- Articles Loop -->
-                {sortedArticles.slice(0, 3).map((article, index) => {
-                     // Color Names for the Flask Component
-                     const colorNames = ['blue', 'emerald', 'violet'];
-                     const colorName = colorNames[index % colorNames.length];
-
-                     // Tailwind classes for hover states
-                     const colors = [
-                        { border: 'hover:border-blue-400', text: 'group-hover:text-blue-600' },
-                        { border: 'hover:border-emerald-400', text: 'group-hover:text-emerald-600' },
-                        { border: 'hover:border-violet-400', text: 'group-hover:text-violet-600' },
-                     ];
-                     const color = colors[index % colors.length];
-                     
-                     return (
-                    <article class={`bg-white rounded-xl border border-slate-200 p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-[380px] justify-between text-center group relative ${color.border}`}>
-                        <!-- Animated Flask Icon -->
-                        <div class="mt-4 transition-transform duration-300 group-hover:scale-110">
-                             <AnimatedFlask color={colorName} class="w-24 h-24 mx-auto" />
-                        </div>
-
-                        <!-- Content -->
-                        <h2 class={`font-bold text-2xl text-slate-800 transition-colors duration-300 break-words w-full px-2 ${color.text}`}>
-                            {article.data.title}
-                        </h2>
-                        
-                        <div class="w-full">
-                            <p class="font-medium text-xs text-slate-400 uppercase tracking-wider mb-2">
-                                {article.data.date.toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" })}
-                            </p>
-                        </div>
-
-                        <a href={`/articoli/${article.slug}`} class="absolute inset-0 z-10" aria-label={`Leggi ${article.data.title}`}></a>
-                    </article>
-                )})}
-
             </div>
+        </section>
 
-             <div class="mt-12 text-center w-full border-t border-slate-100 pt-12">
-                 <Footer />
-             </div>
-        </main>
-    </div>
+        <!-- PROBLEMS SOLVED SECTION (Cards) -->
+        <section class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2
+                    class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16"
+                >
+                    Problemi Reali, Soluzioni Concrete
+                </h2>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <a
+                        href="/pc-lento-windows-11"
+                        class="group bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all no-underline"
+                    >
+                        <div
+                            class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform"
+                        >
+                            🐌
+                        </div>
+                        <h3
+                            class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600"
+                        >
+                            PC Lento Windows 11
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Il computer è diventato inutilizzabile?
+                            Ottimizzazione profonda senza formattare
+                            inutilmente.
+                        </p>
+                        <span
+                            class="text-sm font-bold text-blue-600 flex items-center gap-1"
+                        >
+                            Diagnosi e Soluzione <span
+                                class="group-hover:translate-x-1 transition-transform"
+                                >→</span
+                            >
+                        </span>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a
+                        href="/wifi-lento-casa-ufficio"
+                        class="group bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all no-underline"
+                    >
+                        <div
+                            class="w-14 h-14 bg-indigo-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform"
+                        >
+                            📡
+                        </div>
+                        <h3
+                            class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600"
+                        >
+                            WiFi e Reti
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Connessione che cade o non copre tutte le stanze?
+                            Analisi interferenze e reti Mesh.
+                        </p>
+                        <span
+                            class="text-sm font-bold text-blue-600 flex items-center gap-1"
+                        >
+                            Migliora la Rete <span
+                                class="group-hover:translate-x-1 transition-transform"
+                                >→</span
+                            >
+                        </span>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a
+                        href="/pc-non-si-avvia"
+                        class="group bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all no-underline"
+                    >
+                        <div
+                            class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform"
+                        >
+                            💻
+                        </div>
+                        <h3
+                            class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600"
+                        >
+                            PC Non Si Avvia
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Schermo nero, BSoD o alimentatore guasto.
+                            Diagnostica hardware e recupero operatività.
+                        </p>
+                        <span
+                            class="text-sm font-bold text-blue-600 flex items-center gap-1"
+                        >
+                            Recupero PC <span
+                                class="group-hover:translate-x-1 transition-transform"
+                                >→</span
+                            >
+                        </span>
+                    </a>
+
+                    <!-- Card 4 -->
+                    <a
+                        href="/certificato-https-non-valido"
+                        class="group bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all no-underline"
+                    >
+                        <div
+                            class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform"
+                        >
+                            🔒
+                        </div>
+                        <h3
+                            class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600"
+                        >
+                            Sicurezza & Privacy
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Errori certificati HTTPS, virus, o configurazioni
+                            browser compromesse.
+                        </p>
+                        <span
+                            class="text-sm font-bold text-blue-600 flex items-center gap-1"
+                        >
+                            Naviga Sicuro <span
+                                class="group-hover:translate-x-1 transition-transform"
+                                >→</span
+                            >
+                        </span>
+                    </a>
+
+                    <!-- Card 5 -->
+                    <a
+                        href="/errore-windows-update"
+                        class="group bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all no-underline"
+                    >
+                        <div
+                            class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform"
+                        >
+                            🔄
+                        </div>
+                        <h3
+                            class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600"
+                        >
+                            Windows Update
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            Aggiornamenti bloccati che rallentano il pc? Reset
+                            componenti e fix definitivo.
+                        </p>
+                        <span
+                            class="text-sm font-bold text-blue-600 flex items-center gap-1"
+                        >
+                            Sblocca Update <span
+                                class="group-hover:translate-x-1 transition-transform"
+                                >→</span
+                            >
+                        </span>
+                    </a>
+
+                    <!-- Card 6 -->
+                    <div
+                        class="bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-2xl shadow-sm border border-slate-700 text-white flex flex-col justify-center text-center"
+                    >
+                        <h3 class="text-xl font-bold mb-4">
+                            Hai un altro problema?
+                        </h3>
+                        <p class="text-slate-300 mb-6">
+                            Non tutti i guasti sono standard. Parliamo del tuo
+                            caso specifico.
+                        </p>
+                        <a
+                            href="/contatti"
+                            class="inline-block bg-white text-slate-900 font-bold py-3 px-6 rounded-lg hover:bg-blue-50 mx-auto transition-colors"
+                        >
+                            Contattami
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT / AUTHORITY -->
+        <section class="py-20 bg-white">
+            <div
+                class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-16"
+            >
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <div
+                            class="absolute inset-0 bg-blue-600 transform translate-x-4 translate-y-4 rounded-2xl opacity-20"
+                        >
+                        </div>
+                        <!-- Placeholder for photo if user adds one later, using logo or generic for now if no photo -->
+                        <div
+                            class="relative bg-slate-100 rounded-2xl p-8 border border-slate-200 aspect-video flex items-center justify-center"
+                        >
+                            <span class="text-6xl">👨‍💻</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h2
+                        class="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+                    >
+                        Chi sono e come lavoro
+                    </h2>
+                    <div class="prose prose-lg text-slate-600">
+                        <p>
+                            Sono <strong>Rocco Andrea Ligorio</strong>. A
+                            differenza dei tanti "amici che se ne intendono",
+                            porto un'esperienza maturata in anni di <strong
+                                >Help Desk e supporto IT aziendale</strong
+                            >.
+                        </p>
+                        <p>Cosa significa per te?</p>
+                        <ul class="list-disc pl-4 space-y-2">
+                            <li>Niente tentativi a caso: diagnosi precisa.</li>
+                            <li>
+                                Rispetto dei tuoi dati: procedure di backup
+                                prima di ogni intervento rischioso.
+                            </li>
+                            <li>
+                                Trasparenza: ti spiego cosa è successo in parole
+                                semplici.
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <a
+                                href="/chi-sono"
+                                class="text-blue-600 font-bold hover:text-blue-800 underline decoration-2 decoration-blue-200 hover:decoration-blue-600 transition-all"
+                            >
+                                Scopri la mia storia professionale →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LATEST ARTICLES (Authority Boost) -->
+        <section class="py-20 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-2">
+                            Guide e Divulgazione
+                        </h2>
+                        <p class="text-slate-600">
+                            Articoli tecnici e approfondimenti dal mio blog.
+                        </p>
+                    </div>
+                    <a
+                        href="/articoli"
+                        class="hidden md:inline-block font-bold text-blue-600 hover:text-blue-800"
+                        >Tutti gli articoli →</a
+                    >
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {
+                        sortedArticles
+                            .slice(0, 3)
+                            .map((article: any, index) => {
+                                // Keep functionality from old implementation
+                                const colorNames = [
+                                    "blue",
+                                    "emerald",
+                                    "violet",
+                                ] as const;
+                                const colorName =
+                                    colorNames[index % colorNames.length];
+
+                                const colors = [
+                                    {
+                                        border: "hover:border-blue-400",
+                                        text: "group-hover:text-blue-600",
+                                    },
+                                    {
+                                        border: "hover:border-emerald-400",
+                                        text: "group-hover:text-emerald-600",
+                                    },
+                                    {
+                                        border: "hover:border-violet-400",
+                                        text: "group-hover:text-violet-600",
+                                    },
+                                ];
+                                const color = colors[index % colors.length];
+
+                                return (
+                                    <article
+                                        class={`bg-white rounded-xl border border-slate-200 p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-[300px] justify-between text-center group relative ${color.border}`}
+                                    >
+                                        <div class="mt-2 transition-transform duration-300 group-hover:scale-110">
+                                            <AnimatedFlask
+                                                color={colorName}
+                                                class="w-16 h-16 mx-auto"
+                                            />
+                                        </div>
+                                        <h3
+                                            class={`font-bold text-xl text-slate-800 transition-colors duration-300 break-words w-full px-2 ${color.text}`}
+                                        >
+                                            {article.data.title}
+                                        </h3>
+                                        <p class="font-medium text-xs text-slate-400 uppercase tracking-wider mb-2">
+                                            {article.data.date.toLocaleDateString(
+                                                "it-IT",
+                                                {
+                                                    day: "numeric",
+                                                    month: "long",
+                                                    year: "numeric",
+                                                },
+                                            )}
+                                        </p>
+                                        <a
+                                            href={`/articoli/${article.slug}`}
+                                            class="absolute inset-0 z-10"
+                                            aria-label={`Leggi ${article.data.title}`}
+                                        />
+                                    </article>
+                                );
+                            })
+                    }
+                </div>
+                <div class="mt-8 text-center md:hidden">
+                    <a
+                        href="/articoli"
+                        class="font-bold text-blue-600 hover:text-blue-800"
+                        >Tutti gli articoli →</a
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <Footer />
+    </main>
 </Layout>

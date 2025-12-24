@@ -1,0 +1,72 @@
+---
+import ProblemPage from "../components/ProblemPage.astro";
+---
+
+<ProblemPage
+    title="PC Lento Windows 11 Roma | Assistenza Tecnica e Ottimizzazione"
+    description="Il tuo PC con Windows 11 è diventato lento? Guida tecnica all'ottimizzazione e servizi di assistenza informatica su Roma per velocizzare il computer."
+    h1="PC Lento con Windows 11: Analisi e Ottimizzazione Reale"
+    intro="Windows 11 richiede risorse specifiche. Se il tuo computer, pur essendo recente, rallenta vistosamente, spesso il problema non è l'hardware ma una configurazione software degradata o processi in background fuori controllo. Ecco come intervengo tecnicamente."
+    symptoms={[
+        "Avvio di Windows superiore ai 2 minuti",
+        "Ritardo nell'apertura delle cartelle o del menu Start",
+        "Ventole sempre al massimo anche a riposo",
+        "Programmi che si bloccano con scritta 'Non risponde'",
+        "Mouse che va a scatti durante l'uso normale",
+    ]}
+    causes={[
+        "Bloatware (software preinstallato inutile) attivo in background",
+        "Driver video o chipset non ottimizzati per l'ultima versione di W11",
+        "Disco SSD quasi pieno o senza TRIM attivo",
+        "Antivirus invasivi (spesso doppi: McAfee/Norton + Defender)",
+        "File di sistema corrotti dopo aggiornamenti parziali",
+    ]}
+    solutions={[
+        {
+            title: "Verifica Integrità Disco e File System",
+            steps: [
+                "Apri il terminale come Amministratore.",
+                "Esegui <code>sfc /scannow</code> per riparare i file di sistema.",
+                "Esegui <code>chkdsk c: /f</code> se sospetti errori sul disco (richiederà riavvio).",
+            ],
+        },
+        {
+            title: "Clean Boot (Avvio Pulito)",
+            steps: [
+                "Premi Win+R e scrivi <code>msconfig</code>.",
+                "Nella scheda 'Servizi', spunta 'Nascondi tutti i servizi Microsoft' e poi 'Disabilita tutto'.",
+                "Nella scheda 'Avvio', apri Gestione Attività e disabilita le app inutili.",
+                "Riavvia e verifica se la velocità migliora: se sì, era un programma terzo.",
+            ],
+        },
+        {
+            title: "Analisi Risorse Avanzata",
+            steps: [
+                "Usa 'Monitoraggio Risorse' (perfmon) per vedere chi scrive su disco.",
+                "Se il disco è al 100% fisso, potrebbe essere un disco meccanico guasto o saturato.",
+            ],
+        },
+    ]}
+    errors={[
+        "Scaricare programmi 'Booster' o 'Cleaner' dubbi (peggiorano la situazione)",
+        "Disabilitare gli aggiornamenti di Windows (rischio sicurezza)",
+        "Formattare senza aver prima diagnosticato l'hardware (se il disco è rotto, reinstallare non serve)",
+        "Comprare nuova RAM senza sapere se è quello il collo di bottiglia",
+    ]}
+    whenToCall={[
+        "Se il PC è aziendale e non puoi rischiare di perdere dati",
+        "Se sospetti un virus o un ransomware",
+        "Se hai bisogno di un upgrade Hardware (SSD/RAM) sicuro",
+        "Se il problema si presenta dopo una caduta o sbalzo di tensione",
+    ]}
+    faq={[
+        {
+            question: "Quanto costa velocizzare un PC a Roma?",
+            answer: "Dipende se è un intervento software (pulizia/ottimizzazione) o hardware (sostituzione disco con SSD). Un intervento software tipico parte dai 50-70€, ma un preventivo preciso richiede una diagnosi.",
+        },
+        {
+            question: "Conviene aggiustare un PC lento o comprarlo nuovo?",
+            answer: "Se il PC ha un processore Intel Core i3/i5 (dall'8a gen in poi) o Ryzen equivalente, spesso basta un SSD veloce per farlo tornare come nuovo, spendendo molto meno che ricomprarlo.",
+        },
+    ]}
+/>

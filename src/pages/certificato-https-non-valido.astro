@@ -1,0 +1,69 @@
+---
+import ProblemPage from "../components/ProblemPage.astro";
+---
+
+<ProblemPage
+    title="Certificato HTTPS Non Valido | Assistenza Errori Sicurezza Roma"
+    description="Errore 'La connessione non è privata' o certificato non valido? Risoluzione problemi SSL, sicurezza browser e pc a Roma."
+    h1="Errore 'Certificato HTTPS Non Valido' e Problemi di Sicurezza"
+    intro="Gli errori di certificato (NET::ERR_CERT_DATE_INVALID, etc.) bloccano la navigazione e spaventano l'utente. Spesso non è colpa del sito, ma di una configurazione errata del tuo computer o di un software che interferisce."
+    symptoms={[
+        "Pagina rossa con lucchetto barrato su Chrome/Edge",
+        "Messaggio 'La connessione non è privata'",
+        "Impossibilità ad accedere a siti sicuri (banche, posta, Google)",
+        "Data e ora del PC che si resettano spesso",
+    ]}
+    causes={[
+        "Data e ora del sistema errate (causa principale)",
+        "Batteria tampone (CMOS) della scheda madre scarica",
+        "Antivirus che scansiona il traffico SSL sostituendo il certificato",
+        "Windows non aggiornato (mancano le Root CA recenti)",
+        "Malware che tenta di intercettare il traffico (Man-in-the-Middle)",
+    ]}
+    solutions={[
+        {
+            title: "Verifica Data e Ora (Sincronizzazione)",
+            steps: [
+                "Controlla l'orologio in basso a destra.",
+                "Se l'anno o l'ora sono sbagliati, clicca destro -> 'Modifica data/ora' -> 'Sincronizza ora'.",
+                "Se al riavvio l'ora è di nuovo sbagliata, va cambiata la batteria tampone (CR2032) sulla scheda madre.",
+            ],
+        },
+        {
+            title: "Disabilita Scansione HTTPS Antivirus",
+            steps: [
+                "Alcuni antivirus (es. Avast, Kaspersky) filtrano il web sicuro.",
+                "Prova a disattivare temporaneamente la 'Protezione Web' o 'Scansione HTTPS' nelle impostazioni dell'antivirus.",
+                "Se il sito si apre, il problema è il certificato dell'antivirus non installato correttamente.",
+            ],
+        },
+        {
+            title: "Aggiorna Root Certificates",
+            steps: [
+                "Assicurati di aver fatto tutti gli aggiornamenti di Windows Update.",
+                "I certificati 'radice' scaduti vengono rinnovati tramite gli update di sistema.",
+            ],
+        },
+    ]}
+    errors={[
+        "Ignorare l'avviso e procedere comunque su siti bancari o e-commerce",
+        "Disattivare totalmente l'antivirus senza capire la causa",
+        "Usare Windows 7 o XP che non supportano più i protocolli di cifratura moderni (TLS 1.2/1.3)",
+    ]}
+    whenToCall={[
+        "Se l'errore appare su TUTTI i siti web (potenziale infezione)",
+        "Se hai bisogno di sostituire la batteria tampone e reimpostare il BIOS",
+        "Se sei un'azienda e i tuoi client non accedono al portale interno",
+        "Se sospetti che il tuo browser sia stato compromesso (redirect strani)",
+    ]}
+    faq={[
+        {
+            question: "È pericoloso forzare l'accesso al sito?",
+            answer: "Sì. Se il certificato non è valido, nessuno ti garantisce che tu stia parlando con il server reale. I tuoi dati potrebbero essere intercettati.",
+        },
+        {
+            question: "Perché succede dopo aver formattato?",
+            answer: "Spesso dopo una formattazione mancano gli aggiornamenti cumulativi di Windows che contengono i certificati globali aggiornati.",
+        },
+    ]}
+/>

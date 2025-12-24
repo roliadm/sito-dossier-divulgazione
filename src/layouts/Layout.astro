@@ -5,10 +5,14 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  schema?: any;
 }
 
-const { title, description = "Divulgazione informatica dal mondo reale." } =
-  Astro.props;
+const {
+  title,
+  description = "Divulgazione informatica dal mondo reale.",
+  schema,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -52,6 +56,11 @@ const { title, description = "Divulgazione informatica dal mondo reale." } =
 
     <title>{title} | Rocco Andrea Ligorio</title>
     <title>{title} | Rocco Andrea Ligorio</title>
+    {
+      schema && (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      )
+    }
     <slot name="head" />
   </head>
   <body
