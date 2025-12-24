@@ -1,48 +1,80 @@
 ---
 interface Props {
-  level?: number; // 0 to 100
-  label?: string; // e.g. "Hype Marketing"
+    level?: number; // 0 to 100
+    label?: string; // e.g. "Hype Marketing"
 }
 const { level = 88, label = "Marketing Hype" } = Astro.props;
 
 // Determine color based on level
-const colorClass = level > 80 ? 'bg-error text-white' : level > 40 ? 'bg-highlight' : 'bg-green-500 text-white';
+const colorClass =
+    level > 80
+        ? "bg-error text-white"
+        : level > 40
+          ? "bg-highlight"
+          : "bg-green-500 text-white";
 ---
-<div class="border-4 border-ink p-4 bg-white shadow-neo my-8 w-full max-w-sm ml-auto mr-auto md:mr-0 transform rotate-1 hover:rotate-0 transition-transform cursor-help">
-    <div class="flex justify-between items-center mb-2 border-b-2 border-ink pb-1">
-        <h3 class="font-mono text-xs font-black uppercase tracking-widest flex items-center gap-2">
-            <span class="inline-block w-2 h-2 rounded-full bg-ink animate-pulse"></span>
+
+<div
+    class="border-4 border-ink p-4 bg-white shadow-neo my-8 w-full max-w-sm ml-auto mr-auto md:mr-0 transform rotate-1 hover:rotate-0 transition-transform cursor-help"
+>
+    <div
+        class="flex justify-between items-center mb-2 border-b-2 border-ink pb-1"
+    >
+        <h3
+            class="font-mono text-xs font-black uppercase tracking-widest flex items-center gap-2"
+        >
+            <span class="inline-block w-2 h-2 rounded-full bg-ink animate-pulse"
+            ></span>
             {label} Detector
         </h3>
         <span class="font-mono text-lg font-black">{level}%</span>
     </div>
-    
+
     <!-- Gauge Bar -->
-    <div class="w-full h-8 border-2 border-ink bg-gray-100 relative overflow-hidden flex">
+    <div
+        class="w-full h-8 border-2 border-ink bg-gray-100 relative overflow-hidden flex"
+    >
         <!-- Markers -->
-        <div class="absolute inset-0 flex justify-between px-1 pointer-events-none z-10">
+        <div
+            class="absolute inset-0 flex justify-between px-1 pointer-events-none z-10"
+        >
             <div class="w-px h-full bg-ink/10"></div>
             <div class="w-px h-full bg-ink/10"></div>
             <div class="w-px h-full bg-ink/10"></div>
             <div class="w-px h-full bg-ink/10"></div>
         </div>
-        
+
         <!-- Fill -->
-        <div class={`h-full ${level > 80 ? 'bg-red-600' : level > 50 ? 'bg-yellow-400' : 'bg-blue-600'} border-r-2 border-ink`} style={`width: ${level}%`}></div>
-        
+        <div
+            class={`h-full ${level > 80 ? "bg-red-600" : level > 50 ? "bg-yellow-400" : "bg-blue-600"} border-r-2 border-ink`}
+            style={`width: ${level}%`}
+        >
+        </div>
+
         <!-- Scanline effect on bar -->
-        <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_4px] opacity-20 pointer-events-none"></div>
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(0,0,0,0.3)_50%)] bg-[length:100%_4px] opacity-20 pointer-events-none"
+        >
+        </div>
     </div>
 
     <!-- Message -->
-    <div class="mt-3 font-serif text-sm leading-tight border-l-4 border-ink pl-3 py-1 bg-paper/50">
-        {level > 80 ? (
-            <span class="font-bold">⚠️ ATTENZIONE:</span> 
-        ) : level > 40 ? (
-            <span class="font-bold">⚡ OCCHIO:</span>
-        ) : (
-            <span class="font-bold">✅ OK:</span>
-        )}
-        {level > 80 ? " Rilevata alta concentrazione di fuffa. Leggere con scetticismo estremo." : " Contenuto parzialmente verificato ma spinoso."}
+    <div
+        class="mt-3 font-serif text-sm leading-tight border-l-4 border-ink pl-3 py-1 bg-paper/50"
+    >
+        {
+            level > 80 ? (
+                <span class="font-bold">⚠️ ATTENZIONE:</span>
+            ) : level > 40 ? (
+                <span class="font-bold">⚡ OCCHIO:</span>
+            ) : (
+                <span class="font-bold">✅ OK:</span>
+            )
+        }
+        {
+            level > 80
+                ? " Rilevata alta concentrazione di marketing ingannevole. Leggere con scetticismo estremo."
+                : " Contenuto parzialmente verificato ma spinoso."
+        }
     </div>
 </div>
