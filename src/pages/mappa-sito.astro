@@ -1,0 +1,234 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("articoli", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+});
+
+const sortedArticles = articles.sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const lastUpdate = new Date().toLocaleDateString("it-IT", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
+---
+
+<Layout
+    title="Mappa del Sito - Rocco Andrea Ligorio"
+    description="Indice completo di tutte le pagine, guide e risorse disponibili sul sito di Rocco Andrea Ligorio."
+>
+    <Navigation />
+
+    <main class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+        <div class="mb-12 border-b border-slate-200 pb-8">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">
+                Mappa del Sito
+            </h1>
+            <p class="text-slate-600">
+                Panoramica completa di tutti i contenuti disponibili. <br />
+                <span class="text-sm text-slate-400"
+                    >Ultimo aggiornamento struttura: {lastUpdate}</span
+                >
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Sezione Principale -->
+            <div>
+                <h2
+                    class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2"
+                >
+                    <span class="text-blue-600">🏛️</span> Istituzionale
+                </h2>
+                <ul class="space-y-3">
+                    <li>
+                        <a
+                            href="/"
+                            class="text-lg font-medium hover:text-blue-600 hover:underline"
+                            >Home Page</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/chi-sono"
+                            class="text-lg font-medium hover:text-blue-600 hover:underline"
+                            >Chi Sono & Certificazioni</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/assistenza-informatica-roma"
+                            class="text-lg font-medium hover:text-blue-600 hover:underline"
+                            >Assistenza IT Roma</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/contatti"
+                            class="text-lg font-medium hover:text-blue-600 hover:underline"
+                            >Contatti</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/siti-amici"
+                            class="text-lg font-medium hover:text-blue-600 hover:underline"
+                            >Siti Amici & Partner</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/privacy"
+                            class="text-slate-600 hover:text-blue-600 hover:underline"
+                            >Privacy Policy</a>
+                    </li>
+                </ul>
+
+                <h2
+                    class="text-2xl font-bold text-slate-800 mt-12 mb-6 flex items-center gap-2"
+                >
+                    <span class="text-indigo-600">🛠️</span> Servizi & Laboratorio
+                </h2>
+                <ul class="space-y-3">
+                    <li>
+                        <a
+                            href="/servizi"
+                            class="hover:text-blue-600 hover:underline"
+                            >Tutti i Servizi</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/laboratorio"
+                            class="hover:text-blue-600 hover:underline"
+                            >Laboratorio & Strumentazione</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/stampa-3d"
+                            class="hover:text-blue-600 hover:underline"
+                            >Stampa 3D</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/risorse"
+                            class="hover:text-blue-600 hover:underline"
+                            >Risorse Utili</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/newsletter"
+                            class="hover:text-blue-600 hover:underline"
+                            >Newsletter</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sezione Problemi & Blog -->
+            <div>
+                <h2
+                    class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2"
+                >
+                    <span class="text-red-500">🆘</span> Risoluzione Problemi
+                </h2>
+                <ul
+                    class="space-y-3 bg-red-50 p-6 rounded-xl border border-red-100"
+                >
+                    <li>
+                        <a
+                            href="/pc-lento-windows-11"
+                            class="font-bold text-slate-800 hover:text-red-600 hover:underline"
+                            >PC Lento Windows 11</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/wifi-lento-casa-ufficio"
+                            class="font-bold text-slate-800 hover:text-red-600 hover:underline"
+                            >WiFi Lento e Instabile</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/pc-non-si-avvia"
+                            class="font-bold text-slate-800 hover:text-red-600 hover:underline"
+                            >PC Non Si Avvia</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/certificato-https-non-valido"
+                            class="font-bold text-slate-800 hover:text-red-600 hover:underline"
+                            >Errore Certificati HTTPS</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/errore-windows-update"
+                            class="font-bold text-slate-800 hover:text-red-600 hover:underline"
+                            >Problemi Windows Update</a>
+                    </li>
+                </ul>
+
+                <h2
+                    class="text-2xl font-bold text-slate-800 mt-12 mb-6 flex items-center gap-2"
+                >
+                    <span class="text-green-600">📚</span> Articoli del Blog
+                </h2>
+                <ul
+                    class="space-y-2 max-h-[500px] overflow-y-auto pr-4 custom-scrollbar"
+                >
+                    <li>
+                        <a
+                            href="/articoli"
+                            class="font-bold text-blue-600 hover:underline mb-2 block"
+                            >Vedi tutti gli articoli →</a>
+                    </li>
+                    {
+                        sortedArticles.map((article) => (
+                            <li class="border-b border-slate-100 last:border-0 py-2">
+                                <a
+                                    href={`/articoli/${article.slug}`}
+                                    class="text-slate-700 hover:text-blue-600 hover:underline block"
+                                >
+                                    {article.data.title}
+                                </a>
+                                <span class="text-xs text-slate-400">
+                                    {article.data.date.toLocaleDateString(
+                                        "it-IT",
+                                    )}
+                                </span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <!-- XML Sitemap Link -->
+        <div class="mt-16 pt-8 border-t border-slate-200 text-center">
+            <p class="text-slate-500 mb-4">Sei un bot o un crawler?</p>
+            <a
+                href="/sitemap-index.xml"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition-colors font-mono text-sm"
+            >
+                📄 Visualizza sitemap.xml
+            </a>
+        </div>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style>
+    /* Custom scrollbar for articles list */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+</style>
