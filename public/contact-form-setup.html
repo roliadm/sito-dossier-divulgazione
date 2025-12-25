@@ -13,12 +13,18 @@
         Name: modulo-contatti
         Action: /messaggio-inviato
     -->
-    <form name="modulo-contatti" netlify netlify-honeypot="bot-field" action="/messaggio-inviato" hidden>
-        <input type="hidden" name="form-name" value="modulo-contatti" />
+    <form name="contatti" netlify netlify-honeypot="bot-field" action="/messaggio-inviato" hidden>
+        <input type="hidden" name="form-name" value="contatti" />
         <input name="bot-field" />
-        <input type="text" name="nome" />
+        <input type="text" name="name" />
         <input type="email" name="email" />
-        <textarea name="messaggio"></textarea>
+        <select name="subject">
+            <option value="Generale">Richiesta Generale</option>
+            <option value="Assistenza PC">Assistenza Computer</option>
+            <option value="Rete WiFi">Problemi WiFi / Rete</option>
+            <option value="Urgente">Urgenza Aziendale</option>
+        </select>
+        <textarea name="message"></textarea>
     </form>
 </body>
 
