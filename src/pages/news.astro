@@ -1,68 +1,150 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import { getNews } from '../utils/fetchNews';
-
-const newsItems = await getNews();
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 ---
+
 <Layout title="Telex News Globali">
     <Navigation />
-    
+
     <div class="min-h-screen bg-slate-50 flex flex-col">
         <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
             <header class="mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-slate-200 rounded-full shadow-sm mb-6">
-                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <span class="text-xs font-bold text-slate-500 uppercase tracking-wide">RSS Uplink Active</span>
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-slate-200 rounded-full shadow-sm mb-6"
+                >
+                    <span
+                        class="w-2 h-2 rounded-full bg-green-500 animate-pulse"
+                    ></span>
+                    <span
+                        class="text-xs font-bold text-slate-500 uppercase tracking-wide"
+                        >Feed RSS Attivi</span
+                    >
                 </div>
-                <h1 class="font-bold text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight">
-                    Telex<br/>News<span class="text-blue-600">_</span>
+                <h1
+                    class="font-bold text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight"
+                >
+                    Telex<br />News<span class="text-blue-600">_</span>
                 </h1>
-                <p class="text-xl text-slate-600 leading-relaxed border-l-4 border-slate-300 pl-6 max-w-2xl">
-                    Aggregatore automatico di dispacci tecnologici. <br/>
-                    <span class="text-sm font-bold text-slate-400 uppercase mt-2 block tracking-wider">Ultimo Sync: {new Date().toLocaleString('it-IT')}</span>
+                <p
+                    class="text-xl text-slate-600 leading-relaxed border-l-4 border-slate-300 pl-6 max-w-2xl"
+                >
+                    Aggregatore automatico di dispacci tecnologici. <br />
+                    <span
+                        id="sync-time"
+                        class="text-sm font-bold text-slate-400 uppercase mt-2 block tracking-wider"
+                        >Aggiornamento feed in corso...</span
+                    >
                 </p>
             </header>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {newsItems.map((item) => (
-                    <article class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group">
-                        <!-- Top Bar -->
-                        <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-100">
-                             <div class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">
-                                {item.source}
-                             </div>
-                             <span class="text-xs font-medium text-slate-400">{item.date.toLocaleDateString('it-IT')}</span>
+            <div
+                id="news-container"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+                <!-- Skeleton Loaders -->
+                {
+                    [1, 2, 3, 4, 5, 6].map((i) => (
+                        <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm h-96 flex flex-col">
+                            <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-100">
+                                <div class="h-4 w-24 bg-slate-200 rounded animate-pulse" />
+                                <div class="h-4 w-16 bg-slate-200 rounded animate-pulse" />
+                            </div>
+                            <div class="h-8 w-3/4 bg-slate-200 rounded mb-4 animate-pulse" />
+                            <div class="h-8 w-1/2 bg-slate-200 rounded mb-4 animate-pulse" />
+                            <div class="space-y-2 mb-6 flex-grow">
+                                <div class="h-4 w-full bg-slate-200 rounded animate-pulse" />
+                                <div class="h-4 w-full bg-slate-200 rounded animate-pulse" />
+                                <div class="h-4 w-2/3 bg-slate-200 rounded animate-pulse" />
+                            </div>
+                            <div class="mt-auto pt-4 flex justify-end">
+                                <div class="h-4 w-24 bg-slate-200 rounded animate-pulse" />
+                            </div>
                         </div>
-                        
-                        <h2 class="font-bold text-xl text-slate-900 leading-tight mb-4 group-hover:text-blue-600 transition-colors">
-                            <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                {item.title}
-                            </a>
-                        </h2>
-                        
-                        <p class="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3 flex-grow">
-                            {item.description}
-                        </p>
-                        
-                        <div class="mt-auto pt-4 flex justify-end">
-                            <a href={item.link} target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 hover:text-blue-800 uppercase tracking-wide flex items-center gap-1">
-                                Leggi Fonte <span class="group-hover:translate-x-1 transition-transform">→</span>
-                            </a>
-                        </div>
-                    </article>
-                ))}
+                    ))
+                }
             </div>
 
-            <div class="mt-16 bg-amber-50 border border-amber-200 rounded-lg p-6 flex gap-4 items-start max-w-4xl mx-auto">
+            <div
+                class="mt-16 bg-amber-50 border border-amber-200 rounded-lg p-6 flex gap-4 items-start max-w-4xl mx-auto"
+            >
                 <span class="text-2xl">ℹ️</span>
                 <p class="text-sm text-slate-700 leading-relaxed">
-                    <strong>Disclaimer:</strong> Le notizie sopra riportate sono aggregate automaticamente tramite feed pubblico. 
-                    I titoli e i contenuti appartengono ai rispettivi editori. Questo sito non si appropria del contenuto, ma rimanda direttamente alla fonte.
+                    <strong>Nota Informativa:</strong> Le notizie sopra riportate
+                    sono aggregate automaticamente tramite feed pubblico. I titoli
+                    e i contenuti appartengono ai rispettivi editori. Questo sito
+                    non si appropria del contenuto, ma rimanda direttamente alla fonte.
                 </p>
             </div>
         </main>
         <Footer />
     </div>
 </Layout>
+
+<script>
+    import { getNews } from "../utils/fetchNews";
+
+    async function updateNews() {
+        const container = document.getElementById("news-container");
+        const syncLabel = document.getElementById("sync-time");
+
+        if (!container) return;
+
+        try {
+            const newsItems = await getNews(true); // clientSide = true
+
+            // Clear skeleton
+            container.innerHTML = "";
+
+            if (syncLabel) {
+                syncLabel.innerText = `Ultimo Aggiornamento: ${new Date().toLocaleString("it-IT")}`;
+            }
+
+            newsItems.forEach((item) => {
+                const article = document.createElement("article");
+                article.className =
+                    "bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group fade-in";
+
+                // Add fade-in animation style dynamically or assume it's in global css,
+                // but just strictly mimicking previous structure:
+
+                article.innerHTML = `
+                    <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-100">
+                         <div class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">
+                            ${item.source}
+                         </div>
+                         <span class="text-xs font-medium text-slate-400">${new Date(item.date).toLocaleDateString("it-IT")}</span>
+                    </div>
+                    
+                    <h2 class="font-bold text-xl text-slate-900 leading-tight mb-4 group-hover:text-blue-600 transition-colors">
+                        <a href="${item.link}" target="_blank" rel="noopener noreferrer">
+                            ${item.title}
+                        </a>
+                    </h2>
+                    
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3 flex-grow">
+                        ${item.description}
+                    </p>
+                    
+                    <div class="mt-auto pt-4 flex justify-end">
+                        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 hover:text-blue-800 uppercase tracking-wide flex items-center gap-1">
+                            Leggi Fonte <span class="group-hover:translate-x-1 transition-transform">→</span>
+                        </a>
+                    </div>
+                `;
+                container.appendChild(article);
+            });
+        } catch (e) {
+            console.error("Failed to load news", e);
+            container.innerHTML = `<div class="col-span-full text-center py-10">
+                <p class="text-red-500 font-bold mb-2">Impossibile caricare le notizie.</p>
+                <p class="text-slate-500 text-sm">Controlla la tua connessione o riprova più tardi.</p>
+            </div>`;
+        }
+    }
+
+    // Run on every page navigation (ClientRouter)
+    document.addEventListener("astro:page-load", () => {
+        updateNews();
+    });
+</script>

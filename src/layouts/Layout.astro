@@ -1,6 +1,9 @@
 ---
-// Fonts - Using Google Fonts CDN for reliability
+// Fonts
+import "@fontsource/space-grotesk";
+import "@fontsource/fira-code";
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -61,18 +64,140 @@ const {
         <script type="application/ld+json" set:html={JSON.stringify(schema)} />
       )
     }
+    <ClientRouter />
     <slot name="head" />
   </head>
   <body
     class="bg-paper text-ink selection:bg-accent/20 selection:text-ink relative overflow-x-hidden min-h-screen"
   >
+    <div id="scroll-progress"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
     <slot />
 
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
+      import { registerSW } from "virtual:pwa-register";
+
+      // Run once
+      if ("serviceWorker" in navigator) {
+        registerSW({ immediate: true });
+      }
+
+      // Run on every page navigation (ClientRouter)
+      document.addEventListener("astro:page-load", () => {
+        // 1. Setup Custom Cursor if missing
+        let cursorDot = document.querySelector(".cursor-dot") as HTMLElement;
+        let cursorOutline = document.querySelector(
+          ".cursor-outline",
+        ) as HTMLElement;
+
+        if (!cursorDot) {
+          cursorDot = document.createElement("div");
+          cursorDot.className = "cursor-dot";
+          document.body.appendChild(cursorDot);
+        }
+        if (!cursorOutline) {
+          cursorOutline = document.createElement("div");
+          cursorOutline.className = "cursor-outline";
+          document.body.appendChild(cursorOutline);
+        }
+
+        // 2. Mouse Tracking
+        const moveCursor = (e: MouseEvent) => {
+          const posX = e.clientX;
+          const posY = e.clientY;
+
+          // Spotlight vars
+          document.body.style.setProperty("--mouse-x", `${posX}px`);
+          document.body.style.setProperty("--mouse-y", `${posY}px`);
+          document.body.classList.add("has-mouse");
+
+          // Dot
+          cursorDot.style.left = `${posX}px`;
+          cursorDot.style.top = `${posY}px`;
+
+          // Outline (with animation/lag)
+          cursorOutline.animate(
+            {
+              left: `${posX}px`,
+              top: `${posY}px`,
+            },
+            { duration: 500, fill: "forwards" },
+          );
+        };
+        window.removeEventListener("mousemove", moveCursor); // Cleanup prev
+        window.addEventListener("mousemove", moveCursor);
+
+        // 3. Hover States
+        const interactables = document.querySelectorAll(
+          "a, button, .card-ceramic, input, textarea",
+        );
+        interactables.forEach((el) => {
+          el.addEventListener("mouseenter", () =>
+            document.body.classList.add("hovering"),
+          );
+          el.addEventListener("mouseleave", () =>
+            document.body.classList.remove("hovering"),
+          );
+        });
+
+        // 4. Magnetic Buttons
+        const magnets = document.querySelectorAll(
+          ".btn-primary, .btn-secondary, .nav-link",
+        );
+        magnets.forEach((btn) => {
+          const el = btn as HTMLElement;
+          el.addEventListener("mousemove", (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            // Strength of magnet
+            el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+          });
+          el.addEventListener("mouseleave", () => {
+            el.style.transform = "translate(0, 0)";
+          });
+        });
+
+        // 5. Scroll Reveal
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-active");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll("h1, h2, p, .card-ceramic").forEach((el) => {
+          el.classList.add("reveal"); // Add base class
+          observer.observe(el);
+        });
+
+        // 6. Scroll Progress Bar
+        const updateScroll = () => {
+          const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop;
+          const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          const bar = document.getElementById("scroll-progress");
+          if (bar) bar.style.width = scrolled + "%";
+        };
+        window.removeEventListener("scroll", updateScroll);
+        window.addEventListener("scroll", updateScroll);
+      });
+      // Netlify Identity Redirect
+      if ((window as any).netlifyIdentity) {
+        (window as any).netlifyIdentity.on("init", (user: any) => {
           if (!user) {
-            window.netlifyIdentity.on("login", () => {
+            (window as any).netlifyIdentity.on("login", () => {
               document.location.href = "/admin/";
             });
           }

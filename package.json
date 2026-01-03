@@ -20,5 +20,8 @@
     "fast-xml-parser": "^5.3.3",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "vite-plugin-pwa": "^1.2.0"
   }
 }

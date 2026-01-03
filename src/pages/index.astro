@@ -25,51 +25,90 @@ const sortedArticles = allArticles.sort(
 
     <main class="w-full">
         <!-- HERO SECTION -->
+        <!-- HERO SECTION -->
         <section
-            class="relative bg-slate-900 text-white py-20 md:py-32 overflow-hidden"
+            class="relative bg-paper text-slate-900 py-32 md:py-48 overflow-hidden"
         >
+            <!-- Animated Liquid Light Background -->
+            <div class="absolute inset-0 z-0">
+                <div
+                    class="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] animate-aurora opacity-60 blur-[100px]"
+                    style="background: conic-gradient(from 0deg at 50% 50%, #eff6ff 0deg, #bfdbfe 60deg, #e9d5ff 120deg, #fbcfe8 180deg, #e9d5ff 240deg, #eff6ff 360deg);"
+                >
+                </div>
+            </div>
+
+            <!-- Grid Pattern Overlay -->
             <div
-                class="absolute inset-0 z-0 opacity-20 bg-[url('/grid-pattern.svg')]"
+                class="absolute inset-0 z-0 bg-[url('/grid-pattern.svg')] opacity-[0.03] mix-blend-darken"
             >
             </div>
-            <!-- Optional pattern -->
+
             <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
-                <p
-                    class="text-blue-400 font-bold uppercase tracking-widest mb-4 animate-fade-in-up"
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 border border-slate-200 backdrop-blur-md mb-8 hover:bg-white/60 transition-colors animate-fade-in-up shadow-sm"
                 >
-                    Supporto Tecnico · Roma & Remoto
-                </p>
-                <h1
-                    class="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in-up delay-100"
-                >
-                    L'Informatica che <br />
+                    <span class="relative flex h-3 w-3">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+                        ></span>
+                        <span
+                            class="relative inline-flex rounded-full h-3 w-3 bg-green-500"
+                        ></span>
+                    </span>
                     <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400"
-                        >Funziona Davvero</span
+                        class="text-xs font-bold uppercase tracking-widest text-blue-600"
+                    >
+                        System Online · Roma & Remoto
+                    </span>
+                </div>
+
+                <h1
+                    class="text-6xl md:text-8xl font-bold mb-8 leading-tight animate-fade-in-up delay-100 font-sans tracking-tight text-slate-900"
+                >
+                    Informatica <br />
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 typing-container"
+                        >Avanguardia Pura</span
                     >
                 </h1>
+
                 <p
-                    class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto animate-fade-in-up delay-200"
+                    class="text-xl md:text-2xl text-slate-600 mb-12 max-w-2xl mx-auto animate-fade-in-up delay-200 leading-relaxed font-light"
                 >
-                    Rocco Andrea Ligorio. Tecnico informatico enterprise al
-                    servizio di privati e aziende. Risolvo problemi che altri
-                    lasciano in sospeso.
+                    Rocco Andrea Ligorio. <span
+                        class="text-slate-900 font-medium"
+                        >Tecnico Enterprise.</span
+                    ><br />
+                    Soluzioni radicali per problemi complessi.
                 </p>
 
                 <div
-                    class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-300"
+                    class="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up delay-300"
                 >
                     <a
                         href="/assistenza-informatica-roma"
-                        class="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1 transition-all text-lg flex items-center justify-center gap-2"
+                        class="px-8 py-5 bg-blue-600 text-white font-bold rounded-2xl shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-1 transition-all text-lg flex items-center justify-center gap-3 btn-shimmer group"
                     >
-                        🛠️ Servizi di Assistenza
+                        <span>🛠️ Servizi Premium</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 group-hover:translate-x-1 transition-transform"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
+                        >
                     </a>
                     <a
                         href="/contatti"
-                        class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all text-lg flex items-center justify-center gap-2"
+                        class="px-8 py-5 bg-white/60 backdrop-blur-md border border-white/50 text-slate-700 font-bold rounded-2xl hover:bg-white/80 transition-all text-lg flex items-center justify-center gap-3 group shadow-lg shadow-slate-200/50"
                     >
-                        ✉️ Contattami
+                        <span>✉️ Contatto Diretto</span>
                     </a>
                 </div>
             </div>
