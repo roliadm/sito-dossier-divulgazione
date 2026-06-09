@@ -1,0 +1,718 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Rocco Andrea Ligorio - Portfolio">
+  <style is:global>
+    :root {
+      --bg-0: #0f0f12;
+      --bg-1: #1a1a1f;
+      --color-amber: #ffa500;
+      --color-teal: #00d4b4;
+      --color-purple: #a855f7;
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1a6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-0);
+      color: var(--text-primary);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 7rem 2rem;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 4rem;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, var(--color-amber), var(--color-teal), var(--color-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: rgba(255, 165, 0, 0.05);
+      border: 1px solid rgba(255, 165, 0, 0.2);
+      padding: 2.5rem;
+      border-radius: 8px;
+      transition: all 0.5s ease;
+    }
+
+    .service-card:hover {
+      border-color: var(--color-amber);
+      box-shadow: 0 30px 60px rgba(255, 165, 0, 0.2);
+      transform: translateY(-15px);
+    }
+
+    .service-number {
+      font-size: 3rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--color-amber), var(--color-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 2rem auto;
+      line-height: 1.8;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.4s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-amber), var(--color-purple));
+      color: var(--bg-0);
+      box-shadow: 0 15px 40px rgba(255, 165, 0, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(255, 165, 0, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-teal);
+      border: 2px solid var(--color-teal);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 212, 180, 0.1);
+      transform: translateY(-8px);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .portfolio-card {
+      background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(0, 212, 180, 0.1));
+      border: 1px solid rgba(255, 165, 0, 0.15);
+      padding: 2.5rem;
+      border-radius: 8px;
+      transition: all 0.5s ease;
+    }
+
+    .portfolio-card:hover {
+      border-color: var(--color-amber);
+      transform: translateY(-20px);
+    }
+
+    .portfolio-tag {
+      display: inline-block;
+      background: rgba(255, 165, 0, 0.2);
+      color: var(--color-amber);
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .case-card {
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-left: 4px solid var(--color-purple);
+      padding: 2rem;
+      border-radius: 8px;
+      transition: all 0.5s ease;
+    }
+
+    .case-card:hover {
+      transform: translateX(10px) translateY(-10px);
+      box-shadow: 0 25px 50px rgba(255, 165, 0, 0.15);
+    }
+
+    .case-result {
+      padding: 1rem;
+      background: rgba(0, 212, 180, 0.15);
+      border-left: 2px solid var(--color-teal);
+      color: var(--color-teal);
+      font-weight: 700;
+      border-radius: 4px;
+    }
+
+    #contact {
+      padding: 8rem 2rem;
+    }
+
+    .cta-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(255, 165, 0, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid rgba(255, 165, 0, 0.2);
+      padding: 4rem;
+      border-radius: 12px;
+    }
+
+    .form-wrapper {
+      background: rgba(26, 26, 31, 0.9);
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 165, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: rgba(36, 36, 41, 0.8);
+      border: 1px solid rgba(255, 165, 0, 0.2);
+      border-radius: 4px;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      transition: all 0.4s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--color-amber);
+      background: rgba(36, 36, 41, 0.95);
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1.1rem;
+      background: linear-gradient(135deg, var(--color-amber), var(--color-purple));
+      color: var(--bg-0);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 15px 40px rgba(255, 165, 0, 0.25);
+      transition: all 0.4s ease;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 25px 60px rgba(255, 165, 0, 0.4);
+    }
+
+    .floating-menu {
+      position: fixed;
+      bottom: 3rem;
+      right: 2rem;
+      z-index: 500;
+    }
+
+    .menu-toggle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-amber), var(--color-purple));
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 40px rgba(255, 165, 0, 0.3);
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 50px rgba(255, 165, 0, 0.5);
+    }
+
+    .menu-toggle.active {
+      transform: rotate(45deg);
+    }
+
+    .menu-items {
+      position: absolute;
+      bottom: 90px;
+      right: 0;
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .menu-items.active {
+      display: flex;
+    }
+
+    .menu-item {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(26, 26, 31, 0.95);
+      border: 2px solid rgba(255, 165, 0, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .menu-items.active .menu-item {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .menu-item:hover {
+      transform: scale(1.15);
+      border-color: var(--color-amber);
+      background: rgba(255, 165, 0, 0.1);
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+    }
+
+    footer {
+      background: rgba(15, 15, 18, 0.9);
+      border-top: 1px solid rgba(255, 165, 0, 0.15);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    .footer-section a,
+    .footer-section p {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      transition: color 0.2s;
+    }
+
+    .footer-section a:hover {
+      color: var(--color-amber);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 165, 0, 0.1);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 1rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .services-grid,
+      .portfolio-grid,
+      .case-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .floating-menu {
+        bottom: 2rem;
+        right: 1rem;
+      }
+
+      .menu-toggle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.3rem;
+      }
+
+      .menu-item {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+
+  <div class="floating-menu">
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <div class="menu-items" id="menuItems">
+      <button class="menu-item" data-section="services">🌐</button>
+      <button class="menu-item" data-section="portfolio">💼</button>
+      <button class="menu-item" data-section="case-studies">📊</button>
+      <button class="menu-item" data-section="contact">✉️</button>
+    </div>
+  </div>
+
+  <section id="hero">
+    <div class="hero-content">
+      <h1>
+        Trasformiamo le tue idee<br>
+        in soluzioni<br>
+        digitali
+      </h1>
+      <p class="hero-subtitle">Sviluppo web, applicazioni personalizzate e software custom. 7+ anni di esperienza nel creare prodotti che funzionano davvero.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView();">Richiedi Preventivo</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('portfolio').scrollIntoView();">Vedi i Lavori</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <h2 class="section-title">Cosa <span>offro</span></h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h3>Siti Web</h3>
+          <p>Siti web moderni, responsive e performanti. E-commerce, landing page e portali web costruiti per convertire e posizionarsi su Google.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h3>Applicazioni Web</h3>
+          <p>App web personalizzate, PWA e piattaforme SaaS. Soluzioni custom con database, API e funzionalità avanzate progettate sul tuo bisogno.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h3>Software & App Mobile</h3>
+          <p>Sviluppo app mobile native e ibride. Software desktop cross-platform con sincronizzazione cloud e offline-first capabilities.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">04</div>
+          <h3>Consulenza Tech</h3>
+          <p>Architetture cloud, infrastrutture scalabili, DevOps e automazione. Strategie digitali e ottimizzazione dell'IT aziendale.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">05</div>
+          <h3>Integrazione Sistemi</h3>
+          <p>Integrazione di sistemi legacy, API development e middleware. Connetti i tuoi sistemi e automatizza i flussi di lavoro.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">06</div>
+          <h3>Manutenzione & Support</h3>
+          <p>Support tecnico continuativo, bug fixes, feature updates e ottimizzazioni. Team dedicato che mantiene i tuoi sistemi sempre online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <h2 class="section-title">Progetti <span>Recenti</span></h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <span class="portfolio-tag">PWA</span>
+          <h3>Interventi PWA</h3>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Progressive Web App per gestione interventi</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Applicazione installabile con sincronizzazione real-time, offline-first e conflict resolution. Deploy automatico su Netlify.</p>
+        </div>
+
+        <div class="portfolio-card">
+          <span class="portfolio-tag">Automation</span>
+          <h3>Edge Browser Management</h3>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Automazione PowerShell Enterprise</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Script PowerShell per automatizzare IE compatibility mode. Gestione su scala aziendale con timestamp manipulation.</p>
+        </div>
+
+        <div class="portfolio-card">
+          <span class="portfolio-tag">Cloud</span>
+          <h3>Oracle Cloud Setup</h3>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">VPS Always Free Tier</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">Configurazione VPS Ampere A1 su Oracle Cloud. Networking setup, deploy applicazioni e infrastructure-as-code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="case-studies">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <h2 class="section-title">Risultati <span>Concreti</span></h2>
+      <div class="case-grid">
+        <div class="case-card">
+          <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">E-COMMERCE</div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.3rem; font-weight: 700; text-transform: uppercase;">E-Commerce Multi-Lingue</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">PMI Italica — Prodotti Tessili</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem; font-size: 0.95rem;">Sito e-commerce con pagamenti Stripe, gestione inventario, multi-valuta e SEO ottimizzato.</p>
+          <div class="case-result">📈 +250% Conversioni | +180% Traffico</div>
+        </div>
+
+        <div class="case-card">
+          <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">WEB APP</div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.3rem; font-weight: 700; text-transform: uppercase;">App Gestione Progetti</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Studio Professionale — Project Management</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem; font-size: 0.95rem;">Applicazione web con real-time collaboration, dashboard analitica e sync mobile.</p>
+          <div class="case-result">✓ 50+ Team | +8h/settimana Saved</div>
+        </div>
+
+        <div class="case-card">
+          <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">SAAS</div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.3rem; font-weight: 700; text-transform: uppercase;">Landing Page SaaS</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Startup Tech — Tool Automazione</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem; font-size: 0.95rem;">Landing page high-converting con video demo e form ottimizzato.</p>
+          <div class="case-result">💰 4.2% Conversion | 1.2k Lead/Mese</div>
+        </div>
+
+        <div class="case-card">
+          <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">B2B</div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.3rem; font-weight: 700; text-transform: uppercase;">Piattaforma Supplier</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Azienda Manifatturiera — Portal</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem; font-size: 0.95rem;">Portale B2B con ordini, fatturazione e integrazione ERP.</p>
+          <div class="case-result">🏢 200+ Fornitori | €2M Transazioni</div>
+        </div>
+
+        <div class="case-card">
+          <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">MOBILE</div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.3rem; font-weight: 700; text-transform: uppercase;">App Logistics</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Startup Delivery — Mobile First</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem; font-size: 0.95rem;">App con GPS real-time, ottimizzazione percorsi e tracking.</p>
+          <div class="case-result">📱 5000+ Download | 4.8/5 Rating</div>
+        </div>
+
+        <div class="case-card">
+          <div style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">DEVOPS</div>
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.3rem; font-weight: 700; text-transform: uppercase;">Legacy App Refactor</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Banca — Modernizzazione Infra</p>
+          <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem; font-size: 0.95rem;">Containerizzazione, migrazione Kubernetes e CI/CD pipeline.</p>
+          <div class="case-result">⚡ 99.9% Uptime | 60% Cost ↓</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="cta-box">
+      <div style="text-align: center;">
+        <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; text-transform: uppercase;">Iniziamo il Tuo Progetto</h2>
+        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7;">Che sia un sito web, un'app personalizzata o consulenza tech, sono pronto a aiutarti. Compila il form e parliamone.</p>
+        
+        <div class="form-wrapper">
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Nome Completo *</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefono</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="message">Descrivi il Tuo Progetto *</label>
+              <textarea id="message" name="message" required placeholder="Che cosa vorresti realizzare?"></textarea>
+            </div>
+            <button type="submit" class="form-submit">Invia Richiesta</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Rocco Andrea Ligorio</h4>
+        <p>IT Specialist & Web Developer</p>
+        <p>Email: rocco@roccoandrealigorio.it</p>
+      </div>
+      <div class="footer-section">
+        <h4>Menu</h4>
+        <a href="#services">Servizi</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#contact">Contatti</a>
+      </div>
+      <div class="footer-section">
+        <h4>Social</h4>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Rocco Andrea Ligorio. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menuItems = document.getElementById('menuItems');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      menuItems.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const sectionMap = {
+          '🌐': 'services',
+          '💼': 'portfolio',
+          '📊': 'case-studies',
+          '✉️': 'contact'
+        };
+        const section = sectionMap[item.textContent.trim()];
+        const targetElement = document.getElementById(section);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          menuToggle.classList.remove('active');
+          menuItems.classList.remove('active');
+        }
+      });
+    });
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+      
+      const mailtoLink = `mailto:rocco@roccoandrealigorio.it?subject=Nuova richiesta da ${encodeURIComponent(name)}&body=Nome: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ATelefono: ${encodeURIComponent(phone)}%0A%0AProgetto:%0A${encodeURIComponent(message)}`;
+      
+      window.location.href = mailtoLink;
+      document.querySelector('form').reset();
+    }
+  </script>
+</Layout>
